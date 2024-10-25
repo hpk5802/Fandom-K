@@ -1,9 +1,11 @@
 import GradientButton from "components/common/GradientButton";
 import ProfileBadge from "components/common/ProfileBadge";
+import Nav from "components/nav/Nav";
 
 function Components() {
   return (
     <>
+      <Nav />
       <div
         style={{
           padding: "1rem",
@@ -26,7 +28,7 @@ function Components() {
           name prop은 클래스를 추가하기 위한 prop입니다. string ('class') |
           string 배열(['class1', 'class2']) 형태로 사용해주세요.
         </div>
-        <GradientButton name='btn1'>Gradient Button</GradientButton>
+        <GradientButton name="btn1">Gradient Button</GradientButton>
         <hr />
         <GradientButton name={["btn1", "btn2"]}>Gradient Button</GradientButton>
       </div>
@@ -52,13 +54,13 @@ function Components() {
           <br />
           selected prop은 임시입니다. 추후 state로 변경할 예정입니다.
         </div>
-        <ProfileBadge img='img_idol_example.svg' />
+        <ProfileBadge img="img_idol_example.svg" />
         <hr />
-        <ProfileBadge img='img_idol_example.svg' size='medium' />
+        <ProfileBadge img="img_idol_example.svg" size="medium" />
         <hr />
-        <ProfileBadge img='img_idol_example.svg' size='large' />
+        <ProfileBadge img="img_idol_example.svg" size="large" />
         <hr />
-        <ProfileBadge img='img_idol_example.svg' selected={true} />
+        <ProfileBadge img="img_idol_example.svg" selected={true} />
       </div>
     </>
   );
