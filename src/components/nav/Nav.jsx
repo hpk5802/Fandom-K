@@ -9,14 +9,14 @@ function Nav() {
   };
 
   const clickLogo = () => {
-    // 현재 페이지로 강제 새로고침
-    window.location.href = "/";
+    // 현재 페이지로 새로고침
+    window.location.reload();
   };
 
   return (
     <div className="nav">
       <button
-        type="reset"
+        type="button"
         onClick={clickLogo} /*클릭시 새로고침 페이지로 넘어가기*/
         className="nav-logo-btn"
       >
