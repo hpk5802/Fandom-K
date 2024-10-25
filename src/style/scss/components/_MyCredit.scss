@@ -1,0 +1,67 @@
+.MyCredit {
+  display: flex;
+  justify-content: center;
+  .credit-box {
+    margin: 5rem 0;
+    padding: 3rem 7.8rem;
+    height: 13rem;
+    width: 120rem;
+    background-color: var(--rich-black);
+    border-radius: 0.8rem;
+    border: solid 0.1rem rgba(100, 100, 100, 0.8);
+    .credit-content {
+      display: flex;
+      flex-direction: column;
+      .my-credit-content {
+        display: flex;
+        align-items: center;
+      }
+      .my-credit-text {
+        font-weight: var(--normal);
+        font-size: 1.6rem;
+        line-height: 1.9rem;
+        color: rgba(255, 255, 255, 0.6);
+      }
+      .charging-btn {
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+        width: auto;
+        border: 0;
+        background: none;
+        &:hover {
+          cursor: pointer;
+        }
+        .charging-text {
+          text-align: center;
+          font-weight: var(--bold);
+          font-size: 1.6rem;
+          line-height: 2.6rem;
+          color: var(--brand-orange);
+          &:hover {
+            text-align: center;
+            color: var(--white);
+            border-radius: 0.4rem;
+            padding: 0.3rem 0.6rem;
+            background: linear-gradient(90deg, var(--brand-pink) 0%, #f86f65 51%); /* 그라데이션 색상 */
+            transition: 0.3s;
+            opacity: 1; /* 투명도 */
+          }
+        }
+      }
+      .current-credit-content {
+        display: flex;
+        gap: 0.4rem;
+        align-items: center;
+        .current-credit {
+          font-family: 'Pretendard';
+          font-weight: var(--bold);
+          font-size: 2.4rem;
+          line-height: 2.6rem;
+          color: var(--white);
+          opacity: 0.9;
+        } 
+      }
+    }
+  }
+}
