@@ -1,14 +1,19 @@
-import App from "pages/App";
-import Components from "pages/Components";
+import ApiTest from 'pages/ApiTest';
+import App from 'pages/App';
+import Components from 'pages/Components';
 
 const routes = [
   {
-    path: "/",
+    path: '/',
     element: <App />,
   },
   {
-    path: "/components",
+    path: '/components',
     element: <Components />,
+  },
+  {
+    path: 'api',
+    element: <ApiTest />,
   },
 ];
 
