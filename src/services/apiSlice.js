@@ -1,11 +1,12 @@
 import {createSlice, createAsyncThunk} from '@reduxjs/toolkit';
 import {fetchIdols} from './idolApi';
-import {fetchDonations} from './donationApi';
+import {fetchDonations, updateDonation} from './donationApi';
 import {fetchCharts} from './chartApi';
 
 export const getIdols = createAsyncThunk('data/getIdols', fetchIdols);
 export const getDonations = createAsyncThunk('data/getDonations', fetchDonations);
 export const getCharts = createAsyncThunk('data/getCharts', fetchCharts);
+export const setDonation = createAsyncThunk('data/updateDonationAmount', updateDonation);
 
 const apiSlice = createSlice({
   name: 'data',

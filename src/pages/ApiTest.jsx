@@ -1,10 +1,16 @@
-import React, {useEffect} from 'react';
+import React, {useEffect, useState} from 'react';
 import {useSelector, useDispatch} from 'react-redux';
-import {getCharts, getDonations, getIdols} from 'services/apiSlice';
+import {getCharts, getDonations, getIdols, setDonation} from 'services/apiSlice';
 
 function ApiTest() {
   const dispatch = useDispatch();
   const {idols, donations, charts} = useSelector(state => state.data);
+  const [price, setPrice] = useState(0);
+
+  const handleClickUpdate = async () => {
+    await dispatch(setDonation({id: 596, amount: price}));
+    await dispatch(getDonations());
+  };
 
   useEffect(() => {
     dispatch(getIdols());
@@ -13,6 +19,8 @@ function ApiTest() {
   }, [dispatch]);
   return (
     <>
+      <input type="text" value={price} onChange={({target}) => setPrice(+target.value)} />
+      <button onClick={handleClickUpdate}>+</button>
       <div style={{marginBottom: '1rem'}}>
         <h2 style={{fontSize: '1.8rem', marginBottom: '1rem'}}>/idols</h2>
         {idols.list.map(idol => (
