@@ -1,37 +1,20 @@
-import React, {useEffect, useState} from 'react';
-import {getDonations, getIdolData} from 'services/api';
+import React, {useEffect} from 'react';
+import {useSelector, useDispatch} from 'react-redux';
+import {getDonations, getIdols} from 'services/apiSlice';
 
 function ApiTest() {
-  const [idols, setIdols] = useState([]);
-  const [donations, setDonations] = useState([]);
-
-  const loadIdols = async () => {
-    try {
-      const {list} = await getIdolData({pageSize: 4});
-      setIdols(list);
-    } catch (error) {
-      throw error;
-    }
-  };
-
-  const loadDonations = async () => {
-    try {
-      const {list} = await getDonations({pageSize: 4});
-      setDonations(list);
-    } catch (error) {
-      throw error;
-    }
-  };
+  const dispatch = useDispatch();
+  const {idols, donations} = useSelector(state => state.data);
 
   useEffect(() => {
-    loadIdols();
-    loadDonations();
-  }, []);
+    dispatch(getIdols());
+    dispatch(getDonations());
+  }, [dispatch]);
   return (
     <>
       <div style={{marginBottom: '1rem'}}>
         <h2 style={{fontSize: '1.8rem', marginBottom: '1rem'}}>/idols</h2>
-        {idols.map(idol => (
+        {idols.list.map(idol => (
           <div key={idol.id} style={{border: '0.1rem solid #000', padding: '1rem', marginBottom: '1rem', fontSize: '1.5rem'}}>
             {Object.entries(idol).map(([key, value]) => (
               <div key={key}>
@@ -50,7 +33,7 @@ function ApiTest() {
       </div>
       <div style={{marginBottom: '1rem'}}>
         <h2 style={{fontSize: '1.8rem', marginBottom: '1rem'}}>/donations</h2>
-        {donations.map(donation => (
+        {donations.list.map(donation => (
           <div key={donation.id} style={{border: '0.1rem solid #000', padding: '1rem', marginBottom: '1rem', fontSize: '1.5rem'}}>
             {Object.entries(donation).map(([key, value]) => (
               <div key={key}>
