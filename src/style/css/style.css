@@ -1,5 +1,5 @@
 @charset "UTF-8";
-@import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css');
+@import url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css");
 /* http://meyerweb.com/eric/tools/css/reset/
    v5.0.2 | 20191019
    License: none (public domain)
@@ -133,7 +133,7 @@ blockquote:before,
 blockquote:after,
 q:before,
 q:after {
-  content: '';
+  content: "";
   content: none;
 }
 
@@ -220,7 +220,7 @@ abbr[title] {
   border-bottom: none; /* 1 */
   text-decoration: underline; /* 2 */
   -webkit-text-decoration: underline dotted;
-  text-decoration: underline dotted; /* 2 */
+          text-decoration: underline dotted; /* 2 */
 }
 
 /**
@@ -319,9 +319,9 @@ select {
  * Correct the inability to style clickable types in iOS and Safari.
  */
 button,
-[type='button'],
-[type='reset'],
-[type='submit'] {
+[type=button],
+[type=reset],
+[type=submit] {
   -webkit-appearance: button;
 }
 
@@ -329,9 +329,9 @@ button,
  * Remove the inner border and padding in Firefox.
  */
 button::-moz-focus-inner,
-[type='button']::-moz-focus-inner,
-[type='reset']::-moz-focus-inner,
-[type='submit']::-moz-focus-inner {
+[type=button]::-moz-focus-inner,
+[type=reset]::-moz-focus-inner,
+[type=submit]::-moz-focus-inner {
   border-style: none;
   padding: 0;
 }
@@ -340,9 +340,9 @@ button::-moz-focus-inner,
  * Restore the focus styles unset by the previous rule.
  */
 button:-moz-focusring,
-[type='button']:-moz-focusring,
-[type='reset']:-moz-focusring,
-[type='submit']:-moz-focusring {
+[type=button]:-moz-focusring,
+[type=reset]:-moz-focusring,
+[type=submit]:-moz-focusring {
   outline: 1px dotted ButtonText;
 }
 
@@ -386,8 +386,8 @@ textarea {
  * 1. Add the correct box sizing in IE 10.
  * 2. Remove the padding in IE 10.
  */
-[type='checkbox'],
-[type='radio'] {
+[type=checkbox],
+[type=radio] {
   box-sizing: border-box; /* 1 */
   padding: 0; /* 2 */
 }
@@ -395,8 +395,8 @@ textarea {
 /**
  * Correct the cursor style of increment and decrement buttons in Chrome.
  */
-[type='number']::-webkit-inner-spin-button,
-[type='number']::-webkit-outer-spin-button {
+[type=number]::-webkit-inner-spin-button,
+[type=number]::-webkit-outer-spin-button {
   height: auto;
 }
 
@@ -404,7 +404,7 @@ textarea {
  * 1. Correct the odd appearance in Chrome and Safari.
  * 2. Correct the outline style in Safari.
  */
-[type='search'] {
+[type=search] {
   -webkit-appearance: textfield; /* 1 */
   outline-offset: -2px; /* 2 */
 }
@@ -412,7 +412,7 @@ textarea {
 /**
  * Remove the inner padding in Chrome and Safari on macOS.
  */
-[type='search']::-webkit-search-decoration {
+[type=search]::-webkit-search-decoration {
   -webkit-appearance: none;
 }
 
@@ -484,7 +484,7 @@ template {
 
 html,
 body {
-  font-family: 'Pretendard';
+  font-family: "Pretendard";
 }
 
 html {
@@ -514,7 +514,7 @@ button:disabled {
   margin: -1px;
   overflow: hidden;
   -webkit-clip-path: inset(50%);
-  clip-path: inset(50%);
+          clip-path: inset(50%);
   border: 0;
   clip: rect(0 0 0 0);
 }
@@ -689,4 +689,48 @@ button:disabled {
   line-height: 2.6rem;
   color: var(--white);
   opacity: 0.9;
+}
+
+.chart-rank-content {
+  display: flex;
+  align-items: center;
+  width: 588px;
+  height: 70px;
+  border-radius: 8px;
+  gap: 24px; /*옆에 타 이티스트 컴포넌트와 gap이 24px여야함*/
+  background-color: var(--rich-black);
+}
+.chart-rank-content .artist-profile {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  gap: 12px;
+}
+.chart-rank-content .artist-profile .artist-rank {
+  display: flex;
+  font-family: "Pretendard";
+  font-weight: 400;
+  font-size: 1.6rem;
+  line-height: 19px;
+  color: var(--brand-orange);
+  opacity: 0.6;
+}
+.chart-rank-content .artist-profile .ranked-artist {
+  font-family: "Pretendard";
+  font-weight: 400;
+  font-size: 1.6rem;
+  line-height: 19px;
+  color: var(--white);
+}
+.chart-rank-content .total-votes {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  width: 100%;
+  font-family: "Pretendard";
+  font-weight: 400;
+  font-size: 1.6rem;
+  line-height: 19px;
+  color: var(--white);
+  opacity: 0.6;
 }

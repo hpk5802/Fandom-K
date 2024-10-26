@@ -1,13 +1,15 @@
 import GradientButton from 'components/common/GradientButton';
 import ProfileBadge from 'components/common/ProfileBadge';
-import MyCredit from 'components/myCredit/MyCredit';
 import Nav from 'components/nav/Nav';
+import MyCredit from 'components/myCredit/MyCredit';
+import ChartRankContent from 'components/chart/ChartRankContent';
 
 function Components() {
   return (
     <>
       <Nav />
       <MyCredit />
+      <ChartRankContent />
       <div
         style={{
           padding: '1rem',
