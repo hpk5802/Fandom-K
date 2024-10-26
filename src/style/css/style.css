@@ -691,31 +691,31 @@ button:disabled {
   opacity: 0.9;
 }
 
-.monthly-cart-container {
+.monthly-chart-container {
   display: flex;
   justify-content: center;
 }
-.monthly-cart-container .monthly-chart {
+.monthly-chart-container .monthly-chart {
   display: flex;
   flex-direction: column;
   width: 120rem;
   gap: 2.4rem;
   background-color: var(--rich-black);
 }
-.monthly-cart-container .monthly-chart .chart-header {
+.monthly-chart-container .monthly-chart .chart-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
   width: auto;
   height: 3.2rem;
 }
-.monthly-cart-container .monthly-chart .chart-header .chart-header-title {
+.monthly-chart-container .monthly-chart .chart-header .chart-header-title {
   font-weight: var(--bold);
   font-size: 2.4rem;
   line-height: 2.6rem;
   color: var(--white);
 }
-.monthly-cart-container .monthly-chart .chart-header .monthly-chart-gradient-btn {
+.monthly-chart-container .monthly-chart .chart-header .monthly-chart-gradient-btn {
   display: flex;
   width: auto;
   height: 3.2rem;
@@ -728,13 +728,13 @@ button:disabled {
   background-size: 300%; /* 배경 크기 */
   background-position: 0; /* 초기 배경 위치 */
 }
-.monthly-cart-container .monthly-chart .chart-header .monthly-chart-gradient-btn:hover {
+.monthly-chart-container .monthly-chart .chart-header .monthly-chart-gradient-btn:hover {
   cursor: pointer;
   text-shadow: 0 0 1rem rgba(0, 0, 0, 0.2);
   box-shadow: 0 0 2rem #eeeeee;
   background-position: 99%;
 }
-.monthly-cart-container .monthly-chart .chart-header .monthly-chart-gradient-btn .voted-btn-text {
+.monthly-chart-container .monthly-chart .chart-header .monthly-chart-gradient-btn .voted-btn-text {
   font-weight: var(--bold);
   font-size: 1.3rem;
   line-height: 2.6rem;
@@ -778,21 +778,28 @@ button:disabled {
 }
 
 .chart-rank-content {
-  display: flex;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
   align-items: center;
-  width: 58.8rem;
-  height: 7rem;
   border-radius: 0.8rem;
-  gap: 2.4rem; /*옆에 타 이티스트 컴포넌트와 gap이 24px여야함*/
+  -moz-column-gap: 2.4rem;
+       column-gap: 2.4rem;
   background-color: var(--rich-black);
 }
 .chart-rank-content .artist-profile {
   display: flex;
   align-items: center;
   width: 100%;
+  padding: 0.8rem 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+.chart-rank-content .artist-profile .artist-profile-ahead {
+  display: flex;
+  align-items: center;
+  width: 100%;
   gap: 1.2rem;
 }
-.chart-rank-content .artist-profile .artist-rank {
+.chart-rank-content .artist-profile .artist-profile-ahead .artist-rank {
   display: flex;
   font-weight: var(--normal);
   font-size: 1.6rem;
@@ -800,13 +807,13 @@ button:disabled {
   color: var(--brand-orange);
   opacity: 0.6;
 }
-.chart-rank-content .artist-profile .ranked-artist {
-  font-weight: 40rem;
+.chart-rank-content .artist-profile .artist-profile-ahead .ranked-artist {
+  font-weight: var(--normal);
   font-size: 1.6rem;
   line-height: 1.9rem;
   color: var(--white);
 }
-.chart-rank-content .total-votes {
+.chart-rank-content .artist-profile .total-votes {
   display: flex;
   justify-content: flex-end;
   align-items: center;
@@ -816,6 +823,12 @@ button:disabled {
   line-height: 1.9rem;
   color: var(--white);
   opacity: 0.6;
+}
+.chart-rank-content .artist-profile:nth-child(9) {
+  border-bottom: none;
+}
+.chart-rank-content .artist-profile:last-child {
+  border-bottom: none;
 }
 
 .view-more-btn {

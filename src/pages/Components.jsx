@@ -2,7 +2,7 @@ import GradientButton from 'components/common/GradientButton';
 import ProfileBadge from 'components/common/ProfileBadge';
 import Nav from 'components/nav/Nav';
 import MyCredit from 'components/myCredit/MyCredit';
-import MonthlyChart from 'components/chart/MontlyChart';
+import MonthlyChart from 'components/monthlyChart/MontlyChart';
 
 function Components() {
   return (
