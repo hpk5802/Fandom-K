@@ -2,16 +2,14 @@ import GradientButton from 'components/common/GradientButton';
 import ProfileBadge from 'components/common/ProfileBadge';
 import Nav from 'components/nav/Nav';
 import MyCredit from 'components/myCredit/MyCredit';
-import Chart from 'components/chart/Chart';
-import ViewMoreBtn from 'components/chart/ViewMoreBtn';
+import MonthlyChart from 'components/chart/MontlyChart';
 
 function Components() {
   return (
     <>
       <Nav />
       <MyCredit />
-      <Chart />
-      <ViewMoreBtn />
+      <MonthlyChart />
       <div
         style={{
           padding: '1rem',

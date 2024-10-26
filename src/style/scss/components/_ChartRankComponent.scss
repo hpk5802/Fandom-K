@@ -1,30 +1,28 @@
 .chart-rank-content {
   display: flex;
   align-items: center;
-  width: 588px;
-  height: 70px;
-  border-radius: 8px;
-  gap: 24px; /*옆에 타 이티스트 컴포넌트와 gap이 24px여야함*/
+  width: 58.8rem;
+  height: 7rem;
+  border-radius: 0.8rem;
+  gap: 2.4rem; /*옆에 타 이티스트 컴포넌트와 gap이 24px여야함*/
   background-color: var(--rich-black);
   .artist-profile {
     display: flex;
     align-items: center;
     width: 100%;
-    gap: 12px;
+    gap: 1.2rem;
     .artist-rank {
       display: flex;
-      font-family: 'Pretendard';
-      font-weight: 400;
+      font-weight: var(--normal);
       font-size: 1.6rem;
-      line-height: 19px;
+      line-height: 1.9rem;
       color: var(--brand-orange);
       opacity: 0.6;
     }
     .ranked-artist {
-      font-family: 'Pretendard';
-      font-weight: 400;
+      font-weight: 40rem;
       font-size: 1.6rem;
-      line-height: 19px;
+      line-height: 1.9rem;
       color: var(--white);
     }
   }
@@ -33,10 +31,9 @@
     justify-content: flex-end;
     align-items: center;
     width: 100%;
-    font-family: 'Pretendard';
-    font-weight: 400;
+    font-weight: var(--normal);
     font-size: 1.6rem;
-    line-height: 19px;
+    line-height: 1.9rem;
     color: var(--white);
     opacity: 0.6;
   }

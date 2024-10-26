@@ -2,17 +2,17 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-top: 51px;
+  margin-top: 5.1rem;
   background-color: var(--rich-black);
   .medium-btn {
     display: flex;
     justify-content: center;
     align-items: center;
     width: auto;
-    height: 42px;
+    height: 4.2rem;
     border: solid 0.1rem rgba(241, 238, 249, 0.4);
-    border-radius: 3px;
-    padding: 8px 143px;
+    border-radius: 0.3rem;
+    padding: 0.8rem 14.3rem;
     background: none;
     &:hover {
       cursor: pointer;
@@ -21,10 +21,9 @@
     }
   }
   .medium-btn-text {
-    font-family: "Pretendard";
-    font-weight: 700;
+    font-weight: var(--bold);
     font-size: 1.4rem;
-    line-height: 26px;
+    line-height: 2.6rem;
     color: var(--white);
   }
 }

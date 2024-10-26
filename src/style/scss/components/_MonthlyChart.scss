@@ -1,0 +1,49 @@
+.monthly-cart-container {
+  display: flex;
+  justify-content: center;
+  .monthly-chart {
+    display: flex;
+    flex-direction: column;
+    width: 120rem;
+    gap: 2.4rem;
+    background-color: var(--rich-black);
+    .chart-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      width: auto;
+      height: 3.2rem;
+      .chart-header-title {
+        font-weight: var(--bold);
+        font-size: 2.4rem;
+        line-height: 2.6rem;
+        color: var(--white);
+      }
+      .monthly-chart-gradient-btn {
+        display: flex;
+        width: auto;
+        height: 3.2rem;
+        align-items: center;
+        border: none;
+        padding: 0.2rem 1.6rem;
+        gap: 0.4rem;
+        transition: 0.5s;
+        background: linear-gradient(90deg, #f86f65 0%, var(--brand-pink) 51%, #f86f65);
+        background-size: 300%; /* 배경 크기 */
+        background-position: 0; /* 초기 배경 위치 */
+        &:hover {
+          cursor: pointer;
+          text-shadow: 0 0 1rem rgba(0, 0, 0, 0.2);
+          box-shadow: 0 0 2rem #eeeeee;
+          background-position: 99%;
+        }
+        .voted-btn-text {
+          font-weight: var(--bold);
+          font-size: 1.3rem;
+          line-height: 2.6rem;
+          color: var(--white);
+        }
+      }
+    }
+  }
+}
