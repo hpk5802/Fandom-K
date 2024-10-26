@@ -622,3 +622,71 @@ button:disabled {
 .nav .nav-profile-img:hover {
   cursor: pointer;
 }
+
+.my-credit {
+  display: flex;
+  justify-content: center;
+}
+.my-credit .credit-box {
+  margin: 5rem 0;
+  padding: 3rem 7.8rem;
+  height: 13rem;
+  width: 120rem;
+  background-color: var(--rich-black);
+  border-radius: 0.8rem;
+  border: solid 0.1rem rgba(100, 100, 100, 0.8);
+}
+.my-credit .credit-box .credit-content {
+  display: flex;
+  flex-direction: column;
+}
+.my-credit .credit-box .credit-content .my-credit-content {
+  display: flex;
+  align-items: center;
+}
+.my-credit .credit-box .credit-content .my-credit-text {
+  font-weight: var(--normal);
+  font-size: 1.6rem;
+  line-height: 1.9rem;
+  color: rgba(255, 255, 255, 0.6);
+}
+.my-credit .credit-box .credit-content .charging-btn {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  width: auto;
+  border: 0;
+  background: none;
+}
+.my-credit .credit-box .credit-content .charging-btn:hover {
+  cursor: pointer;
+}
+.my-credit .credit-box .credit-content .charging-btn .charging-text {
+  text-align: center;
+  font-weight: var(--bold);
+  font-size: 1.6rem;
+  line-height: 2.6rem;
+  color: var(--brand-orange);
+}
+.my-credit .credit-box .credit-content .charging-btn .charging-text:hover {
+  text-align: center;
+  color: var(--white);
+  border-radius: 0.4rem;
+  padding: 0.3rem 0.6rem;
+  background: linear-gradient(90deg, var(--brand-pink) 0%, #f86f65 51%); /* 그라데이션 색상 */
+  transition: 0.3s;
+  opacity: 1; /* 투명도 */
+}
+.my-credit .credit-box .credit-content .current-credit-content {
+  display: flex;
+  gap: 0.4rem;
+  align-items: center;
+}
+.my-credit .credit-box .credit-content .current-credit-content .current-credit {
+  font-family: "Pretendard";
+  font-weight: var(--bold);
+  font-size: 2.4rem;
+  line-height: 2.6rem;
+  color: var(--white);
+  opacity: 0.9;
+}

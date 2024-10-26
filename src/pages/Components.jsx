@@ -1,11 +1,13 @@
 import GradientButton from 'components/common/GradientButton';
 import ProfileBadge from 'components/common/ProfileBadge';
+import MyCredit from 'components/myCredit/MyCredit';
 import Nav from 'components/nav/Nav';
 
 function Components() {
   return (
     <>
       <Nav />
+      <MyCredit />
       <div
         style={{
           padding: '1rem',
