@@ -3,6 +3,7 @@ import ProfileBadge from 'components/common/ProfileBadge';
 import Nav from 'components/nav/Nav';
 import MyCredit from 'components/myCredit/MyCredit';
 import Chart from 'components/chart/Chart';
+import ViewMoreBtn from 'components/chart/ViewMoreBtn';
 
 function Components() {
   return (
@@ -10,6 +11,7 @@ function Components() {
       <Nav />
       <MyCredit />
       <Chart />
+      <ViewMoreBtn />
       <div
         style={{
           padding: '1rem',

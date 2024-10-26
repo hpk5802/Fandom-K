@@ -771,3 +771,34 @@ button:disabled {
   color: var(--white);
   opacity: 0.6;
 }
+
+.view-more-btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 51px;
+  background-color: var(--rich-black);
+}
+.view-more-btn .medium-btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: auto;
+  height: 42px;
+  border: solid 0.1rem rgba(241, 238, 249, 0.4);
+  border-radius: 3px;
+  padding: 8px 143px;
+  background: none;
+}
+.view-more-btn .medium-btn:hover {
+  cursor: pointer;
+  background-color: rgba(255, 255, 255, 0.1);
+  transition: 0.5s;
+}
+.view-more-btn .medium-btn-text {
+  font-family: "Pretendard";
+  font-weight: 700;
+  font-size: 1.4rem;
+  line-height: 26px;
+  color: var(--white);
+}
