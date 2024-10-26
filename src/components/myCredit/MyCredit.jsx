@@ -2,7 +2,7 @@ import parseImg from 'utils/images';
 
 function MyCredit({onClick}) {
   return (
-    <div className="MyCredit">
+    <div className="myCredit">
       <div className="credit-box">
         <div className="credit-content">
           <div className="my-credit-content my-credit-text">내 크레딧</div>
