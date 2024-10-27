@@ -1,0 +1,158 @@
+.pagination-container {
+  display: flex;
+  gap: 40px;
+
+  .cards-container {
+    display: flex;
+    gap: 24px;
+    flex-wrap: nowrap;
+    justify-content: start;
+    overflow-x: auto; // 터치 스크롤 가능하게 하고 스크롤 바만 숨김
+    -webkit-overflow-scrolling: touch; // 모바일에서 부드러운 스크롤링 적용
+    scrollbar-width: none; // Firefox에서 스크롤 바 숨김
+    -ms-overflow-style: none; // IE에서 스크롤 바 숨김
+
+    &::-webkit-scrollbar {
+      display: none; // Chrome, Safari에서 스크롤 바 숨김
+    }
+
+    @media (max-width: 744px) {
+      gap: 14px;
+    }
+
+    @media (max-width: 375px) {
+      gap: 10px;
+    }
+
+    .card-container {
+      display: flex;
+      flex-direction: column;
+      position: relative;
+      width: 282px;
+      aspect-ratio: 0.7;
+      flex: 0 0 auto;
+
+      @media (max-width: 744px) {
+        width: 200px;
+      }
+
+      @media (max-width: 375px) {
+        width: 160px;
+      }
+
+      .card-top-wrapper {
+        .card-img {
+          width: 100%;
+          height: 100%;
+          position: relative;
+          object-fit: cover;
+          border-radius: 8px;
+        }
+
+        .gradient-overlay {
+          position: absolute;
+          bottom: 0;
+          width: 100%;
+          height: 45%;
+          background: linear-gradient(to top, rgba(0, 0, 0, 1) 60%, rgba(0, 0, 0, 0) 100%);
+          pointer-events: none;
+        }
+
+        .donation-button {
+          position: absolute;
+          bottom: 32%;
+          left: 8.5%;
+          right: 8.5%;
+          width: 83%;
+          height: 10%;
+          font-size: 13px;
+          font-weight: 700;
+
+          @media (max-width: 744px) {
+            font-size: 11px;
+          }
+
+          @media (max-width: 375px) {
+            font-size: 10px;
+          }
+        }
+
+        .card-texts {
+          position: absolute;
+          bottom: 10%;
+
+          .ad-location {
+            color: #ffffff;
+            font-size: 16px;
+            font-weight: 400;
+            opacity: 0.4;
+            margin-bottom: 8px;
+
+            @media (max-width: 744px) {
+              font-size: 13px;
+            }
+
+            @media (max-width: 375px) {
+              font-size: 12px;
+            }
+          }
+
+          .donation-title {
+            font-size: 18px;
+
+            @media (max-width: 744px) {
+              font-size: 14px;
+            }
+
+            @media (max-width: 375px) {
+              font-size: 12px;
+            }
+
+            font-weight: 500;
+            color: #f7f7f8;
+            opacity: 1;
+          }
+        }
+      }
+    }
+  }
+
+  .artist-donation-container {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+
+    .artist-donation-top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      width: 100%;
+
+      .artist-donation-left {
+        display: flex;
+        align-items: center;
+
+        .received-credit {
+          color: #f96d69;
+        }
+      }
+
+      .artist-donation-right {
+        color: #f7f7f8;
+      }
+    }
+
+    .credit-gauge-bar-container {
+      width: 100%;
+      height: 1px;
+      background-color: #ffffff;
+
+      .gauge-bar {
+        height: 100%;
+        background-color: #f96d69;
+      }
+    }
+  }
+}
