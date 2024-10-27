@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import ProfileBadge from './ProfileBadge'
 
-function ProfileSelect({ id = 'cardID', img = 'img_idol_example.svg', size = '', onClick }) {
+function ProfileSelect({ id, img, size, onClick }) {
   const [select, setSelect] = useState(false)
 
   const handleCardSelect = id => () => {

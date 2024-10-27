@@ -3,7 +3,7 @@ import ProfileBadge from './ProfileBadge'
 import classes from 'utils/classes'
 import parseImg from 'utils/images'
 
-function ProfileDelete({ id = 'cardID', img = 'img_idol_example.svg', size = '', onClick, ...props }) {
+function ProfileDelete({ id, img, size, onClick, ...props }) {
   const handleCardDelete = id => () => {
     onClick(id)
   }

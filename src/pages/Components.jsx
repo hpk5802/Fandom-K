@@ -65,13 +65,13 @@ function Components() {
         <hr />
         <ProfileBadge img='img_idol_example.svg' selected={true} />
         <hr />
-        <ProfileSelect onClick={handleProfileDelete} />
-        <ProfileSelect size='medium' onClick={handleProfileDelete} />
-        <ProfileSelect size='large' onClick={handleProfileDelete} />
+        <ProfileSelect img='img_idol_example.svg' onClick={handleProfileDelete} />
+        <ProfileSelect img='img_idol_example.svg' size='medium' onClick={handleProfileDelete} />
+        <ProfileSelect img='img_idol_example.svg' size='large' onClick={handleProfileDelete} />
         <hr />
-        <ProfileDelete onClick={handleProfileDelete} />
-        <ProfileDelete size='medium' onClick={handleProfileDelete} />
-        <ProfileDelete size='large' onClick={handleProfileDelete} />
+        <ProfileDelete img='img_idol_example.svg' onClick={handleProfileDelete} />
+        <ProfileDelete img='img_idol_example.svg' size='medium' onClick={handleProfileDelete} />
+        <ProfileDelete img='img_idol_example.svg' size='large' onClick={handleProfileDelete} />
         <hr />
       </div>
     </>
