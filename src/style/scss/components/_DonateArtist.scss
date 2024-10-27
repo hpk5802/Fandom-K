@@ -16,15 +16,11 @@
       display: none; // Chrome, Safari에서 스크롤 바 숨김
     }
 
-    @media (max-width: 1024px) {
-      gap: 18px;
-    }
-
-    @media (max-width: 768px) {
+    @media (max-width: 744px) {
       gap: 14px;
     }
 
-    @media (max-width: 480px) {
+    @media (max-width: 375px) {
       gap: 10px;
     }
 
@@ -36,15 +32,11 @@
       aspect-ratio: 0.7;
       flex: 0 0 auto;
 
-      @media (max-width: 1024px) {
-        width: 240px;
-      }
-
-      @media (max-width: 768px) {
+      @media (max-width: 744px) {
         width: 200px;
       }
 
-      @media (max-width: 480px) {
+      @media (max-width: 375px) {
         width: 160px;
       }
 
@@ -76,15 +68,11 @@
           font-size: 13px;
           font-weight: 700;
 
-          @media (max-width: 1024px) {
-            font-size: 12px;
-          }
-
-          @media (max-width: 768px) {
+          @media (max-width: 744px) {
             font-size: 11px;
           }
 
-          @media (max-width: 480px) {
+          @media (max-width: 375px) {
             font-size: 10px;
           }
         }
@@ -100,15 +88,11 @@
             opacity: 0.4;
             margin-bottom: 8px;
 
-            @media (max-width: 1024px) {
-              font-size: 15px;
-            }
-
-            @media (max-width: 768px) {
+            @media (max-width: 744px) {
               font-size: 13px;
             }
 
-            @media (max-width: 480px) {
+            @media (max-width: 375px) {
               font-size: 12px;
             }
           }
@@ -116,15 +100,11 @@
           .donation-title {
             font-size: 18px;
 
-            @media (max-width: 1024px) {
-              font-size: 16px;
-            }
-
-            @media (max-width: 768px) {
+            @media (max-width: 744px) {
               font-size: 14px;
             }
 
-            @media (max-width: 480px) {
+            @media (max-width: 375px) {
               font-size: 12px;
             }
 
