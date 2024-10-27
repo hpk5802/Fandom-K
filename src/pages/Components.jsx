@@ -1,49 +1,52 @@
-import GradientButton from "components/common/GradientButton";
-import ProfileBadge from "components/common/ProfileBadge";
-import Nav from "components/nav/Nav";
+import GradientButton from 'components/common/GradientButton'
+import ProfileBadge from 'components/common/ProfileBadge'
+import ProfileDelete from 'components/common/ProfileDelete'
+import ProfileSelect from 'components/common/ProfileSelect'
+import Nav from 'components/nav/Nav'
 
 function Components() {
+  const handleProfileDelete = value => {
+    console.log(value)
+  }
   return (
     <>
       <Nav />
       <div
         style={{
-          padding: "1rem",
-          marginBottom: "1rem",
-          border: "0.1rem solid #000",
+          padding: '1rem',
+          marginBottom: '1rem',
+          border: '0.1rem solid #000',
         }}
       >
         <div
           style={{
-            fontSize: "1.6rem",
-            lineHeight: "1.3",
-            marginBottom: "1rem",
+            fontSize: '1.6rem',
+            lineHeight: '1.3',
+            marginBottom: '1rem',
           }}
         >
           Gradient Button 컴포넌트
           <br />
-          font, padding, margin, width 같은 스타일은 사용하는 컴포넌트나
-          페이지에서 추가해주세요.
+          font, padding, margin, width 같은 스타일은 사용하는 컴포넌트나 페이지에서 추가해주세요.
           <br />
-          name prop은 클래스를 추가하기 위한 prop입니다. string ('class') |
-          string 배열(['class1', 'class2']) 형태로 사용해주세요.
+          name prop은 클래스를 추가하기 위한 prop입니다. string ('class') | string 배열(['class1', 'class2']) 형태로 사용해주세요.
         </div>
-        <GradientButton name="btn1">Gradient Button</GradientButton>
+        <GradientButton name='btn1'>Gradient Button</GradientButton>
         <hr />
-        <GradientButton name={["btn1", "btn2"]}>Gradient Button</GradientButton>
+        <GradientButton name={['btn1', 'btn2']}>Gradient Button</GradientButton>
       </div>
       <div
         style={{
-          padding: "1rem",
-          marginBottom: "1rem",
-          border: "0.1rem solid #000",
+          padding: '1rem',
+          marginBottom: '1rem',
+          border: '0.1rem solid #000',
         }}
       >
         <div
           style={{
-            fontSize: "1.6rem",
-            lineHeight: "1.3",
-            marginBottom: "1rem",
+            fontSize: '1.6rem',
+            lineHeight: '1.3',
+            marginBottom: '1rem',
           }}
         >
           ProfileBadge 컴포넌트
@@ -54,16 +57,25 @@ function Components() {
           <br />
           selected prop은 임시입니다. 추후 state로 변경할 예정입니다.
         </div>
-        <ProfileBadge img="img_idol_example.svg" />
+        <ProfileBadge img='img_idol_example.svg' />
         <hr />
-        <ProfileBadge img="img_idol_example.svg" size="medium" />
+        <ProfileBadge img='img_idol_example.svg' size='medium' />
         <hr />
-        <ProfileBadge img="img_idol_example.svg" size="large" />
+        <ProfileBadge img='img_idol_example.svg' size='large' />
         <hr />
-        <ProfileBadge img="img_idol_example.svg" selected={true} />
+        <ProfileBadge img='img_idol_example.svg' selected={true} />
+        <hr />
+        <ProfileSelect onClick={handleProfileDelete} />
+        <ProfileSelect size='medium' onClick={handleProfileDelete} />
+        <ProfileSelect size='large' onClick={handleProfileDelete} />
+        <hr />
+        <ProfileDelete onClick={handleProfileDelete} />
+        <ProfileDelete size='medium' onClick={handleProfileDelete} />
+        <ProfileDelete size='large' onClick={handleProfileDelete} />
+        <hr />
       </div>
     </>
-  );
+  )
 }
 
-export default Components;
+export default Components
