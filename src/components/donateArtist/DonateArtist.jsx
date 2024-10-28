@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
-import SpreadCards from './Components/SpreadCards';
-import Pagination from './Components/Pagination';
+import SpreadCards from './SpreadCards';
+import Pagination from './Pagination';
 import mockData from 'utils/mockData';
 
 function DonateArtist() {
