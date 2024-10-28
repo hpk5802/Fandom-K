@@ -1,9 +1,9 @@
-import React, { useState } from 'react';
+import React, {useState} from 'react';
 import SpreadCards from './Components/SpreadCards';
 import Pagination from './Components/Pagination';
 import mockData from 'utils/mockData';
 
-function DonateArtists() {
+function DonateArtist() {
   const itemsPerPage = 4;
   const dataLength = mockData.length;
 
@@ -17,4 +17,4 @@ function DonateArtists() {
   );
 }
 
-export default DonateArtists;
+export default DonateArtist;
