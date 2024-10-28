@@ -14,12 +14,8 @@ function Chart() {
 
   // 클릭 핸들러: 성별을 변경하고 초기 데이터 설정
   const handleClick = newGender => () => {
-    try {
-      dispatch(getCharts({gender: newGender, cursor: '', pageSize: 10}));
-      setGender(newGender);
-    } catch (e) {
-      console.log(e);
-    }
+    dispatch(getCharts({gender: newGender, cursor: '', pageSize: 10}));
+    setGender(newGender);
   };
 
   // 더보기 버튼 클릭 시 보이는 개수를 증가
