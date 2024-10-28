@@ -10,7 +10,7 @@ function MonthlyChart({onClick}) {
           <div className="chart-header-title">이달의 차트</div>
           <GradientButton onClick={onClick} name="monthly-chart-gradient-btn" /*클릭시 투표하기 모달창이 나타남*/>
             <img src={parseImg('ic_chart.svg')} alt="차트아이콘" />
-            <div className="voted-btn-text">지금 투표하세요!</div>
+            <div>투표하러 가기</div>
           </GradientButton>
         </div>
         <Chart />
