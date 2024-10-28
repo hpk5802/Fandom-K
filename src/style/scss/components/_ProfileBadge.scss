@@ -22,11 +22,7 @@
     width: 6rem;
     height: 6rem;
     border-radius: 50%;
-    background: linear-gradient(
-      271.36deg,
-      rgba(249, 110, 104, 0.5) -9.84%,
-      rgba(254, 87, 143, 0.5) 107.18%
-    );
+    background: linear-gradient(271.36deg, rgba(249, 110, 104, 0.5) -9.84%, rgba(254, 87, 143, 0.5) 107.18%);
     transform: translate(-50%, -50%);
     img {
       width: 2.4rem;
@@ -41,6 +37,14 @@
     .profile-badge-img {
       width: 8.614rem;
       height: 8.614rem;
+    }
+    .selected {
+      width: 8.614rem;
+      height: 8.614rem;
+      img {
+        width: 4.614rem;
+        height: 4.614rem;
+      }
     }
   }
   /* large */

@@ -14,16 +14,20 @@
   "trailingComma": "all",
   "useTabs": false,
   "vueIndentScriptAndStyle": true,
-  "parser": "",
-  "filepath": "",
   "rangeStart": 0,
   "requirePragma": false,
   "insertPragma": false,
   "overrides": [
     {
-      "files": "*.json",
+      "files": ".json",
       "options": {
         "printWidth": 200
+      }
+    },
+    {
+      "files": [".css", "*.scss"],
+      "options": {
+        "parser": "css"
       }
     }
   ]

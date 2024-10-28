@@ -1,13 +1,20 @@
-import GradientButton from 'components/common/GradientButton';
-import ProfileBadge from 'components/common/ProfileBadge';
+import GradientButton from 'components/common/GradientButton'
+import ProfileBadge from 'components/common/ProfileBadge'
+import ProfileDelete from 'components/common/ProfileDelete'
+import ProfileSelect from 'components/common/ProfileSelect'
+import Nav from 'components/nav/Nav'
 import MyCredit from 'components/myCredit/MyCredit';
-import Nav from 'components/nav/Nav';
+import MonthlyChart from 'components/monthlyChart/MontlyChart';
 
 function Components() {
+  const handleProfileDelete = value => {
+    console.log(value)
+  }
   return (
     <>
       <Nav />
       <MyCredit />
+      <MonthlyChart />
       <div
         style={{
           padding: '1rem',
@@ -28,7 +35,7 @@ function Components() {
           <br />
           name prop은 클래스를 추가하기 위한 prop입니다. string ('class') | string 배열(['class1', 'class2']) 형태로 사용해주세요.
         </div>
-        <GradientButton name="btn1">Gradient Button</GradientButton>
+        <GradientButton name='btn1'>Gradient Button</GradientButton>
         <hr />
         <GradientButton name={['btn1', 'btn2']}>Gradient Button</GradientButton>
       </div>
@@ -54,16 +61,25 @@ function Components() {
           <br />
           selected prop은 임시입니다. 추후 state로 변경할 예정입니다.
         </div>
-        <ProfileBadge img="img_idol_example.svg" />
+        <ProfileBadge img='img_idol_example.svg' />
         <hr />
-        <ProfileBadge img="img_idol_example.svg" size="medium" />
+        <ProfileBadge img='img_idol_example.svg' size='medium' />
         <hr />
-        <ProfileBadge img="img_idol_example.svg" size="large" />
+        <ProfileBadge img='img_idol_example.svg' size='large' />
         <hr />
-        <ProfileBadge img="img_idol_example.svg" selected={true} />
+        <ProfileBadge img='img_idol_example.svg' selected={true} />
+        <hr />
+        <ProfileSelect img='img_idol_example.svg' onClick={handleProfileDelete} />
+        <ProfileSelect img='img_idol_example.svg' size='medium' onClick={handleProfileDelete} />
+        <ProfileSelect img='img_idol_example.svg' size='large' onClick={handleProfileDelete} />
+        <hr />
+        <ProfileDelete img='img_idol_example.svg' onClick={handleProfileDelete} />
+        <ProfileDelete img='img_idol_example.svg' size='medium' onClick={handleProfileDelete} />
+        <ProfileDelete img='img_idol_example.svg' size='large' onClick={handleProfileDelete} />
+        <hr />
       </div>
     </>
-  );
+  )
 }
 
-export default Components;
+export default Components
