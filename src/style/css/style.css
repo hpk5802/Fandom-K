@@ -572,6 +572,14 @@ button:disabled {
   width: 8.614rem;
   height: 8.614rem;
 }
+.profile-badge.medium .selected {
+  width: 8.614rem;
+  height: 8.614rem;
+}
+.profile-badge.medium .selected img {
+  width: 4.614rem;
+  height: 4.614rem;
+}
 .profile-badge.large {
   width: 12.8rem;
   height: 12.8rem;
@@ -588,6 +596,47 @@ button:disabled {
 .profile-badge.large .selected img {
   width: 5.227rem;
   height: 5.227rem;
+}
+
+.profile-delete {
+  position: absolute;
+  left: 70%;
+  top: 1.43%;
+  width: 2.7rem;
+  height: 2.7rem;
+  border-radius: 50%;
+  background-color: #ffffff;
+  background-position: center;
+  border: 2.87143px solid #02000e;
+}
+.profile-delete .profile-delete-img {
+  position: absolute;
+  left: 23%;
+  top: 23%;
+  width: 1.2rem;
+  height: 1.2rem;
+}
+.profile-delete.medium {
+  width: 4rem;
+  height: 4rem;
+}
+.profile-delete.medium .profile-delete-img {
+  position: absolute;
+  left: 26%;
+  top: 26%;
+  width: 1.7rem;
+  height: 1.7rem;
+}
+.profile-delete.large {
+  width: 5rem;
+  height: 5rem;
+}
+.profile-delete.large .profile-delete-img {
+  position: absolute;
+  left: 28%;
+  top: 28%;
+  width: 2rem;
+  height: 2rem;
 }
 
 .nav {
