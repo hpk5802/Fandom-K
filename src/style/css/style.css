@@ -1,5 +1,5 @@
 @charset "UTF-8";
-@import url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css");
+@import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css');
 @import 'https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css';
 /* http://meyerweb.com/eric/tools/css/reset/
    v5.0.2 | 20191019
@@ -134,7 +134,7 @@ blockquote:before,
 blockquote:after,
 q:before,
 q:after {
-  content: "";
+  content: '';
   content: none;
 }
 
@@ -221,7 +221,7 @@ abbr[title] {
   border-bottom: none; /* 1 */
   text-decoration: underline; /* 2 */
   -webkit-text-decoration: underline dotted;
-          text-decoration: underline dotted; /* 2 */
+  text-decoration: underline dotted; /* 2 */
 }
 
 /**
@@ -320,9 +320,9 @@ select {
  * Correct the inability to style clickable types in iOS and Safari.
  */
 button,
-[type=button],
-[type=reset],
-[type=submit] {
+[type='button'],
+[type='reset'],
+[type='submit'] {
   -webkit-appearance: button;
 }
 
@@ -330,9 +330,9 @@ button,
  * Remove the inner border and padding in Firefox.
  */
 button::-moz-focus-inner,
-[type=button]::-moz-focus-inner,
-[type=reset]::-moz-focus-inner,
-[type=submit]::-moz-focus-inner {
+[type='button']::-moz-focus-inner,
+[type='reset']::-moz-focus-inner,
+[type='submit']::-moz-focus-inner {
   border-style: none;
   padding: 0;
 }
@@ -341,9 +341,9 @@ button::-moz-focus-inner,
  * Restore the focus styles unset by the previous rule.
  */
 button:-moz-focusring,
-[type=button]:-moz-focusring,
-[type=reset]:-moz-focusring,
-[type=submit]:-moz-focusring {
+[type='button']:-moz-focusring,
+[type='reset']:-moz-focusring,
+[type='submit']:-moz-focusring {
   outline: 1px dotted ButtonText;
 }
 
@@ -387,8 +387,8 @@ textarea {
  * 1. Add the correct box sizing in IE 10.
  * 2. Remove the padding in IE 10.
  */
-[type=checkbox],
-[type=radio] {
+[type='checkbox'],
+[type='radio'] {
   box-sizing: border-box; /* 1 */
   padding: 0; /* 2 */
 }
@@ -396,8 +396,8 @@ textarea {
 /**
  * Correct the cursor style of increment and decrement buttons in Chrome.
  */
-[type=number]::-webkit-inner-spin-button,
-[type=number]::-webkit-outer-spin-button {
+[type='number']::-webkit-inner-spin-button,
+[type='number']::-webkit-outer-spin-button {
   height: auto;
 }
 
@@ -405,7 +405,7 @@ textarea {
  * 1. Correct the odd appearance in Chrome and Safari.
  * 2. Correct the outline style in Safari.
  */
-[type=search] {
+[type='search'] {
   -webkit-appearance: textfield; /* 1 */
   outline-offset: -2px; /* 2 */
 }
@@ -413,7 +413,7 @@ textarea {
 /**
  * Remove the inner padding in Chrome and Safari on macOS.
  */
-[type=search]::-webkit-search-decoration {
+[type='search']::-webkit-search-decoration {
   -webkit-appearance: none;
 }
 
@@ -485,7 +485,7 @@ template {
 
 html,
 body {
-  font-family: "Pretendard";
+  font-family: 'Pretendard';
 }
 
 html {
@@ -515,7 +515,7 @@ button:disabled {
   margin: -1px;
   overflow: hidden;
   -webkit-clip-path: inset(50%);
-          clip-path: inset(50%);
+  clip-path: inset(50%);
   border: 0;
   clip: rect(0 0 0 0);
 }
@@ -651,26 +651,30 @@ button:disabled {
   background-color: var(--rich-black);
 }
 .nav .nav-logo-btn {
-  position: fixed;
+  border: none;
+  position: absolute;
   width: 16.8rem;
   height: 3.2rem;
-  border: 0;
   background: none;
 }
 .nav .nav-logo-btn:hover {
   cursor: pointer;
 }
-.nav .nav-profile-img {
+.nav .moving-mypage-button {
   position: relative;
-  left: 48.4rem;
+  left: 58rem;
+  border: none;
+  outline: none;
+  background-color: inherit;
+}
+.nav .moving-mypage-button:hover {
+  cursor: pointer;
+}
+.nav .moving-mypage-button .nav-profile-img {
   width: auto;
   height: auto;
-  border: none;
-  background-color: #2c2626;
   border-radius: 12.5rem;
-}
-.nav .nav-profile-img:hover {
-  cursor: pointer;
+  background-color: #2c2626;
 }
 
 .my-credit {
@@ -678,6 +682,7 @@ button:disabled {
   justify-content: center;
 }
 .my-credit .credit-box {
+  position: relative;
   margin: 5rem 0;
   padding: 3rem 7.8rem;
   height: 13rem;
@@ -686,14 +691,6 @@ button:disabled {
   border-radius: 0.8rem;
   border: solid 0.1rem rgba(100, 100, 100, 0.8);
 }
-.my-credit .credit-box .credit-content {
-  display: flex;
-  flex-direction: column;
-}
-.my-credit .credit-box .credit-content .my-credit-content {
-  display: flex;
-  align-items: center;
-}
 .my-credit .credit-box .credit-content .my-credit-text {
   font-weight: var(--normal);
   font-size: 1.6rem;
@@ -701,9 +698,9 @@ button:disabled {
   color: rgba(255, 255, 255, 0.6);
 }
 .my-credit .credit-box .credit-content .charging-btn {
-  display: flex;
-  justify-content: flex-end;
-  align-items: center;
+  position: absolute;
+  right: 7.8rem;
+  margin-top: 0.3rem;
   width: auto;
   border: 0;
   background: none;
@@ -716,24 +713,20 @@ button:disabled {
   font-weight: var(--bold);
   font-size: 1.6rem;
   line-height: 2.6rem;
-  color: var(--brand-orange);
+  color: #f86f65;
 }
 .my-credit .credit-box .credit-content .charging-btn .charging-text:hover {
-  text-align: center;
-  color: var(--white);
-  border-radius: 0.4rem;
-  padding: 0.3rem 0.6rem;
-  background: linear-gradient(90deg, var(--brand-pink) 0%, #f86f65 51%); /* 그라데이션 색상 */
   transition: 0.3s;
-  opacity: 1; /* 투명도 */
+  color: var(--brand-orange);
+  text-shadow: 0 0 1.5rem rgba(255, 255, 255, 0.6);
 }
 .my-credit .credit-box .credit-content .current-credit-content {
   display: flex;
+  margin-top: 2.3rem;
   gap: 0.4rem;
   align-items: center;
 }
 .my-credit .credit-box .credit-content .current-credit-content .current-credit {
-  font-family: "Pretendard";
   font-weight: var(--bold);
   font-size: 2.4rem;
   line-height: 2.6rem;
@@ -773,22 +766,21 @@ button:disabled {
   border: none;
   padding: 0.2rem 1.6rem;
   gap: 0.4rem;
-  transition: 0.5s;
-  background: linear-gradient(90deg, #f86f65 0%, var(--brand-pink) 51%, #f86f65);
-  background-size: 300%; /* 배경 크기 */
-  background-position: 0; /* 초기 배경 위치 */
-}
-.monthly-chart-container .monthly-chart .chart-header .monthly-chart-gradient-btn:hover {
-  cursor: pointer;
-  text-shadow: 0 0 1rem rgba(0, 0, 0, 0.2);
-  box-shadow: 0 0 2rem #eeeeee;
-  background-position: 99%;
-}
-.monthly-chart-container .monthly-chart .chart-header .monthly-chart-gradient-btn .voted-btn-text {
   font-weight: var(--bold);
   font-size: 1.3rem;
   line-height: 2.6rem;
+  color: rgba(255, 255, 255, 0.8);
+  background: linear-gradient(90deg, #f86f65 0%, var(--brand-pink) 51%, #f86f65);
+  background-size: 300%; /* 배경 크기 */
+  background-position: 0; /* 초기 배경 위치 */
+  transition: 0.5s;
+}
+.monthly-chart-container .monthly-chart .chart-header .monthly-chart-gradient-btn:hover {
+  cursor: pointer;
   color: var(--white);
+  text-shadow: 0 0 1rem rgba(255, 255, 255, 0.2);
+  box-shadow: 0 0 2rem rgba(255, 255, 255, 0.5);
+  background-position: 99%;
 }
 
 .chart {
@@ -815,9 +807,19 @@ button:disabled {
 }
 .chart .chart-title-content .chart-title-btn:hover {
   cursor: pointer;
+  border-radius: 0.6rem;
+  color: rgba(255, 255, 255, 0.6);
+  background-color: rgba(255, 255, 255, 0.03);
+  box-shadow: 0.2rem 0.2rem 0.5rem 0.1rem rgba(255, 255, 255, 0.2);
+  transition: 0.5s;
+}
+.chart .chart-title-content .chart-title-btn.active {
+  cursor: pointer;
+  border-radius: 0.6rem;
   color: var(--white);
-  background-color: rgba(255, 255, 255, 0.1);
-  border-bottom: solid 0.1rem var(--white);
+  background-color: rgba(255, 255, 255, 0.05);
+  box-shadow: inset 0.2rem 0.2rem 1rem 0.1rem rgba(20, 195, 254, 0.2);
+  border-bottom: solid 0.1rem rgba(255, 255, 255, 0.7);
   transition: 0.5s;
 }
 .chart .chart-title-content .chart-title-btn-text {
@@ -833,7 +835,7 @@ button:disabled {
   align-items: center;
   border-radius: 0.8rem;
   -moz-column-gap: 2.4rem;
-       column-gap: 2.4rem;
+  column-gap: 2.4rem;
   background-color: var(--rich-black);
 }
 .chart-rank-content .artist-profile {
@@ -894,44 +896,29 @@ button:disabled {
   align-items: center;
   width: auto;
   height: 4.2rem;
-  border: solid 0.1rem rgba(241, 238, 249, 0.4);
-  border-radius: 0.3rem;
+  border-radius: 0.5rem;
   padding: 0.8rem 14.3rem;
-  background: none;
+  background: rgba(255, 255, 255, 0.08);
 }
 .view-more-btn .medium-btn:hover {
   cursor: pointer;
-  background-color: rgba(255, 255, 255, 0.1);
+  color: var(--white);
+  box-shadow: inset 0 0 1rem rgba(255, 255, 255, 0.1);
   transition: 0.5s;
 }
 .view-more-btn .medium-btn-text {
   font-weight: var(--bold);
   font-size: 1.4rem;
   line-height: 2.6rem;
-  color: var(--white);
+  color: rgba(255, 255, 255, 0.8);
 }
 
 .pagination-container {
-  position: relative;
   display: flex;
-  justify-content: center;
-  width: 136rem;
-  height: 40.2rem;
   gap: 40px;
 }
 .pagination-container .pagination-icon {
-  position: absolute;
   display: block;
-  top: 50%;
-  padding: 0;
-  background-color: transparent;
-  transform: translateY(-50%);
-}
-.pagination-container .pagination-icon.prev {
-  left: 0;
-}
-.pagination-container .pagination-icon.next {
-  right: 0;
 }
 @media (max-width: 744px) {
   .pagination-container .pagination-icon {
@@ -940,7 +927,6 @@ button:disabled {
 }
 .pagination-container .cards-container {
   display: flex;
-  width: 120rem;
   gap: 24px;
   flex-wrap: nowrap;
   justify-content: start;
@@ -985,7 +971,7 @@ button:disabled {
   height: 100%;
   position: relative;
   -o-object-fit: cover;
-     object-fit: cover;
+  object-fit: cover;
   border-radius: 8px;
 }
 .pagination-container .cards-container .card-container .card-top-wrapper .gradient-overlay {
@@ -1084,4 +1070,262 @@ button:disabled {
 .pagination-container .cards-container .card-container .artist-donation-container .credit-gauge-bar-container .gauge-bar {
   height: 100%;
   background-color: var(--brand-orange);
+}
+
+.modal-overlay {
+  z-index: 999;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.8);
+}
+
+.modal {
+  z-index: 1000;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 32.7rem;
+  max-width: calc(100% - 3.2rem);
+  min-width: 25rem;
+  padding: 2.4rem 1.6rem 3.2rem;
+  font-size: 1.4rem;
+  color: var(--white-smoke);
+  background-color: var(--eerie-black);
+  border-radius: 0.8rem;
+  box-shadow: 0 0.4rem 0.4rem rgba(0, 0, 0, 0.25);
+}
+.modal img {
+  width: 100%;
+  height: 100%;
+  -o-object-fit: contain;
+  object-fit: contain;
+}
+.modal .button-gradient.h42 {
+  height: 4.2rem;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.modal-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 1.8rem;
+  font-weight: var(--semiBold);
+}
+.modal-top .btn-close {
+  width: 2.4rem;
+  height: 2.4rem;
+  padding: 0;
+  background-color: transparent;
+}
+
+.modal-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.custom-radio {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+.custom-radio input {
+  display: none;
+}
+.custom-radio .radio-check {
+  width: 1.6rem;
+  height: 1.6rem;
+  border: 1px solid var(--cool-gray);
+  background-color: var(--white);
+  border-radius: 50%;
+  position: relative;
+  transition: background 0.3s;
+}
+.custom-radio .radio-check::after {
+  content: '';
+  width: 0.8rem;
+  height: 0.8rem;
+  background: var(--cool-gray);
+  border-radius: 50%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.custom-radio input:checked + .radio-check {
+  border-color: var(--brand-orange);
+}
+.custom-radio input:checked + .radio-check::after {
+  background: var(--brand-orange);
+}
+
+.charge-modal {
+  margin-top: 2.4rem;
+  font-weight: var(--bold);
+  line-height: 2.6rem;
+}
+.charge-modal label {
+  padding: 1.8rem 2rem;
+  justify-content: space-between;
+  width: 100%;
+  border: 1px solid var(--white-smoke);
+  border-radius: 0.8rem;
+}
+.charge-modal label.active {
+  border-color: var(--brand-orange);
+}
+.charge-modal label:not(:last-of-type) {
+  margin-bottom: 0.8rem;
+}
+.charge-modal label .img-credit-sm {
+  margin-right: 0.4rem;
+  width: 1.6rem;
+  height: 1.6rem;
+  position: relative;
+}
+.charge-modal label .img-credit-sm img {
+  position: absolute;
+  top: -0.6rem;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 2.4rem;
+  height: 2.8rem;
+}
+.charge-modal label .charge-info {
+  display: flex;
+  flex-grow: 1;
+  font-size: 2rem;
+}
+.charge-modal .button-gradient {
+  gap: 0.4rem;
+  margin-top: 2.4rem;
+}
+.charge-modal .button-gradient img {
+  width: 1.3rem;
+  height: 1.3rem;
+}
+
+.donation-modal {
+  margin-top: 2.4rem;
+}
+.donation-modal .card {
+  width: 15.8rem;
+  margin: 0 auto;
+}
+.donation-modal .card .card-img {
+  width: 100%;
+  height: 20.6rem;
+  border-radius: 0.8rem;
+  overflow: hidden;
+}
+.donation-modal .card .card-img img {
+  -o-object-fit: cover;
+  object-fit: cover;
+}
+.donation-modal .card p {
+  padding: 0 0.2rem;
+}
+.donation-modal .card p.card-sub {
+  margin: 10px 0 6px;
+  font-size: 1.2rem;
+  line-height: 1.8rem;
+  letter-spacing: -0.017rem;
+  color: var(--white);
+  opacity: 0.4;
+}
+.donation-modal .card p.card-tit {
+  font-size: 1.4rem;
+  font-weight: var(--medium);
+}
+.donation-modal .donation-input {
+  margin: 2.4rem 0;
+}
+.donation-modal .donation-input .input-box {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 0.8rem;
+  padding: 1.6rem;
+  width: 100%;
+  border: 1px solid var(--white);
+  border-radius: 0.8rem;
+  background-color: #272f3d;
+}
+.donation-modal .donation-input .input-box.error {
+  border-color: #ff3b3b;
+}
+.donation-modal .donation-input .input-box input {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  border: none;
+  outline: none;
+  padding: 0;
+  margin: 0;
+  font: inherit;
+  background: transparent;
+  box-shadow: none;
+  border-radius: 0.8rem;
+  color: var(--white);
+  font-weight: var(--bold);
+  font-size: 2rem;
+  line-height: 2.6rem;
+}
+.donation-modal .donation-input .input-box input::-moz-placeholder {
+  color: var(--dim-gray);
+}
+.donation-modal .donation-input .input-box input::placeholder {
+  color: var(--dim-gray);
+}
+.donation-modal .donation-input .input-box input[type='number'] {
+  -moz-appearance: textfield;
+}
+.donation-modal .donation-input .input-box input[type='number']::-webkit-inner-spin-button,
+.donation-modal .donation-input .input-box input[type='number']::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+.donation-modal .donation-input .input-box img {
+  width: 2.4rem;
+  height: 2.4rem;
+}
+.donation-modal .donation-input .input-error {
+  margin-top: 0.6rem;
+  font-size: 1.2rem;
+  font-weight: var(--medium);
+  color: #ff2626;
+}
+
+.alert-modal {
+  margin-top: 0.8rem;
+}
+.alert-modal .img-credit-lg {
+  width: 11.3rem;
+  height: 11.3rem;
+  position: relative;
+}
+.alert-modal .img-credit-lg img {
+  position: absolute;
+  top: -52px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 18.3rem;
+  height: 21.7rem;
+}
+.alert-modal .desc {
+  margin: 3.1rem 0;
+  line-height: 2.6rem;
+  font-size: 1.6rem;
+  font-weight: var(--medium);
+}
+.alert-modal .desc span {
+  color: var(--brand-orange);
 }

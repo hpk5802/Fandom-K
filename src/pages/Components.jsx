@@ -1,7 +1,6 @@
 import GradientButton from 'components/common/GradientButton';
 import ProfileBadge from 'components/common/ProfileBadge';
 import ProfileDelete from 'components/common/ProfileDelete';
-import ProfileSelect from 'components/common/ProfileSelect';
 import Nav from 'components/nav/Nav';
 import MyCredit from 'components/myCredit/MyCredit';
 import MonthlyChart from 'components/monthlyChart/MontlyChart';
@@ -68,10 +67,6 @@ function Components() {
         <ProfileBadge img="img_idol_example.svg" size="large" />
         <hr />
         <ProfileBadge img="img_idol_example.svg" selected={true} />
-        <hr />
-        <ProfileSelect img="img_idol_example.svg" onClick={handleProfileDelete} />
-        <ProfileSelect img="img_idol_example.svg" size="medium" onClick={handleProfileDelete} />
-        <ProfileSelect img="img_idol_example.svg" size="large" onClick={handleProfileDelete} />
         <hr />
         <ProfileDelete img="img_idol_example.svg" onClick={handleProfileDelete} />
         <ProfileDelete img="img_idol_example.svg" size="medium" onClick={handleProfileDelete} />

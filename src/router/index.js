@@ -1,7 +1,6 @@
-import ApiTest from 'pages/ApiTest';
 import App from 'pages/App';
 import Components from 'pages/Components';
-import TestDonate from 'pages/TestDonate';
+import ModalComponent from 'pages/ModalComponent';
 
 const routes = [
   {
@@ -13,12 +12,8 @@ const routes = [
     element: <Components />,
   },
   {
-    path: 'api',
-    element: <ApiTest />,
-  },
-  {
-    path: 'donate',
-    element: <TestDonate />,
+    path: '/modal-component',
+    element: <ModalComponent />,
   },
 ];
 
