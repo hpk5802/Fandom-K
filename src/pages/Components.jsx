@@ -3,7 +3,6 @@ import ProfileBadge from 'components/common/ProfileBadge';
 import ProfileDelete from 'components/common/ProfileDelete';
 import Nav from 'components/nav/Nav';
 import MyCredit from 'components/myCredit/MyCredit';
-import MonthlyChart from 'components/monthlyChart/MontlyChart';
 
 function Components() {
   const handleProfileDelete = value => {
@@ -13,7 +12,6 @@ function Components() {
     <>
       <Nav />
       <MyCredit />
-      <MonthlyChart />
       <div
         style={{
           padding: '1rem',

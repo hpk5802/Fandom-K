@@ -14,7 +14,7 @@ function Chart() {
 
   // 클릭 핸들러: 성별을 변경하고 초기 데이터 설정
   const handleClick = newGender => () => {
-    dispatch(getCharts({gender: newGender, cursor: '', pageSize: 10}));
+    dispatch(getCharts({gender: newGender, pageSize: 10}));
     setGender(newGender);
   };
 
@@ -22,7 +22,7 @@ function Chart() {
   const handleViewMore = () => {
     const totalShowCount = visibleCount + 10;
     setVisibleCount(totalShowCount);
-    dispatch(getCharts({gender: 'female', cursor: '', pageSize: totalShowCount}));
+    dispatch(getCharts({gender: gender, pageSize: totalShowCount}));
   };
 
   useEffect(() => {
