@@ -1,5 +1,6 @@
 import App from "pages/App";
 import Components from "pages/Components";
+import ModalComponent from "pages/ModalComponent";
 
 const routes = [
   {
@@ -9,6 +10,10 @@ const routes = [
   {
     path: "/components",
     element: <Components />,
+  },
+  {
+    path: '/modal-component',
+    element: <ModalComponent />,
   },
 ];
 
