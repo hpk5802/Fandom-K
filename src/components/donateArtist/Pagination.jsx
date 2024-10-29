@@ -4,28 +4,20 @@ import parseImg from 'utils/images';
 const arrowLeft = parseImg('ic_pagination_arrow_left.svg');
 const arrowRight = parseImg('ic_pagination_arrow_right.svg');
 
-function Pagination({ dataLength, setStartIndex, children }) {
-  const handlePrev = () => {
-    setStartIndex(prevIndex => {
-      const newIndex = (prevIndex - 1 + dataLength) % dataLength;
-      console.log('Prev Index:', newIndex);
-      return newIndex;
-    });
-  };
-
-  const handleNext = () => {
-    setStartIndex(prevIndex => {
-      const newIndex = (prevIndex + 1) % dataLength;
-      console.log('Next Index:', newIndex);
-      return newIndex;
-    });
-  };
-
+function Pagination({onNext, onPrevious, canGoNext, canGoPrevious, children}) {
   return (
     <div className="pagination-container">
-      <img src={arrowLeft} alt="" onClick={handlePrev} className="pagination-icon" />
+      {canGoPrevious && (
+        <button type="button" className="pagination-icon prev" onClick={onPrevious}>
+          <img src={arrowLeft} alt="" />
+        </button>
+      )}
       {children}
-      <img src={arrowRight} alt="" onClick={handleNext} className="pagination-icon" />
+      {canGoNext && (
+        <button type="button" className="pagination-icon next" onClick={onNext}>
+          <img src={arrowRight} alt="" />
+        </button>
+      )}
     </div>
   );
 }

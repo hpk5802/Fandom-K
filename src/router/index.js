@@ -1,6 +1,7 @@
 import ApiTest from 'pages/ApiTest';
 import App from 'pages/App';
 import Components from 'pages/Components';
+import TestDonate from 'pages/TestDonate';
 
 const routes = [
   {
@@ -14,6 +15,10 @@ const routes = [
   {
     path: 'api',
     element: <ApiTest />,
+  },
+  {
+    path: 'donate',
+    element: <TestDonate />,
   },
 ];
 
