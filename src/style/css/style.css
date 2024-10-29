@@ -651,26 +651,30 @@ button:disabled {
   background-color: var(--rich-black);
 }
 .nav .nav-logo-btn {
-  position: fixed;
+  border: none;
+  position: absolute;
   width: 16.8rem;
   height: 3.2rem;
-  border: 0;
   background: none;
 }
 .nav .nav-logo-btn:hover {
   cursor: pointer;
 }
-.nav .nav-profile-img {
+.nav .moving-mypage-button {
   position: relative;
-  left: 48.4rem;
+  left: 58rem;
+  border: none;
+  outline: none;
+  background-color: inherit;
+}
+.nav .moving-mypage-button:hover {
+  cursor: pointer;
+}
+.nav .moving-mypage-button .nav-profile-img {
   width: auto;
   height: auto;
-  border: none;
-  background-color: #2c2626;
   border-radius: 12.5rem;
-}
-.nav .nav-profile-img:hover {
-  cursor: pointer;
+  background-color: #2c2626;
 }
 
 .my-credit {
