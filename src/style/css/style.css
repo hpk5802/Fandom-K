@@ -1067,3 +1067,260 @@ button:disabled {
   height: 100%;
   background-color: var(--brand-orange);
 }
+
+.modal-overlay {
+  z-index: 999;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.8);
+}
+
+.modal {
+  z-index: 1000;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 32.7rem;
+  max-width: calc(100% - 3.2rem);
+  min-width: 25rem;
+  padding: 2.4rem 1.6rem 3.2rem;
+  font-size: 1.4rem;
+  color: var(--white-smoke);
+  background-color: var(--eerie-black);
+  border-radius: 0.8rem;
+  box-shadow: 0 0.4rem 0.4rem rgba(0, 0, 0, 0.25);
+}
+.modal img {
+  width: 100%;
+  height: 100%;
+  -o-object-fit: contain;
+     object-fit: contain;
+}
+.modal .button-gradient.h42 {
+  height: 4.2rem;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.modal-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 1.8rem;
+  font-weight: var(--semiBold);
+}
+.modal-top .btn-close {
+  width: 2.4rem;
+  height: 2.4rem;
+  padding: 0;
+  background-color: transparent;
+}
+
+.modal-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.custom-radio {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+.custom-radio input {
+  display: none;
+}
+.custom-radio .radio-check {
+  width: 1.6rem;
+  height: 1.6rem;
+  border: 1px solid var(--cool-gray);
+  background-color: var(--white);
+  border-radius: 50%;
+  position: relative;
+  transition: background 0.3s;
+}
+.custom-radio .radio-check::after {
+  content: "";
+  width: 0.8rem;
+  height: 0.8rem;
+  background: var(--cool-gray);
+  border-radius: 50%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.custom-radio input:checked + .radio-check {
+  border-color: var(--brand-orange);
+}
+.custom-radio input:checked + .radio-check::after {
+  background: var(--brand-orange);
+}
+
+.charge-modal {
+  margin-top: 2.4rem;
+  font-weight: var(--bold);
+  line-height: 2.6rem;
+}
+.charge-modal label {
+  padding: 1.8rem 2rem;
+  justify-content: space-between;
+  width: 100%;
+  border: 1px solid var(--white-smoke);
+  border-radius: 0.8rem;
+}
+.charge-modal label.active {
+  border-color: var(--brand-orange);
+}
+.charge-modal label:not(:last-of-type) {
+  margin-bottom: 0.8rem;
+}
+.charge-modal label .img-credit-sm {
+  margin-right: 0.4rem;
+  width: 1.6rem;
+  height: 1.6rem;
+  position: relative;
+}
+.charge-modal label .img-credit-sm img {
+  position: absolute;
+  top: -0.6rem;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 2.4rem;
+  height: 2.8rem;
+}
+.charge-modal label .charge-info {
+  display: flex;
+  flex-grow: 1;
+  font-size: 2rem;
+}
+.charge-modal .button-gradient {
+  gap: 0.4rem;
+  margin-top: 2.4rem;
+}
+.charge-modal .button-gradient img {
+  width: 1.3rem;
+  height: 1.3rem;
+}
+
+.donation-modal {
+  margin-top: 2.4rem;
+}
+.donation-modal .card {
+  width: 15.8rem;
+  margin: 0 auto;
+}
+.donation-modal .card .card-img {
+  width: 100%;
+  height: 20.6rem;
+  border-radius: 0.8rem;
+  overflow: hidden;
+}
+.donation-modal .card .card-img img {
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+.donation-modal .card p {
+  padding: 0 0.2rem;
+}
+.donation-modal .card p.card-sub {
+  margin: 10px 0 6px;
+  font-size: 1.2rem;
+  line-height: 1.8rem;
+  letter-spacing: -0.017rem;
+  color: var(--white);
+  opacity: 0.4;
+}
+.donation-modal .card p.card-tit {
+  font-size: 1.4rem;
+  font-weight: var(--medium);
+}
+.donation-modal .donation-input {
+  margin: 2.4rem 0;
+}
+.donation-modal .donation-input .input-box {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 0.8rem;
+  padding: 1.6rem;
+  width: 100%;
+  border: 1px solid var(--white);
+  border-radius: 0.8rem;
+  background-color: #272f3d;
+}
+.donation-modal .donation-input .input-box.error {
+  border-color: #ff3b3b;
+}
+.donation-modal .donation-input .input-box input {
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
+  border: none;
+  outline: none;
+  padding: 0;
+  margin: 0;
+  font: inherit;
+  background: transparent;
+  box-shadow: none;
+  border-radius: 0.8rem;
+  color: var(--white);
+  font-weight: var(--bold);
+  font-size: 2rem;
+  line-height: 2.6rem;
+}
+.donation-modal .donation-input .input-box input::-moz-placeholder {
+  color: var(--dim-gray);
+}
+.donation-modal .donation-input .input-box input::placeholder {
+  color: var(--dim-gray);
+}
+.donation-modal .donation-input .input-box input[type=number] {
+  -moz-appearance: textfield;
+}
+.donation-modal .donation-input .input-box input[type=number]::-webkit-inner-spin-button, .donation-modal .donation-input .input-box input[type=number]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+.donation-modal .donation-input .input-box img {
+  width: 2.4rem;
+  height: 2.4rem;
+}
+.donation-modal .donation-input .input-error {
+  margin-top: 0.6rem;
+  font-size: 1.2rem;
+  font-weight: var(--medium);
+  color: #ff2626;
+}
+
+.alert-modal {
+  margin-top: 0.8rem;
+}
+.alert-modal .img-credit-lg {
+  width: 11.3rem;
+  height: 11.3rem;
+  position: relative;
+}
+.alert-modal .img-credit-lg img {
+  position: absolute;
+  top: -52px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 18.3rem;
+  height: 21.7rem;
+}
+.alert-modal .desc {
+  margin: 3.1rem 0;
+  line-height: 2.6rem;
+  font-size: 1.6rem;
+  font-weight: var(--medium);
+}
+.alert-modal .desc span {
+  color: var(--brand-orange);
+}
