@@ -5,7 +5,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 8rem; 
+  height: 8rem;
   background-color: var(--rich-black);
   .nav-logo-btn {
     border: none;
@@ -17,16 +17,20 @@
       cursor: pointer;
     }
   }
-  .nav-profile-img {
+  .moving-mypage-button {
     position: relative;
     left: 58rem;
-    width: auto;
-    height: auto;
     border: none;
-    background-color: #2c2626;
-    border-radius: 12.5rem;
+    outline: none;
+    background-color: inherit;
     &:hover {
       cursor: pointer;
+    }
+    .nav-profile-img {
+      width: auto;
+      height: auto;
+      border-radius: 12.5rem;
+      background-color: #2c2626;
     }
   }
 }
