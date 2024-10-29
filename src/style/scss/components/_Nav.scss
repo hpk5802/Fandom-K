@@ -5,13 +5,13 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 8rem;
+  height: 8rem; 
   background-color: var(--rich-black);
   .nav-logo-btn {
-    position: fixed;
+    border: none;
+    position: absolute;
     width: 16.8rem;
     height: 3.2rem;
-    border: 0;
     background: none;
     &:hover {
       cursor: pointer;
@@ -19,7 +19,7 @@
   }
   .nav-profile-img {
     position: relative;
-    left: 48.4rem;
+    left: 58rem;
     width: auto;
     height: auto;
     border: none;
