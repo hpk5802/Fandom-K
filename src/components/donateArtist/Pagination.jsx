@@ -4,7 +4,7 @@ import parseImg from 'utils/images';
 const arrowLeft = parseImg('ic_pagination_arrow_left.svg');
 const arrowRight = parseImg('ic_pagination_arrow_right.svg');
 
-function Pagination({ dataLength, setStartIndex, children }) {
+function Pagination({dataLength, setStartIndex, children}) {
   const handlePrev = () => {
     setStartIndex(prevIndex => {
       const newIndex = (prevIndex - 1 + dataLength) % dataLength;

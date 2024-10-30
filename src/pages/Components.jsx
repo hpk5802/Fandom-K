@@ -32,7 +32,8 @@ function Components() {
           <br />
           font, padding, margin, width 같은 스타일은 사용하는 컴포넌트나 페이지에서 추가해주세요.
           <br />
-          name prop은 클래스를 추가하기 위한 prop입니다. string ('class') | string 배열(['class1', 'class2']) 형태로 사용해주세요.
+          name prop은 클래스를 추가하기 위한 prop입니다. string (&apos;class&apos;) | string 배열([&apos;class1&apos;, &apos;class2&apos;]) 형태로
+          사용해주세요.
         </div>
         <GradientButton name="btn1">Gradient Button</GradientButton>
         <hr />
@@ -54,9 +55,9 @@ function Components() {
         >
           ProfileBadge 컴포넌트
           <br />
-          img prop은 '이미지.확장자' 형태로 사용해주세요.
+          img prop은 &apos;이미지.확장자&apos; 형태로 사용해주세요.
           <br />
-          size prop은 작성하지 않거나 'medium' | 'large' 형태로 사용해주세요.
+          size prop은 작성하지 않거나 &apos;medium&apos; | &apos;large&apos; 형태로 사용해주세요.
           <br />
           selected prop은 임시입니다. 추후 state로 변경할 예정입니다.
         </div>

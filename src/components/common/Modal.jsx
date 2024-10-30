@@ -9,9 +9,9 @@ const Modal = ({title, onClose, children}) => {
         <div className="modal-top">
           <div>{title || ''}</div>
           <button className="btn-close" onClick={onClose}>
-            <img src={parseImg("ic_modal_close.svg")} alt="닫기" />
+            <img src={parseImg('ic_modal_close.svg')} alt="닫기" />
           </button>
-        </div> 
+        </div>
         {children}
       </div>
     </>

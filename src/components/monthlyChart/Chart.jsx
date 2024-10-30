@@ -1,6 +1,6 @@
-import { useState, useEffect } from 'react';
+import {useState, useEffect} from 'react';
 import ChartRankContent from './ChartRankContent';
-import { getIdolRank } from './chartapi';
+import {getIdolRank} from './chartapi';
 import ViewMoreBtn from './ViewMoreBtn';
 
 function Chart() {
@@ -16,7 +16,7 @@ function Chart() {
       setLoading(true); // 로딩 시작
       try {
         console.log(visibleCount);
-        const data = await getIdolRank({ gender, pagesize: visibleCount });
+        const data = await getIdolRank({gender, pagesize: visibleCount});
         if (Array.isArray(data)) {
           const sortedData = data.sort((a, b) => b.totalVotes - a.totalVotes); // 득표순 정렬
           console.log(sortedData);
@@ -36,17 +36,17 @@ function Chart() {
   }, [gender, visibleCount]);
 
   // 클릭 핸들러: 성별을 변경하고 초기 데이터 설정
-  const handleClick = (newGender) => {
+  const handleClick = newGender => {
     setGender(newGender);
   };
 
   // 더보기 버튼 클릭 시 보이는 개수를 증가
   const handleViewMore = () => {
-    setVisibleCount((prevCount) => prevCount + 10); // 10개씩 추가
+    setVisibleCount(prevCount => prevCount + 10); // 10개씩 추가
   };
 
   if (error) return {error};
-  if (loading) return ("아티스트 정보를 불러오고 있습니다. 조금만 기다려 주세요!")
+  if (loading) return '아티스트 정보를 불러오고 있습니다. 조금만 기다려 주세요!';
 
   return (
     <div className="chart">
@@ -66,7 +66,7 @@ function Chart() {
           이달의 남자 아이돌
         </button>
       </div>
-      
+
       <ChartRankContent artistData={artistData.slice(0, visibleCount)} />
       <ViewMoreBtn onClick={handleViewMore}>더보기</ViewMoreBtn>
     </div>
