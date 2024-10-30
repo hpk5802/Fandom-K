@@ -1,11 +1,15 @@
 import React, {useState} from 'react';
 import parseImg from 'utils/images';
 import GradientButton from 'components/common/GradientButton';
+import {useDispatch, useSelector} from 'react-redux';
+import {decreseCredit} from 'services/apiSlice';
 
-const DonationModal = ({onClose, myCredits = '1000'}) => {
+const DonationModal = ({onClose}) => {
   const [credit, setCredit] = useState('');
   const [hasError, setHasError] = useState(false);
   const [isButtonDisabled, setIsButtonDisabled] = useState(true);
+  const dispatch = useDispatch();
+  const myCredits = useSelector(state => state.data.myCredits);
 
   const handleCreditChange = e => {
     const value = e.target.value;
@@ -22,6 +26,9 @@ const DonationModal = ({onClose, myCredits = '1000'}) => {
 
   const handleDonate = () => {
     if (credit) {
+      dispatch(decreseCredit(credit));
+      localStorage.setItem('myCredits', myCredits - credit);
+
       alert(`${credit} 크레딧이 후원되었습니다.`);
       onClose();
     } else {

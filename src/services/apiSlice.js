@@ -10,8 +10,15 @@ export const setDonation = createAsyncThunk('data/updateDonationAmount', updateD
 
 const apiSlice = createSlice({
   name: 'data',
-  initialState: {idols: {list: []}, donations: {list: [], nextCursor: null}, charts: {idols: []}, status: 'idle', error: null},
-  reducers: {},
+  initialState: {myCredits: 36000, idols: {list: []}, donations: {list: [], nextCursor: null}, charts: {idols: []}, status: 'idle', error: null},
+  reducers: {
+    increseCredit: (state, action) => {
+      state.myCredits += action.payload;
+    },
+    decreseCredit: (state, action) => {
+      state.myCredits -= action.payload;
+    },
+  },
   extraReducers: builder => {
     builder
       .addCase(getIdols.fulfilled, (state, action) => {
@@ -26,5 +33,7 @@ const apiSlice = createSlice({
       });
   },
 });
+
+export const {increseCredit, decreseCredit} = apiSlice.actions;
 
 export default apiSlice.reducer;
