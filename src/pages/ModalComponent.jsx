@@ -23,15 +23,15 @@ const ModalComponent = () => {
   };
 
   const handleChargeClick = () => {
-    openModal('크레딧 충전하기', <ChargeModal onClose={closeModal}/>);
+    openModal('크레딧 충전하기', <ChargeModal onClose={closeModal} />);
   };
 
   const handleDonationClick = () => {
-    openModal('응원하기', <DonationModal onClose={closeModal}/>);
+    openModal('응원하기', <DonationModal onClose={closeModal} />);
   };
 
   const handleAlertClick = () => {
-    openModal('', <AlertModal onClose={closeModal}/>);
+    openModal('', <AlertModal onClose={closeModal} />);
   };
 
   return (

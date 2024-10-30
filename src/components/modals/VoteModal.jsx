@@ -1,6 +1,6 @@
 import React from 'react';
 
-function VoteModal(props) {
+function VoteModal() {
   return <div></div>;
 }
 

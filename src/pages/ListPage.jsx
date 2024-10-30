@@ -7,7 +7,7 @@ import GradientButton from 'components/common/GradientButton';
 import Modal from 'components/common/Modal';
 import {ChargeModal, DonationModal, AlertModal} from 'components/modals';
 
-function ListPage(props) {
+function ListPage() {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [modalTitle, setModalTitle] = useState('');
   const [modalContent, setModalContent] = useState(null);
@@ -39,7 +39,7 @@ function ListPage(props) {
     <>
       <Nav />
       <div className="container" style={{backgroundColor: '#02000E'}}>
-        <MyCredit onClick={handleChargeClick} />    
+        <MyCredit onClick={handleChargeClick} />
         <DonateArtist />
         <MonthlyChart />
         <GradientButton name="" handleClick={handleDonationClick}>

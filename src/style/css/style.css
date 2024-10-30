@@ -649,27 +649,36 @@ button:disabled {
   height: 8rem;
   background-color: var(--rich-black);
 }
-.nav .nav-logo-btn {
+.nav .button-containter {
+  display: flex;
+  position: relative;
+  max-width: 120rem;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--rich-black);
+  width: 100%;
+  margin: 0 auto;
+}
+.nav .button-containter .nav-logo-btn {
   border: none;
-  position: absolute;
   width: 16.8rem;
   height: 3.2rem;
   background: none;
 }
-.nav .nav-logo-btn:hover {
+.nav .button-containter .nav-logo-btn:hover {
   cursor: pointer;
 }
-.nav .moving-mypage-button {
-  position: relative;
-  left: 58rem;
+.nav .button-containter .moving-mypage-button {
+  position: absolute;
+  right: 0;
   border: none;
   outline: none;
   background-color: inherit;
 }
-.nav .moving-mypage-button:hover {
+.nav .button-containter .moving-mypage-button:hover {
   cursor: pointer;
 }
-.nav .moving-mypage-button .nav-profile-img {
+.nav .button-containter .moving-mypage-button .nav-profile-img {
   width: auto;
   height: auto;
   border-radius: 12.5rem;
@@ -1310,4 +1319,45 @@ button:disabled {
 }
 .alert-modal .desc span {
   color: var(--brand-orange);
+}
+
+.favorite-artist-container {
+  display: flex;
+  flex-direction: column;
+  background-color: var(--rich-black);
+  padding-top: 7.6rem;
+  padding-bottom: 4rem;
+  border-bottom: solid 0.1rem rgba(255, 255, 255, 0.1);
+}
+.favorite-artist-container .favorite-artist-title {
+  color: #f6f6f8;
+  font-size: 2.4rem;
+  line-height: 2.6rem;
+  font-weight: var(--bold);
+  padding-bottom: 3.2rem;
+}
+.favorite-artist-container .favorite-artist {
+  display: flex;
+  flex-direction: column;
+  width: 9.8rem;
+  height: 15rem;
+  gap: 0.8rem; /*타 아이돌과 간격이 24px이므로 grid container로 예상*/
+}
+.favorite-artist-container .favorite-artist .artist-info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.2rem;
+}
+.favorite-artist-container .favorite-artist .artist-info .artist-name {
+  color: #f4efef;
+  font-size: 1.6rem;
+  line-height: 2.6rem;
+  font-weight: var(--bold);
+}
+.favorite-artist-container .favorite-artist .artist-info .artist-group {
+  color: rgba(255, 255, 255, 0.6);
+  font-size: 1.4rem;
+  line-height: 1.6rem;
+  font-weight: var(--normal);
 }
