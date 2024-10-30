@@ -650,27 +650,36 @@ button:disabled {
   height: 8rem;
   background-color: var(--rich-black);
 }
-.nav .nav-logo-btn {
+.nav .button-containter {
+  display: flex;
+  position: relative;
+  max-width: 120rem;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--rich-black);
+  width: 100%;
+  margin: 0 auto;
+}
+.nav .button-containter .nav-logo-btn {
   border: none;
-  position: absolute;
   width: 16.8rem;
   height: 3.2rem;
   background: none;
 }
-.nav .nav-logo-btn:hover {
+.nav .button-containter .nav-logo-btn:hover {
   cursor: pointer;
 }
-.nav .moving-mypage-button {
-  position: relative;
-  left: 58rem;
+.nav .button-containter .moving-mypage-button {
+  position: absolute;
+  right: 0;
   border: none;
   outline: none;
   background-color: inherit;
 }
-.nav .moving-mypage-button:hover {
+.nav .button-containter .moving-mypage-button:hover {
   cursor: pointer;
 }
-.nav .moving-mypage-button .nav-profile-img {
+.nav .button-containter .moving-mypage-button .nav-profile-img {
   width: auto;
   height: auto;
   border-radius: 12.5rem;
