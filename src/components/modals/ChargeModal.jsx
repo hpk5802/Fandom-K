@@ -16,6 +16,7 @@ const ChargeModal = ({onClose}) => {
   };
 
   const handleCharge = () => {
+    localStorage.setItem('myCredits', selectedOption);
     alert(`${selectedOption} 크레딧이 충전되었습니다.`);
     onClose();
   };

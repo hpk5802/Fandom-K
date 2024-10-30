@@ -2,10 +2,11 @@ import React, {useState} from 'react';
 import parseImg from 'utils/images';
 import GradientButton from 'components/common/GradientButton';
 
-const DonationModal = ({onClose, myCredits = '1000'}) => {
+const DonationModal = ({onClose}) => {
   const [credit, setCredit] = useState('');
   const [hasError, setHasError] = useState(false);
   const [isButtonDisabled, setIsButtonDisabled] = useState(true);
+  const myCredits = localStorage.getItem('myCredits');
 
   const handleCreditChange = e => {
     const value = e.target.value;
@@ -22,6 +23,9 @@ const DonationModal = ({onClose, myCredits = '1000'}) => {
 
   const handleDonate = () => {
     if (credit) {
+      // 크레딧 계산 후 적용
+      localStorage.setItem('myCredits', myCredits - credit);
+
       alert(`${credit} 크레딧이 후원되었습니다.`);
       onClose();
     } else {
