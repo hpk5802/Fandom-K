@@ -3,6 +3,7 @@ import MonthlyChart from 'components/monthlyChart/MontlyChart';
 import GradientButton from 'components/common/GradientButton';
 import Modal from 'components/common/Modal';
 import {ChargeModal, DonationModal, AlertModal} from 'components/modals';
+import MyCredit from 'components/myCredit/MyCredit';
 
 function ListPage(props) {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -36,9 +37,7 @@ function ListPage(props) {
     <>
       <MonthlyChart />
       <hr />
-      <GradientButton name="" handleClick={handleChargeClick}>
-        크레딧 충전하기
-      </GradientButton>
+      <MyCredit onClick={handleChargeClick} />
       <GradientButton name="" handleClick={handleDonationClick}>
         응원하기
       </GradientButton>
