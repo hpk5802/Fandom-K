@@ -1,14 +1,14 @@
-import App from "pages/App";
-import Components from "pages/Components";
-import ModalComponent from "pages/ModalComponent";
+import App from 'pages/App';
+import Components from 'pages/Components';
+import ModalComponent from 'pages/ModalComponent';
 
 const routes = [
   {
-    path: "/",
+    path: '/',
     element: <App />,
   },
   {
-    path: "/components",
+    path: '/components',
     element: <Components />,
   },
   {
