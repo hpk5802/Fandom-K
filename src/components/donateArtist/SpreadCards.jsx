@@ -8,7 +8,7 @@ function SpreadCards({lists}) {
         return (
           <CardSection
             key={id}
-            imgIdol={idol.profilePicture}
+            idol={idol}
             adLocation={subtitle}
             donationTitle={title}
             receivedDonations={receivedDonations}

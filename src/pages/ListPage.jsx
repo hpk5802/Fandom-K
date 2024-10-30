@@ -1,9 +1,11 @@
 import React, {useState} from 'react';
 import MonthlyChart from 'components/monthlyChart/MontlyChart';
+import Nav from 'components/nav/Nav';
+import MyCredit from 'components/myCredit/MyCredit';
+import DonateArtist from 'components/donateArtist/DonateArtist';
 import GradientButton from 'components/common/GradientButton';
 import Modal from 'components/common/Modal';
 import {ChargeModal, DonationModal, AlertModal} from 'components/modals';
-import MyCredit from 'components/myCredit/MyCredit';
 
 function ListPage(props) {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -35,20 +37,23 @@ function ListPage(props) {
   };
   return (
     <>
-      <MonthlyChart />
-      <hr />
-      <MyCredit onClick={handleChargeClick} />
-      <GradientButton name="" handleClick={handleDonationClick}>
-        응원하기
-      </GradientButton>
-      <GradientButton name="" handleClick={handleAlertClick}>
-        알림
-      </GradientButton>
-      {isModalOpen && (
-        <Modal title={modalTitle} onClose={closeModal}>
-          {modalContent}
-        </Modal>
-      )}
+      <Nav />
+      <div className="container" style={{backgroundColor: '#02000E'}}>
+        <MyCredit onClick={handleChargeClick} />    
+        <DonateArtist />
+        <MonthlyChart />
+        <GradientButton name="" handleClick={handleDonationClick}>
+          응원하기
+        </GradientButton>
+        <GradientButton name="" handleClick={handleAlertClick}>
+          알림
+        </GradientButton>
+        {isModalOpen && (
+          <Modal title={modalTitle} onClose={closeModal}>
+            {modalContent}
+          </Modal>
+        )}
+      </div>
     </>
   );
 }

@@ -6,12 +6,11 @@ function ArtistCreditBar({receivedDonations, deadline, targetDonation}) {
     <div className="artist-donation-container">
       <div className="artist-donation-top">
         <div className="artist-donation-left">
-          <img src={parseImg('ic_credit.svg')} alt="Credit Icon" className="artist-credit-icon" />
+          <img src={parseImg('ic_creditIcon.svg')} alt="Credit Icon" className="artist-credit-icon" />
           <div className="received-credit">{receivedDonations}</div>
         </div>
         <div className="deadline artist-donation-right">{`${calculateExpire(deadline)}일 남음`}</div>
       </div>
-
       <div className="artist-donation-bottom credit-gauge-bar-container">
         <div className="gauge-bar" style={{width: `${calculatePercentage(receivedDonations, targetDonation)}%`}}></div>
       </div>
