@@ -2,7 +2,7 @@ import GradientButton from 'components/common/GradientButton';
 import ProfileBadge from 'components/common/ProfileBadge';
 import ProfileDelete from 'components/common/ProfileDelete';
 import Nav from 'components/nav/Nav';
-import FavoriteArtists from 'components/favoriteArtists/FavoriteArtists';
+import AddArtists from 'components/addArtists/AddArtists';
 
 function Components() {
   const handleProfileDelete = value => {
@@ -11,7 +11,7 @@ function Components() {
   return (
     <>
       <Nav />
-      <FavoriteArtists />
+      <AddArtists />
       <div
         style={{
           padding: '1rem',

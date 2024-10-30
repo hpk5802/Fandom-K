@@ -1338,6 +1338,109 @@ button:disabled {
   color: var(--brand-orange);
 }
 
+.entire-add-artists {
+  display: flex;
+  flex-direction: column;
+  width: auto;
+  height: auto;
+  padding-top: 4rem;
+  padding-bottom: 8.1rem;
+  background-color: var(--rich-black);
+}
+.entire-add-artists .add-artists-title {
+  margin-left: 6.2rem;
+  color: var(--white-smoke);
+  font-size: 2.4rem;
+  line-height: 2.6rem;
+  font-weight: var(--bold);
+}
+.entire-add-artists .add-artists-list {
+  display: flex;
+  align-items: center;
+  width: auto;
+  gap: 3.3rem; /*시안상 3.2나 3.4로 되어 있어서 3.3으로 맞출게요!*/
+  margin-top: 3.2rem;
+}
+.entire-add-artists .add-artists-list .order-button {
+  width: 2.9rem;
+  height: 13.5rem;
+  border-radius: 0.4rem;
+  background: rgba(27, 27, 27, 0.8);
+}
+.entire-add-artists .add-artists-list .order-button:hover {
+  cursor: pointer;
+  box-shadow: inset 0 0 1rem rgba(255, 255, 255, 0.1);
+  transition: 0.5s;
+}
+.entire-add-artists .add-artists-list .add-artists-container {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  width: auto;
+  -moz-column-gap: 2.4rem;
+       column-gap: 2.4rem;
+  row-gap: 3.2rem;
+}
+.entire-add-artists .add-artists-list .add-artists-container .add-artist-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: auto;
+  gap: 0.8rem;
+}
+.entire-add-artists .add-artists-list .add-artists-container .add-artist-content .add-artists-text {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: auto;
+  gap: 0.2rem;
+}
+.entire-add-artists .add-artists-list .add-artists-container .add-artist-content .add-artists-text .add-artists-name {
+  color: var(--white-smoke);
+  font-size: 1.6rem;
+  line-height: 2.7rem;
+  font-weight: var(--bold);
+}
+.entire-add-artists .add-artists-list .add-artists-container .add-artist-content .add-artists-text .add-artists-group {
+  color: rgba(255, 255, 255, 0.6);
+  font-size: 1.4rem;
+  line-height: 1.6rem;
+  font-weight: var(--normal);
+}
+.entire-add-artists .add-button-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: auto;
+  margin-top: 4.8rem;
+}
+.entire-add-artists .add-button-container .add-button {
+  width: 25.5rem;
+  height: 4.8rem;
+  border-radius: 2.4rem;
+  color: rgba(255, 255, 255, 0.8);
+  background: linear-gradient(90deg, #f86f65 0%, var(--brand-pink) 51%, #f86f65);
+  background-size: 300%; /* 배경 크기 */
+  background-position: 0; /* 초기 배경 위치 */
+  transition: 0.5s;
+}
+.entire-add-artists .add-button-container .add-button:hover {
+  cursor: pointer;
+  color: var(--white);
+  text-shadow: 0 0 1rem rgba(255, 255, 255, 0.2);
+  box-shadow: 0 0 2rem rgba(255, 255, 255, 0.3);
+  background-position: 99%;
+}
+.entire-add-artists .add-button-container .add-button .add-button-content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: auto;
+  gap: 0.1rem;
+  font-size: 1.6rem;
+  line-height: 2.6rem;
+  font-weight: var(--bold);
+}
+
 .favorite-artist-container {
   display: flex;
   flex-direction: column;

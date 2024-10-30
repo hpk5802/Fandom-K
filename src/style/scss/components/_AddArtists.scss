@@ -1,5 +1,110 @@
-.entire-add-artists{
-  width: 125.6rem;
-  height: 67.3rem;
-  margin-top: 4rem;
+// 일단 전체를 잡아주는 태그에는 align-items:center을 넣지 않았는데 
+// 넣으면 관심있는 아이돌 추가해보세요(.add-artists-title) 부분이 간격이 맞지 않아서요ㅠ
+// myPage 컴포넌트에서 넣어도 될 것 같아서 넣지 않았습니다!
+// 버튼 스타일이 시안과 다른 효과들이 더러 있는데, 
+// listPage의 버튼 스타일과 비슷한 부분이 많아서 해당 페이지랑 통일해놨어요!
+// 프로필 배지에 hover 상태일 때 cursor:pointer이랑 box-shadow 있으면 좋을 것 같은데
+// className 적용이 안되어서 일단 비워뒀어요! 
+// 보시고 수정이 필요한 부분이 있으시면 수정하시면 될 것 같아요~! 오늘도 파이팅입니당 :)
+
+.entire-add-artists {
+  display: flex;
+  flex-direction: column;
+  width: auto;
+  height: auto;
+  padding-top: 4rem;
+  padding-bottom: 8.1rem;
+  background-color: var(--rich-black);
+  .add-artists-title {
+    margin-left: 6.2rem;
+    color: var(--white-smoke);
+    font-size: 2.4rem;
+    line-height: 2.6rem;
+    font-weight: var(--bold);
+  }
+  .add-artists-list {
+    display: flex;
+    align-items: center;
+    width: auto;
+    gap: 3.3rem; /*시안상 3.2나 3.4로 되어 있어서 3.3으로 맞출게요!*/
+    margin-top: 3.2rem;
+    .order-button {
+      width: 2.9rem;
+      height: 13.5rem;
+      border-radius: 0.4rem;
+      background: rgba(27, 27, 27, 0.8);
+      &:hover {
+        cursor: pointer;
+        box-shadow: inset 0 0 1rem rgba(255, 255, 255, 0.1);
+        transition: 0.5s;
+      }
+    }
+    .add-artists-container {
+      display: grid;
+      grid-template-columns: repeat(7, 1fr);
+      width: auto;
+      column-gap: 2.4rem;
+      row-gap: 3.2rem;
+      .add-artist-content {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: auto;
+        gap: 0.8rem;
+        .add-artists-text {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          width: auto;
+          gap: 0.2rem;
+          .add-artists-name {
+            color: var(--white-smoke);
+            font-size: 1.6rem;
+            line-height: 2.7rem;
+            font-weight: var(--bold);
+          }
+          .add-artists-group {
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 1.4rem;
+            line-height: 1.6rem;
+            font-weight: var(--normal);
+          }
+        }
+      }
+    }
+  }
+  .add-button-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: auto;
+    margin-top: 4.8rem;
+    .add-button {
+      width: 25.5rem;
+      height: 4.8rem;
+      border-radius: 2.4rem;
+      color: rgba(255, 255, 255, 0.8);
+      background: linear-gradient(90deg, #f86f65 0%, var(--brand-pink) 51%, #f86f65);
+      background-size: 300%; /* 배경 크기 */
+      background-position: 0; /* 초기 배경 위치 */
+      transition: 0.5s;
+      &:hover {
+        cursor: pointer;
+        color: var(--white);
+        text-shadow: 0 0 1rem rgba(255, 255, 255, 0.2);
+        box-shadow: 0 0 2rem rgba(255, 255, 255, 0.3);
+        background-position: 99%;
+      }
+      .add-button-content {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: auto;
+        gap: 0.1rem;
+        font-size: 1.6rem;
+        line-height: 2.6rem;
+        font-weight: var(--bold);
+      }
+    }
+  }
 }
