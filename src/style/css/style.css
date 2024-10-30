@@ -1338,41 +1338,59 @@ button:disabled {
   color: var(--brand-orange);
 }
 
-.favorite-artist-container {
+.entire-add-artists {
+  width: 125.6rem;
+  height: 67.3rem;
+  margin-top: 4rem;
+}
+
+.entire-favorite-artist {
   display: flex;
   flex-direction: column;
+  width: auto;
+  margin: 0 auto;
   background-color: var(--rich-black);
   padding-top: 7.6rem;
   padding-bottom: 4rem;
   border-bottom: solid 0.1rem rgba(255, 255, 255, 0.1);
 }
-.favorite-artist-container .favorite-artist-title {
-  color: #f6f6f8;
+.entire-favorite-artist .favorite-artist-title {
+  color: var(--white-smoke);
   font-size: 2.4rem;
   line-height: 2.6rem;
   font-weight: var(--bold);
   padding-bottom: 3.2rem;
 }
-.favorite-artist-container .favorite-artist {
-  display: flex;
-  flex-direction: column;
-  width: 9.8rem;
-  height: 15rem;
-  gap: 0.8rem; /*타 아이돌과 간격이 24px이므로 grid container로 예상*/
+.entire-favorite-artist .favorite-artists-container {
+  display: grid;
+  grid-template-columns: repeat(10, 1fr);
+  align-items: center;
+  width: auto;
+  height: 18.3rem;
+  gap: 2.4rem;
 }
-.favorite-artist-container .favorite-artist .artist-info {
+.entire-favorite-artist .favorite-artists-container .favorite-artist {
   display: flex;
   flex-direction: column;
   align-items: center;
+  width: auto;
+  height: auto;
+  gap: 0.8rem;
+}
+.entire-favorite-artist .favorite-artists-container .favorite-artist .artist-info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: auto;
   gap: 0.2rem;
 }
-.favorite-artist-container .favorite-artist .artist-info .artist-name {
+.entire-favorite-artist .favorite-artists-container .favorite-artist .artist-info .artist-name {
   color: #f4efef;
   font-size: 1.6rem;
   line-height: 2.6rem;
   font-weight: var(--bold);
 }
-.favorite-artist-container .favorite-artist .artist-info .artist-group {
+.entire-favorite-artist .favorite-artists-container .favorite-artist .artist-info .artist-group {
   color: rgba(255, 255, 255, 0.6);
   font-size: 1.4rem;
   line-height: 1.6rem;
