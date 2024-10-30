@@ -1328,3 +1328,9 @@ button:disabled {
 .alert-modal .desc span {
   color: var(--brand-orange);
 }
+
+.entire-add-artists {
+  width: 125.6rem;
+  height: 67.3rem;
+  margin-top: 4rem;
+}
