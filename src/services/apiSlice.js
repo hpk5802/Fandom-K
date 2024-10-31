@@ -6,17 +6,33 @@ import {fetchCharts} from './chartApi';
 export const getIdols = createAsyncThunk('data/getIdols', fetchIdols);
 export const getDonations = createAsyncThunk('data/getDonations', fetchDonations);
 export const getCharts = createAsyncThunk('data/getCharts', fetchCharts);
+export const getfavoriteCharts = createAsyncThunk('data/getfavoriteCharts', fetchCharts);
 export const setDonation = createAsyncThunk('data/updateDonationAmount', updateDonation);
 
 const apiSlice = createSlice({
   name: 'data',
-  initialState: {myCredits: 36000, idols: {list: []}, donations: {list: [], nextCursor: null}, charts: {idols: []}, status: 'idle', error: null},
+  initialState: {
+    myCredits: +localStorage.getItem('myCredits'),
+    myFavoriteArtists: JSON.parse(localStorage.getItem('myFavoriteArtists')),
+    idols: {list: []},
+    donations: {list: [], nextCursor: null},
+    charts: {idols: []},
+    status: 'idle',
+    error: null,
+  },
   reducers: {
     increseCredit: (state, action) => {
       state.myCredits += action.payload;
     },
     decreseCredit: (state, action) => {
       state.myCredits -= action.payload;
+    },
+    addFavorite: (state, action) => {
+      state.myCredits = [...state.myCredits, action.payload];
+    },
+    removeFavorite: (state, action) => {
+      const getArtistes = state.myCredits.filter(dt => dt.id !== action.payload);
+      state.myCredits = getArtistes;
     },
   },
   extraReducers: builder => {
@@ -29,11 +45,16 @@ const apiSlice = createSlice({
         state.donations.nextCursor = action.payload.nextCursor;
       })
       .addCase(getCharts.fulfilled, (state, action) => {
+        // 이달의 차트
+        state.charts = action.payload;
+      })
+      .addCase(getfavoriteCharts.fulfilled, (state, action) => {
+        // 관심있는 아이돌
         state.charts = action.payload;
       });
   },
 });
 
-export const {increseCredit, decreseCredit} = apiSlice.actions;
+export const {increseCredit, decreseCredit, addFavorite, removeFavorite} = apiSlice.actions;
 
 export default apiSlice.reducer;

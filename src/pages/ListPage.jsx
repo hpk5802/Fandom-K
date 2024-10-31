@@ -6,6 +6,7 @@ import DonateArtist from 'components/donateArtist/DonateArtist';
 import GradientButton from 'components/common/GradientButton';
 import Modal from 'components/common/Modal';
 import {ChargeModal, DonationModal, AlertModal} from 'components/modals';
+import FavoriteArtists from 'components/favoriteArtists/FavoriteArtists';
 
 function ListPage() {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -40,8 +41,13 @@ function ListPage() {
       <Nav />
       <div className="container" style={{backgroundColor: '#02000E', width: '100%', overflowX: 'hidden'}}>
         <MyCredit onClick={handleChargeClick} />
+        <hr />
         <DonateArtist />
+        <hr />
         <MonthlyChart />
+        <hr />
+        <FavoriteArtists />
+        <hr />
         <GradientButton name="" handleClick={handleDonationClick}>
           응원하기
         </GradientButton>
