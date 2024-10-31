@@ -1321,6 +1321,12 @@ button:disabled {
   color: var(--brand-orange);
 }
 
+.entire-add-artists {
+  width: 125.6rem;
+  height: 67.3rem;
+  margin-top: 4rem;
+}
+
 .favorite-artist-container {
   display: flex;
   flex-direction: column;
