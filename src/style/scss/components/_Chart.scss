@@ -5,7 +5,8 @@
   background-color: var(--rich-black);
   .chart-title-content {
     display: flex;
-    width: auto;
+    width: 100%;
+    margin: 0 auto;
     height: auto;
     .chart-title-btn {
       display: flex;
@@ -31,14 +32,21 @@
       border-radius: 0.6rem;
       color: var(--white);
       background-color: rgba(255, 255, 255, 0.05);
-      box-shadow: inset 0.2rem 0.2rem 1rem 0.1rem rgba(20, 195, 254, 0.2); 
+      box-shadow: inset 0.2rem 0.2rem 1rem 0.1rem rgba(20, 195, 254, 0.2);
       border-bottom: solid 0.1rem rgba(255, 255, 255, 0.7);
-      transition: 0.5s;}
+      transition: 0.5s;
+    }
     .chart-title-btn-text {
       font-weight: var(--normal);
       font-size: 1.4rem;
       line-height: 1.8rem;
       color: var(--sonic-silver);
     }
+  }
+}
+
+@media (max-width: 32.7rem) {
+  .chart {
+    gap: 1.6rem;
   }
 }
