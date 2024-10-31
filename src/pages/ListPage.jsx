@@ -39,7 +39,7 @@ function ListPage() {
   return (
     <>
       <Nav />
-      <div className="container" style={{backgroundColor: '#02000E'}}>
+      <div className="container" style={{backgroundColor: '#02000E', width: '100%', overflowX: 'hidden'}}>
         <MyCredit onClick={handleChargeClick} />
         <hr />
         <DonateArtist />
