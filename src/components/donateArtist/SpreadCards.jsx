@@ -16,13 +16,13 @@ function SpreadCards({lists, isDesktop, fetchMoreDonations}) {
 
   useEffect(() => {
     const observer = new IntersectionObserver(handleObserver, {
-      root: endRef.current?.parentNode, // 부모 요소 기준으로
+      root: endRef.current?.parentNode,
       rootMargin: '0px',
-      threshold: 1.0, // 완전히 노출될 때
+      threshold: 1.0,
     });
     const currentEndRef = endRef.current;
 
-    if (currentEndRef) {
+    if (!isDesktop && currentEndRef) {
       observer.observe(currentEndRef);
     }
 
@@ -31,7 +31,7 @@ function SpreadCards({lists, isDesktop, fetchMoreDonations}) {
         observer.unobserve(currentEndRef);
       }
     };
-  }, [handleObserver]);
+  }, [handleObserver, isDesktop]);
   return (
     <div className="cards-container">
       {lists.map(list => {
