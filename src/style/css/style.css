@@ -929,6 +929,11 @@ button:disabled {
   width: 100%;
   height: 40.2rem;
   margin: 0 auto;
+  overflow: hidden;
+}
+.pagination-container .end-point {
+  width: 0.1rem;
+  height: 100%;
 }
 .pagination-container .pagination-icon {
   position: absolute;
@@ -1048,13 +1053,6 @@ button:disabled {
 }
 
 @media (max-width: 1200px) {
-  .pagination-container {
-    gap: 40px;
-    margin: 0 auto;
-  }
-  .pagination-container .pagination-icon {
-    display: none;
-  }
   .pagination-container .cards-container {
     width: auto;
     gap: 1.6rem;
@@ -1319,6 +1317,12 @@ button:disabled {
 }
 .alert-modal .desc span {
   color: var(--brand-orange);
+}
+
+.entire-add-artists {
+  width: 125.6rem;
+  height: 67.3rem;
+  margin-top: 4rem;
 }
 
 .favorite-artist-container {
