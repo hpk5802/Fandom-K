@@ -1,3 +1,6 @@
+$h-padding: 1.6rem;
+$h-padding-dbl: $h-padding * 2;
+
 .modal-overlay {
   z-index: 999;
   position: fixed;
@@ -14,10 +17,9 @@
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: 32.7rem;
   max-width: calc(100% - 3.2rem);
   min-width: 25rem;
-  padding: 2.4rem 1.6rem 3.2rem;
+  padding: 2.4rem $h-padding 3.2rem;
   font-size: 1.4rem;
   color: var(--white-smoke);
   background-color: var(--eerie-black);
@@ -30,12 +32,13 @@
     object-fit: contain;
   }
 
-  .button-gradient.h42 {
+  .button-gradient {
     height: 4.2rem;
     width: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
+    font-weight: var(--bold);
   }
 }
 
@@ -58,6 +61,8 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  max-width: 100%;
+  color: var(--white);
 }
 
 // 라디오버튼 커스텀
@@ -104,6 +109,7 @@
 //충전하기 모달
 .charge-modal {
   margin-top: 2.4rem;
+  width: calc(32.7rem - #{$h-padding-dbl});
   font-weight: var(--bold);
   line-height: 2.6rem;
 
@@ -127,7 +133,7 @@
       width: 1.6rem;
       height: 1.6rem;
       position: relative;
-  
+
       img {
         position: absolute;
         top: -0.6rem;
@@ -159,6 +165,7 @@
 //응원하기 모달
 .donation-modal {
   margin-top: 2.4rem;
+  width: calc(32.7rem - #{$h-padding-dbl});
 
   .card {
     width: 15.8rem;
@@ -190,6 +197,7 @@
       &.card-tit {
         font-size: 1.4rem;
         font-weight: var(--medium);
+        color: var(--white-smoke);
       }
     }
   }
@@ -203,7 +211,6 @@
       align-items: center;
       gap: 0.8rem;
       padding: 1.6rem;
-      width: 100%;
       border: 1px solid var(--white);
       border-radius: 0.8rem;
       background-color: #272f3d;
@@ -213,6 +220,7 @@
       }
 
       input {
+        width: 100%;
         appearance: none;
         border: none;
         outline: none;
@@ -234,7 +242,7 @@
       }
 
       input[type='number'] {
-        -moz-appearance: textfield; //
+        -moz-appearance: textfield;
 
         &::-webkit-inner-spin-button,
         &::-webkit-outer-spin-button {
@@ -256,9 +264,67 @@
   }
 }
 
+// 투표하기 모달
+.vote-modal {
+  margin-top: 2rem;
+  width: calc(52.5rem - #{$h-padding-dbl});
+
+  .vote-list {
+    width: 100%;
+    max-height: 43.5rem;
+    overflow: auto;
+
+    label {
+      padding-bottom: 0.8rem;
+      margin-bottom: 0.8rem;
+      justify-content: space-between;
+      width: 100%;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+
+      .vote-item {
+        display: flex;
+        align-items: center;
+        gap: 1.2rem;
+
+        .vote-num {
+          color: var(--brand-orange);
+        }
+
+        .vote-info {
+          display: flex;
+          flex-direction: column;
+          gap: 0.4rem;
+
+          .name {
+            font-weight: var(--medium);
+          }
+
+          .count {
+            display: flex;
+            opacity: 0.6;
+            white-space: nowrap;
+          }
+        }
+      }
+    }
+  }
+  .button-gradient {
+    margin-top: 2rem;
+  }
+  .desc {
+    margin: 1.2rem 0 0;
+    font-weight: var(--medium);
+
+    span {
+      color: var(--brand-orange);
+    }
+  }
+}
+
 // 알림 모달
 .alert-modal {
   margin-top: 0.8rem;
+  width: calc(34.3rem - #{$h-padding-dbl});
 
   .img-credit-lg {
     width: 11.3rem;
