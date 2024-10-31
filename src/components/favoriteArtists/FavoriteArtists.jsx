@@ -2,8 +2,8 @@ import ProfileDelete from 'components/common/ProfileDelete';
 
 function FavoriteArtists({handleDelete}) {
   return (
-    <div className="entire-favorite-artist">
-      <div className="favorite-artist-title" /*로컬 스토리지 관리부분*/>내가 관심있는 아이돌</div>
+    <div className="entire-favorite-artist" /*로컬 스토리지 관리부분*/>
+      <div className="favorite-artist-title">내가 관심있는 아이돌</div>
       <div className="favorite-artists-container">
         <div className="favorite-artist">
           <ProfileDelete img="img_idol_example.svg" size="medium" onClick={handleDelete} /*x버튼 누르면 삭제 */ />
