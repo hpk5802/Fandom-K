@@ -2,10 +2,11 @@ import ArtistCreditBar from './ArtistCreditBar';
 import GradientButton from 'components/common/GradientButton';
 
 function CardSection({idol, adLocation, donationTitle, receivedDonations, deadline, targetDonation}) {
+  const {profilePicture, group, name} = idol;
   return (
     <div className="card-container">
       <div className="card-top-wrapper">
-        <img src={idol.profilePicture} className="card-img" alt={`${idol.group} ${idol.name}`} />
+        <img src={profilePicture} className="card-img" alt={`${group} ${name}`} />
         <GradientButton name="donation-button">응원하기</GradientButton>
       </div>
       <div className="card-texts">

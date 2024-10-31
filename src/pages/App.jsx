@@ -1,9 +1,13 @@
 import {useEffect} from 'react';
 
 function App() {
+  // localStorage 초기 값 설정
   useEffect(() => {
-    // 초기 크레딧 로컬 스토리지에 충전
-    localStorage.setItem('myCredits', 36000);
+    const getCredits = localStorage.getItem('myCredits');
+    if (!getCredits) {
+      localStorage.setItem('myCredits', '0');
+      localStorage.setItem('myFavoriteArtists', '[]');
+    }
   });
   return <>FANDOM-K</>;
 }
