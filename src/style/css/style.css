@@ -610,6 +610,9 @@ button:disabled {
   background-position: center;
   border: 0.27rem solid #02000e;
 }
+.profile-delete:hover {
+  background-color: rgba(255, 255, 255, 0.8);
+}
 .profile-delete .profile-delete-img {
   position: absolute;
   left: 23%;
