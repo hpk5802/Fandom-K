@@ -13,6 +13,7 @@ const apiSlice = createSlice({
   name: 'data',
   initialState: {
     myCredits: +localStorage.getItem('myCredits'),
+    myFavoriteArtists: JSON.parse(localStorage.getItem('myFavoriteArtists')),
     idols: {list: []},
     donations: {list: [], nextCursor: null},
     charts: {idols: []},
@@ -25,6 +26,13 @@ const apiSlice = createSlice({
     },
     decreseCredit: (state, action) => {
       state.myCredits -= action.payload;
+    },
+    addFavorite: (state, action) => {
+      state.myCredits = [...state.myCredits, action.payload];
+    },
+    removeFavorite: (state, action) => {
+      const getArtistes = state.myCredits.filter(dt => dt.id !== action.payload);
+      state.myCredits = getArtistes;
     },
   },
   extraReducers: builder => {
@@ -47,6 +55,6 @@ const apiSlice = createSlice({
   },
 });
 
-export const {increseCredit, decreseCredit} = apiSlice.actions;
+export const {increseCredit, decreseCredit, addFavorite, removeFavorite} = apiSlice.actions;
 
 export default apiSlice.reducer;
