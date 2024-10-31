@@ -6,11 +6,19 @@ import {fetchCharts} from './chartApi';
 export const getIdols = createAsyncThunk('data/getIdols', fetchIdols);
 export const getDonations = createAsyncThunk('data/getDonations', fetchDonations);
 export const getCharts = createAsyncThunk('data/getCharts', fetchCharts);
+export const getfavoriteCharts = createAsyncThunk('data/getfavoriteCharts', fetchCharts);
 export const setDonation = createAsyncThunk('data/updateDonationAmount', updateDonation);
 
 const apiSlice = createSlice({
   name: 'data',
-  initialState: {myCredits: 36000, idols: {list: []}, donations: {list: [], nextCursor: null}, charts: {idols: []}, status: 'idle', error: null},
+  initialState: {
+    myCredits: +localStorage.getItem('myCredits'),
+    idols: {list: []},
+    donations: {list: [], nextCursor: null},
+    charts: {idols: []},
+    status: 'idle',
+    error: null,
+  },
   reducers: {
     increseCredit: (state, action) => {
       state.myCredits += action.payload;
@@ -31,8 +39,10 @@ const apiSlice = createSlice({
       .addCase(getCharts.fulfilled, (state, action) => {
         // 이달의 차트
         state.charts = action.payload;
+      })
+      .addCase(getfavoriteCharts.fulfilled, (state, action) => {
         // 관심있는 아이돌
-        localStorage.setItem('idols', JSON.stringify(action.payload));
+        state.charts = action.payload;
       });
   },
 });
