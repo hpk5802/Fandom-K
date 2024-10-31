@@ -40,8 +40,11 @@ function ListPage() {
       <Nav />
       <div className="container" style={{backgroundColor: '#02000E'}}>
         <MyCredit onClick={handleChargeClick} />
+        <hr />
         <DonateArtist />
+        <hr />
         <MonthlyChart />
+        <hr />
         <GradientButton name="" handleClick={handleDonationClick}>
           응원하기
         </GradientButton>

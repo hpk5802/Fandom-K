@@ -29,7 +29,10 @@ const apiSlice = createSlice({
         state.donations.nextCursor = action.payload.nextCursor;
       })
       .addCase(getCharts.fulfilled, (state, action) => {
+        // 이달의 차트
         state.charts = action.payload;
+        // 관심있는 아이돌
+        localStorage.setItem('idols', JSON.stringify(action.payload));
       });
   },
 });
