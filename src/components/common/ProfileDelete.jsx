@@ -6,9 +6,9 @@ import parseImg from 'utils/images';
 function ProfileDelete({img, src, size, onClick, ...props}) {
   return (
     <ProfileBadge img={img} src={src} size={size}>
-      <div className={classes('profile-delete', size)} onClick={onClick} {...props}>
+      <button className={classes('profile-delete', size)} onClick={onClick} {...props}>
         <img className={classes('profile-delete-img', size)} src={parseImg('ic_cancel.svg')} alt="deleted" />
-      </div>
+      </button>
     </ProfileBadge>
   );
 }
