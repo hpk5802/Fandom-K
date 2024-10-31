@@ -1327,7 +1327,6 @@ button:disabled {
   margin-top: 4rem;
 }
 
-.favorite-artist-container {
 .entire-favorite-artist {
   display: flex;
   flex-direction: column;
