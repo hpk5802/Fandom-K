@@ -1,7 +1,8 @@
+import {useSelector} from 'react-redux';
 import parseImg from 'utils/images';
 
 function MyCredit({onClick}) {
-  const myCredit = localStorage.getItem('myCredits');
+  const myCredit = useSelector(state => state.data.myCredits);
   return (
     <div className="my-credit">
       <div className="credit-box">
