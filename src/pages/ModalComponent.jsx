@@ -4,6 +4,7 @@ import Modal from 'components/common/Modal';
 import ChargeModal from 'components/modals/ChargeModal';
 import DonationModal from 'components/modals/DonationModal';
 import AlertModal from 'components/modals/AlertModal';
+import VoteModal from 'components/modals/VoteModal';
 
 const ModalComponent = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -30,6 +31,10 @@ const ModalComponent = () => {
     openModal('응원하기', <DonationModal onClose={closeModal} />);
   };
 
+  const handleVoteClick = () => {
+    openModal('이달의 여자 아이돌', <VoteModal onClose={closeModal} />);
+  };
+
   const handleAlertClick = () => {
     openModal('', <AlertModal onClose={closeModal} />);
   };
@@ -41,6 +46,9 @@ const ModalComponent = () => {
       </GradientButton>
       <GradientButton name="" handleClick={handleDonationClick}>
         응원하기
+      </GradientButton>
+      <GradientButton name="" handleClick={handleVoteClick}>
+        투표하기
       </GradientButton>
       <GradientButton name="" handleClick={handleAlertClick}>
         알림
