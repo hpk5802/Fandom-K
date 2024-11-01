@@ -750,12 +750,20 @@ button:disabled {
 }
 
 @media (max-width: 120rem) {
+  .my-credit {
+    margin-top: 0;
+    margin-bottom: 6.4rem;
+  }
   .my-credit .credit-box {
     width: 70rem;
     padding: 3rem 6.4rem;
   }
 }
 @media (max-width: 74.4rem) {
+  .my-credit {
+    margin-top: 1.6rem;
+    margin-bottom: 4rem;
+  }
   .my-credit .credit-box {
     width: 32.7rem;
     height: 8.7rem;
