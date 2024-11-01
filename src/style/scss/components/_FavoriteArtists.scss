@@ -1,7 +1,8 @@
 .entire-favorite-artist {
   display: flex;
   flex-direction: column;
-  width: auto;
+  width: 100%;
+  max-width: 120rem;
   margin: 0 auto;
   background-color: var(--rich-black);
   padding-top: 7.6rem;
@@ -47,6 +48,33 @@
           font-weight: var(--normal);
         }
       }
+    }
+  }
+}
+
+@media (max-width: 120rem) {
+  /* tablet */
+  .entire-favorite-artist {
+    max-width: 70rem;
+    padding-top: 1.4rem;
+    padding-bottom: 3.2rem;
+    .favorite-artist-title {
+      font-size: 2rem;
+      padding-bottom: 2.5rem;
+    }
+  }
+}
+
+@media (max-width: 74.4rem) {
+  /*mobile*/
+  .entire-favorite-artist {
+    max-width: 32.7rem;
+    .favorite-artist-title {
+      font-size: 1.6rem;
+      padding-bottom: 1.2rem;
+    }
+    .favorite-artists-container {
+      gap: 0.4rem;
     }
   }
 }
