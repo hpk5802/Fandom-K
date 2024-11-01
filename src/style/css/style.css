@@ -798,7 +798,7 @@ button:disabled {
   background-position: 99%;
 }
 
-@media (max-width: 74.4rem) and (min-width: 37.5rem) {
+@media (max-width: 120rem) {
   /*tablet*/
   .monthly-chart-container .monthly-chart {
     max-width: 70rem;
@@ -807,7 +807,7 @@ button:disabled {
     font-size: 2rem;
   }
 }
-@media (max-width: 37.4rem) {
+@media (max-width: 74.4rem) {
   /*mobile*/
   .monthly-chart-container .monthly-chart {
     max-width: 32.7rem;
@@ -922,7 +922,7 @@ button:disabled {
   border-bottom: none;
 }
 
-@media (max-width: 74.4rem) {
+@media (max-width: 120rem) {
   /*tablet*/
   .chart-rank-content {
     grid-template-columns: repeat(1, 1fr);
