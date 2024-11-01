@@ -6,7 +6,6 @@
   .chart-title-content {
     display: flex;
     width: 100%;
-    margin: 0 auto;
     height: auto;
     .chart-title-btn {
       display: flex;
@@ -45,7 +44,7 @@
   }
 }
 
-@media (max-width: 32.7rem) {
+@media (max-width: 37.4rem) {
   .chart {
     gap: 1.6rem;
   }

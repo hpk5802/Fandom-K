@@ -1,11 +1,12 @@
 .monthly-chart-container {
   display: flex;
   align-items: center;
-  max-width: 120rem;
+  width: 100%;
   .monthly-chart {
     display: flex;
     flex-direction: column;
-    width: 100%;
+    max-width: 120rem;
+    margin: 0 auto;
     gap: 2.4rem;
     background-color: var(--rich-black);
     .chart-header {
@@ -48,10 +49,11 @@
   }
 }
 
-@media (max-width: 74.4rem) and (min-width: 32.8rem) {
+@media (max-width: 74.4rem) and (min-width: 37.5rem) {
   /*tablet*/
   .monthly-chart-container {
     .monthly-chart {
+      max-width: 70rem;
       .chart-header {
         .chart-header-title {
           font-size: 2rem;
@@ -61,10 +63,11 @@
   }
 }
 
-@media (max-width: 32.7rem) {
+@media (max-width: 37.4rem) {
   /*mobile*/
   .monthly-chart-container {
     .monthly-chart {
+      max-width: 32.7rem;
       gap: 1.6rem;
       .chart-header {
         .chart-header-title {
