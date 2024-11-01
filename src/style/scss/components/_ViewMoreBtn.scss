@@ -27,3 +27,17 @@
     color: rgba(255, 255, 255, 0.8);
   }
 }
+
+@media (max-width: 120rem) {
+  /*tablet*/
+  .view-more-btn {
+    margin-top: 2.7rem;
+  }
+}
+
+@media (max-width: 74.4rem)  {
+  /*mobile*/
+  .view-more-btn {
+    margin-top: 3.3rem;
+  }
+}

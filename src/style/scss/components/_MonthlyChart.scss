@@ -1,6 +1,7 @@
 .monthly-chart-container {
   display: flex;
   align-items: center;
+  margin-top: 8rem;
   width: 100%;
   .monthly-chart {
     display: flex;
@@ -52,6 +53,7 @@
 @media (max-width: 120rem) {
   /*tablet*/
   .monthly-chart-container {
+    margin-top: 6rem;
     .monthly-chart {
       max-width: 70rem;
       .chart-header {
@@ -66,6 +68,7 @@
 @media (max-width: 74.4rem)  {
   /*mobile*/
   .monthly-chart-container {
+    margin-top: 4rem;
     .monthly-chart {
       max-width: 32.7rem;
       gap: 1.6rem;

@@ -49,25 +49,26 @@ function Chart() {
   if (loading) return '아티스트 정보를 불러오고 있습니다. 조금만 기다려 주세요!';
 
   return (
-    <div className="chart">
-      <div className="chart-title-content">
-        <button
-          type="button"
-          onClick={() => handleClick('female')}
-          className={`chart-title-btn chart-title-btn-text ${gender === 'female' ? 'active' : ''}`} /* 성별이 'female'일 때 active 클래스 추가 */
-        >
-          이달의 여자 아이돌
-        </button>
-        <button
-          type="button"
-          onClick={() => handleClick('male')}
-          className={`chart-title-btn chart-title-btn-text ${gender === 'male' ? 'active' : ''}`} /* 성별이 'male'일 때 active 클래스 추가 */
-        >
-          이달의 남자 아이돌
-        </button>
+    <div className="entire-chart">
+      <div className="chart-content">
+        <div className="chart-button-container">
+          <button
+            type="button"
+            onClick={() => handleClick('female')}
+            className={`chart-title-btn chart-title-btn-text ${gender === 'female' ? 'active' : ''}`} /* 성별이 'female'일 때 active 클래스 추가 */
+          >
+            이달의 여자 아이돌
+          </button>
+          <button
+            type="button"
+            onClick={() => handleClick('male')}
+            className={`chart-title-btn chart-title-btn-text ${gender === 'male' ? 'active' : ''}`} /* 성별이 'male'일 때 active 클래스 추가 */
+          >
+            이달의 남자 아이돌
+          </button>
+        </div>
+        <ChartRankContent artistData={artistData.slice(0, visibleCount)} />
       </div>
-
-      <ChartRankContent artistData={artistData.slice(0, visibleCount)} />
       <ViewMoreBtn onClick={handleViewMore}>더보기</ViewMoreBtn>
     </div>
   );
