@@ -1,12 +1,14 @@
 .my-credit {
   display: flex;
   justify-content: center;
+  width: 100%;
+  margin: 5rem 0;
   .credit-box {
     position: relative;
-    margin: 5rem 0;
     padding: 3rem 7.8rem;
     height: 13rem;
-    width: 120rem;
+    max-width: 120rem;
+    margin: 0 auto;
     background-color: var(--rich-black);
     border-radius: 0.8rem;
     border: solid 0.1rem rgba(100, 100, 100, 0.8);
@@ -51,6 +53,44 @@
           line-height: 2.6rem;
           color: var(--white);
           opacity: 0.9;
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 120rem) {
+  .my-credit {
+    .credit-box {
+      width: 70rem;
+      padding: 3rem 6.4rem;
+    }
+  }
+}
+
+@media (max-width: 74.4rem) {
+  .my-credit {
+    .credit-box {
+      width: 32.7rem;
+      height: 8.7rem;
+      padding: 2rem 2.5rem;
+      .credit-content {
+        .my-credit-text {
+          font-size: 1.2rem;
+          line-height: 1.4rem;
+        }
+        .charging-btn {
+          right: 3rem;
+          top: 2.5rem;
+          .charging-text {
+            font-size: 1.3rem;
+          }
+        }
+        .current-credit-content {
+          margin-top: 1.2rem;
+          .current-credit {
+            font-size: 1.3rem;
+          }
         }
       }
     }
