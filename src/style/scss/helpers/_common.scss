@@ -40,6 +40,8 @@ html {
 body {
   /* 1rem = html의 폰트 사이즈 */
   font-size: 1rem;
+  /* 기본 배경색 rich-black으로 통일 */
+  background-color: var(--rich-black);
 }
 
 button {
