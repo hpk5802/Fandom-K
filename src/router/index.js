@@ -1,5 +1,6 @@
 import Components from 'pages/Components';
 import ModalComponent from 'pages/ModalComponent';
+import ListPage from 'pages/ListPage';
 import LandingPage from 'pages/Landing';
 const routes = [
   {
@@ -13,6 +14,10 @@ const routes = [
   {
     path: '/modal-component',
     element: <ModalComponent />,
+  },
+  {
+    path: '/list-component',
+    element: <ListPage />,
   },
 ];
 
