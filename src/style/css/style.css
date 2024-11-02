@@ -791,11 +791,14 @@ button:disabled {
   align-items: center;
   margin-top: 8rem;
   width: 100%;
+  margin-bottom: 24.3rem;
 }
 .monthly-chart-container .monthly-chart {
   display: flex;
   flex-direction: column;
+  width: 100%;
   max-width: 120rem;
+  min-width: 32.7rem;
   margin: 0 auto;
   gap: 2.4rem;
   background-color: var(--rich-black);
@@ -838,26 +841,28 @@ button:disabled {
   background-position: 99%;
 }
 
-@media (max-width: 120rem) {
+@media (max-width: 1200px) {
   /*tablet*/
   .monthly-chart-container {
     margin-top: 6rem;
+    margin-bottom: 33rem;
   }
   .monthly-chart-container .monthly-chart {
-    max-width: 70rem;
+    padding: 0 2.2rem;
   }
   .monthly-chart-container .monthly-chart .chart-header .chart-header-title {
     font-size: 2rem;
   }
 }
-@media (max-width: 74.4rem) {
+@media (max-width: 744px) {
   /*mobile*/
   .monthly-chart-container {
     margin-top: 4rem;
+    margin-bottom: 5.9rem;
   }
   .monthly-chart-container .monthly-chart {
-    max-width: 32.7rem;
     gap: 1.6rem;
+    padding: 0 2.4rem;
   }
   .monthly-chart-container .monthly-chart .chart-header .chart-header-title {
     font-size: 1.6rem;
@@ -913,13 +918,14 @@ button:disabled {
   color: var(--sonic-silver);
 }
 
-@media (max-width: 74.4rem) {
+@media (max-width: 744px) {
   .entire-chart .chart-content {
     gap: 1.6rem;
   }
 }
 .chart-rank-content {
   display: grid;
+  width: 100%;
   grid-template-columns: repeat(2, 1fr);
   align-items: center;
   border-radius: 0.8rem;
@@ -937,6 +943,7 @@ button:disabled {
 .chart-rank-content .artist-profile .artist-profile-ahead {
   display: flex;
   align-items: center;
+  min-width: 16.5rem;
   width: 100%;
   gap: 1.2rem;
 }
@@ -989,7 +996,8 @@ button:disabled {
   display: flex;
   justify-content: center;
   align-items: center;
-  width: auto;
+  width: 100%;
+  min-width: 32.6rem;
   height: 4.2rem;
   border-radius: 0.5rem;
   padding: 0.8rem 14.3rem;
