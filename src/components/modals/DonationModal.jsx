@@ -1,51 +1,52 @@
 import React, {useState} from 'react';
 import parseImg from 'utils/images';
 import GradientButton from 'components/common/GradientButton';
+import {useDispatch, useSelector} from 'react-redux';
+import {decreseCredit} from 'services/apiSlice';
+import {stringToNumber, formattingCredit} from 'utils/credit';
+import {setDonation} from 'services/apiSlice';
 
-const DonationModal = ({onClose, myCredits = '1000'}) => {
+const DonationModal = ({id, idol, title, ad, onClose}) => {
+  const {name, group, profilePicture} = idol;
   const [credit, setCredit] = useState('');
-  const [hasError, setHasError] = useState(false);
-  const [isButtonDisabled, setIsButtonDisabled] = useState(true);
+  const dispatch = useDispatch();
+  const myCredits = useSelector(state => state.data.myCredits);
 
-  const handleCreditChange = e => {
-    const value = e.target.value;
-    setCredit(value);
+  /**
+   * input을 숫자만 입력 가능하도록 validation
+   */
+  const handleCreditChange = ({target}) => setCredit(formattingCredit(target.value));
 
-    // 입력 가능한 숫자인지 확인
-    const creditNumber = Number(value);
-    const exceedsCredits = creditNumber > Number(myCredits);
-
-    // 버튼 비활성화 및 에러 상태 설정
-    setHasError(exceedsCredits);
-    setIsButtonDisabled(value === '' || exceedsCredits);
-  };
+  const isValid = stringToNumber(credit) <= myCredits;
 
   const handleDonate = () => {
-    if (credit) {
-      alert(`${credit} 크레딧이 후원되었습니다.`);
-      onClose();
-    } else {
-      alert('크레딧을 입력하세요.');
-    }
-  };
+    const parsedCredit = parseInt(credit);
+    if (!parsedCredit) return alert('크레딧을 입력하세요.');
 
+    dispatch(decreseCredit(credit));
+    dispatch(setDonation({id, amount: parsedCredit}));
+    localStorage.setItem('myCredits', myCredits - parsedCredit);
+
+    alert(`${parsedCredit} 크레딧이 후원되었습니다.`);
+    onClose();
+  };
   return (
     <div className="modal-content donation-modal">
       <div className="card">
         <div className="card-img">
-          <img src={parseImg('img_idol_example.svg')} alt="아티스트 이미지" />
+          <img src={profilePicture} alt={`${group} ${name}`} />
         </div>
-        <p className="card-sub">강남역 광고</p>
-        <p className="card-tit">민지 2023 첫 광고</p>
+        <p className="card-sub">{ad}</p>
+        <p className="card-tit">{title}</p>
       </div>
       <div className="donation-input">
-        <div className={`input-box ${hasError ? 'error' : ''}`}>
-          <input type="number" value={credit} onChange={handleCreditChange} placeholder="크레딧 입력" />
+        <div className={`input-box ${!isValid ? 'error' : ''}`}>
+          <input type="text" value={credit} onChange={handleCreditChange} placeholder="크레딧 입력" />
           <img src={parseImg('img_credit_md.svg')} alt="크레딧" />
         </div>
-        {hasError && <p className="input-error">갖고 있는 크레딧보다 더 많이 후원할 수 없어요</p>}
+        {!isValid && <p className="input-error">갖고 있는 크레딧보다 더 많이 후원할 수 없어요</p>}
       </div>
-      <GradientButton name="h42" handleClick={handleDonate} disabled={isButtonDisabled}>
+      <GradientButton name="h42" handleClick={handleDonate} disabled={!isValid || !credit}>
         응원하기
       </GradientButton>
     </div>

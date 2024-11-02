@@ -1,6 +1,8 @@
 import React, {useState} from 'react';
 import parseImg from 'utils/images';
 import GradientButton from 'components/common/GradientButton';
+import {useDispatch, useSelector} from 'react-redux';
+import {increseCredit} from 'services/apiSlice';
 
 const ChargeModal = ({onClose}) => {
   const options = [
@@ -9,13 +11,17 @@ const ChargeModal = ({onClose}) => {
     {id: 3, label: '1000', value: 1000},
   ];
 
+  const dispatch = useDispatch();
   const [selectedOption, setSelectedOption] = useState(options[0].value);
+  const myCredits = useSelector(state => state.data.myCredits);
 
   const handleChange = e => {
     setSelectedOption(Number(e.target.value));
   };
 
   const handleCharge = () => {
+    dispatch(increseCredit(selectedOption));
+    localStorage.setItem('myCredits', myCredits + selectedOption);
     alert(`${selectedOption} 크레딧이 충전되었습니다.`);
     onClose();
   };

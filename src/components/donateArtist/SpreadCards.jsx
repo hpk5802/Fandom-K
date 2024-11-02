@@ -1,40 +1,51 @@
-import React, {useMemo} from 'react';
+import {useCallback, useEffect, useRef} from 'react';
 import CardSection from './CardSection';
-import mockData from 'utils/mockData';
 
-function SpreadCards({startIndex, itemsPerPage}) {
-  const dataLength = mockData.length;
+function SpreadCards({lists, isDesktop, fetchMoreDonations}) {
+  const endRef = useRef(null); // Infinite Scroll 구현을 위한 Ref 객체
 
-  // 카드 데이터 및 게이지 퍼센티지 계산
-  const computedCardData = useMemo(() => {
-    return mockData.map(card => ({
-      ...card,
-      gaugePercentage: (card.receivedDonations / card.targetDonation) * 100,
-    }));
-  }, []);
+  /**
+   * 감시 대상이 화면에 노출되면 서버에 데이터 요청
+   */
+  const handleObserver = useCallback(
+    ([entry]) => {
+      if (entry.isIntersecting) fetchMoreDonations();
+    },
+    [fetchMoreDonations],
+  );
 
-  // 현재 페이지에 보여줄 카드 데이터 가져오기
-  const visibleCards = useMemo(() => {
-    return Array.from({length: itemsPerPage}, (_, i) => computedCardData[(startIndex + i) % dataLength]);
-  }, [startIndex, itemsPerPage, dataLength, computedCardData]);
+  /**
+   * IntersectionObserver API를 이용해 endRef 객체가 화면에 노출됨을 감지
+   */
+  useEffect(() => {
+    if (isDesktop || !endRef.current) return;
 
+    const observer = new IntersectionObserver(handleObserver, {
+      root: endRef.current.parentNode,
+      threshold: 1.0,
+    });
+
+    observer.observe(endRef.current);
+
+    return () => observer.disconnect();
+  }, [handleObserver, isDesktop]);
   return (
     <div className="cards-container">
-      {visibleCards.map(cardData => {
-        const {id, profilePicture, subtitle, title, receivedDonations, deadline, targetDonation, gaugePercentage} = cardData;
+      {lists.map(({id, idol, subtitle, title, receivedDonations, deadline, targetDonation}) => {
         return (
           <CardSection
             key={id}
-            imgIdol={profilePicture}
+            id={id}
+            idol={idol}
             adLocation={subtitle}
             donationTitle={title}
             receivedDonations={receivedDonations}
             deadline={deadline}
             targetDonation={targetDonation}
-            gaugePercentage={gaugePercentage}
           />
         );
       })}
+      {!isDesktop && <div ref={endRef} className="end-point" />}
     </div>
   );
 }
