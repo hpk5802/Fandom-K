@@ -14,7 +14,7 @@ const apiSlice = createSlice({
   initialState: {
     myCredits: +localStorage.getItem('myCredits'),
     myFavoriteArtists: JSON.parse(localStorage.getItem('myFavoriteArtists')),
-    idols: {list: []},
+    idols: {list: [], nextCursor: null},
     donations: {list: [], nextCursor: null},
     charts: {idols: []},
     status: 'idle',
@@ -38,7 +38,8 @@ const apiSlice = createSlice({
   extraReducers: builder => {
     builder
       .addCase(getIdols.fulfilled, (state, action) => {
-        state.idols = action.payload;
+        state.idols.list = [...state.idols.list, ...action.payload.list];
+        state.idols.nextCursor = action.payload.nextCursor;
       })
       .addCase(getDonations.fulfilled, (state, action) => {
         state.donations.list = [...state.donations.list, ...action.payload.list];
