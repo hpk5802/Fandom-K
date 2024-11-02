@@ -1482,7 +1482,7 @@ button:disabled {
 .main-container .main-texts .main-title .main-title-highlight {
   color: var(--brand-orange);
 }
-.main-container .main-texts .main-logo-container {
+.main-container .main-texts .main-logo {
   width: 51rem;
   height: auto; /* 로고 원본 비율 유지하면서 높이 조절 */
 }

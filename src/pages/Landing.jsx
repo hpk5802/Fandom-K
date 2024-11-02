@@ -1,4 +1,5 @@
 import React, {useEffect} from 'react';
+import {Link} from 'react-router-dom';
 import Intro from '../components/LandingPage/Intro';
 import parseImg from 'utils/images';
 import GradientButton from 'components/common/GradientButton';
@@ -37,9 +38,9 @@ function LandingPage() {
             가장 <span className="main-title-highlight">쉽게 덕질</span> 하는 방법
           </div>
 
-          <div className="main-logo-container">
+          <Link to="/list">
             <img src={mainLogo} alt="목록으로 가기" className="main-logo" />
-          </div>
+          </Link>
         </div>
         <GradientButton
           name="go-to-list-button"
