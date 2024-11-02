@@ -1,8 +1,8 @@
 import React, {useEffect} from 'react';
 import {Link} from 'react-router-dom';
 import Intro from '../components/LandingPage/Intro';
+import ResetStorageButton from '../components/LandingPage/ResetStorageButton';
 import parseImg from 'utils/images';
-import GradientButton from 'components/common/GradientButton';
 
 //front는 앞쪽 이미지, back은 백그라운드 이미지를 의미
 const mainLogo = parseImg('ic_fandom_k.svg');
@@ -42,12 +42,9 @@ function LandingPage() {
             <img src={mainLogo} alt="목록으로 가기" className="main-logo" />
           </Link>
         </div>
-        <GradientButton
-          name="go-to-list-button"
-          /* handleClick={} */
-        >
-          지금 시작하기
-        </GradientButton>
+        {/* local storage 리셋 및 /list page 이동 */}
+        <ResetStorageButton>지금 시작하기</ResetStorageButton>
+
         <img src={backMain} alt="메인 백그라운드 이미지" className="main-back-img" />
         <div className="main-gradient" />
       </div>
