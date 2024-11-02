@@ -689,6 +689,18 @@ button:disabled {
   background-color: #2c2626;
 }
 
+@media (max-width: 1200px) {
+  /*tablet*/
+  .nav {
+    padding-right: 2.5rem;
+  }
+}
+@media (max-width: 744px) {
+  /*tablet*/
+  .nav {
+    padding-right: 1.4rem;
+  }
+}
 .my-credit {
   display: flex;
   justify-content: center;
