@@ -5,7 +5,7 @@ import {useDispatch, useSelector} from 'react-redux';
 import {getDonations} from 'services/apiSlice';
 import useWindowSize from 'hooks/useWindowSize';
 
-function DonateArtist() {
+function DonateArtist({title}) {
   const dispatch = useDispatch();
   const {
     donations: {list, nextCursor},
@@ -42,6 +42,7 @@ function DonateArtist() {
       totalPages={totalPages}
       onPageChange={setCurrentPage}
       fetchMoreDonations={fetchMoreDonations}
+      title={title}
     >
       <SpreadCards lists={displayedDonations} isDesktop={isDesktop} fetchMoreDonations={fetchMoreDonations} />
     </Pagination>
