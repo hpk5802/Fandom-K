@@ -1,10 +1,13 @@
 .monthly-chart-container {
   display: flex;
-  justify-content: center;
+  align-items: center;
+  margin-top: 8rem;
+  width: 100%;
   .monthly-chart {
     display: flex;
     flex-direction: column;
-    width: 120rem;
+    max-width: 120rem;
+    margin: 0 auto;
     gap: 2.4rem;
     background-color: var(--rich-black);
     .chart-header {
@@ -41,6 +44,37 @@
           text-shadow: 0 0 1rem rgba(255, 255, 255, 0.2);
           box-shadow: 0 0 2rem rgba(255, 255, 255, 0.5);
           background-position: 99%;
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 120rem) {
+  /*tablet*/
+  .monthly-chart-container {
+    margin-top: 6rem;
+    .monthly-chart {
+      max-width: 70rem;
+      .chart-header {
+        .chart-header-title {
+          font-size: 2rem;
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 74.4rem)  {
+  /*mobile*/
+  .monthly-chart-container {
+    margin-top: 4rem;
+    .monthly-chart {
+      max-width: 32.7rem;
+      gap: 1.6rem;
+      .chart-header {
+        .chart-header-title {
+          font-size: 1.6rem;
         }
       }
     }

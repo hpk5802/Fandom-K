@@ -495,6 +495,8 @@ html {
 body {
   /* 1rem = html의 폰트 사이즈 */
   font-size: 1rem;
+  /* 기본 배경색 rich-black으로 통일 */
+  background-color: var(--rich-black);
 }
 
 button {
@@ -690,13 +692,15 @@ button:disabled {
 .my-credit {
   display: flex;
   justify-content: center;
+  width: 100%;
+  margin: 5rem 0;
 }
 .my-credit .credit-box {
   position: relative;
-  margin: 5rem 0;
   padding: 3rem 7.8rem;
   height: 13rem;
-  width: 120rem;
+  max-width: 120rem;
+  margin: 0 auto;
   background-color: var(--rich-black);
   border-radius: 0.8rem;
   border: solid 0.1rem rgba(100, 100, 100, 0.8);
@@ -744,14 +748,55 @@ button:disabled {
   opacity: 0.9;
 }
 
+@media (max-width: 120rem) {
+  .my-credit {
+    margin-top: 0;
+    margin-bottom: 6.4rem;
+  }
+  .my-credit .credit-box {
+    width: 70rem;
+    padding: 3rem 6.4rem;
+  }
+}
+@media (max-width: 74.4rem) {
+  .my-credit {
+    margin-top: 1.6rem;
+    margin-bottom: 4rem;
+  }
+  .my-credit .credit-box {
+    width: 32.7rem;
+    height: 8.7rem;
+    padding: 2rem 2.5rem;
+  }
+  .my-credit .credit-box .credit-content .my-credit-text {
+    font-size: 1.2rem;
+    line-height: 1.4rem;
+  }
+  .my-credit .credit-box .credit-content .charging-btn {
+    right: 3rem;
+    top: 2.5rem;
+  }
+  .my-credit .credit-box .credit-content .charging-btn .charging-text {
+    font-size: 1.3rem;
+  }
+  .my-credit .credit-box .credit-content .current-credit-content {
+    margin-top: 1.2rem;
+  }
+  .my-credit .credit-box .credit-content .current-credit-content .current-credit {
+    font-size: 1.3rem;
+  }
+}
 .monthly-chart-container {
   display: flex;
-  justify-content: center;
+  align-items: center;
+  margin-top: 8rem;
+  width: 100%;
 }
 .monthly-chart-container .monthly-chart {
   display: flex;
   flex-direction: column;
-  width: 120rem;
+  max-width: 120rem;
+  margin: 0 auto;
   gap: 2.4rem;
   background-color: var(--rich-black);
 }
@@ -793,18 +838,47 @@ button:disabled {
   background-position: 99%;
 }
 
-.chart {
+@media (max-width: 120rem) {
+  /*tablet*/
+  .monthly-chart-container {
+    margin-top: 6rem;
+  }
+  .monthly-chart-container .monthly-chart {
+    max-width: 70rem;
+  }
+  .monthly-chart-container .monthly-chart .chart-header .chart-header-title {
+    font-size: 2rem;
+  }
+}
+@media (max-width: 74.4rem) {
+  /*mobile*/
+  .monthly-chart-container {
+    margin-top: 4rem;
+  }
+  .monthly-chart-container .monthly-chart {
+    max-width: 32.7rem;
+    gap: 1.6rem;
+  }
+  .monthly-chart-container .monthly-chart .chart-header .chart-header-title {
+    font-size: 1.6rem;
+  }
+}
+.entire-chart {
   display: flex;
   flex-direction: column;
-  gap: 2.4rem;
   background-color: var(--rich-black);
 }
-.chart .chart-title-content {
+.entire-chart .chart-content {
   display: flex;
-  width: auto;
+  flex-direction: column;
+  width: 100%;
   height: auto;
+  gap: 2.4rem;
 }
-.chart .chart-title-content .chart-title-btn {
+.entire-chart .chart-content .chart-button-container {
+  display: flex;
+}
+.entire-chart .chart-content .chart-button-container .chart-title-btn {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -815,7 +889,7 @@ button:disabled {
   border: none;
   background: none;
 }
-.chart .chart-title-content .chart-title-btn:hover {
+.entire-chart .chart-content .chart-button-container .chart-title-btn:hover {
   cursor: pointer;
   border-radius: 0.6rem;
   color: rgba(255, 255, 255, 0.6);
@@ -823,7 +897,7 @@ button:disabled {
   box-shadow: 0.2rem 0.2rem 0.5rem 0.1rem rgba(255, 255, 255, 0.2);
   transition: 0.5s;
 }
-.chart .chart-title-content .chart-title-btn.active {
+.entire-chart .chart-content .chart-title-btn.active {
   cursor: pointer;
   border-radius: 0.6rem;
   color: var(--white);
@@ -832,13 +906,18 @@ button:disabled {
   border-bottom: solid 0.1rem rgba(255, 255, 255, 0.7);
   transition: 0.5s;
 }
-.chart .chart-title-content .chart-title-btn-text {
+.entire-chart .chart-content .chart-title-btn-text {
   font-weight: var(--normal);
   font-size: 1.4rem;
   line-height: 1.8rem;
   color: var(--sonic-silver);
 }
 
+@media (max-width: 74.4rem) {
+  .entire-chart .chart-content {
+    gap: 1.6rem;
+  }
+}
 .chart-rank-content {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
@@ -893,6 +972,12 @@ button:disabled {
   border-bottom: none;
 }
 
+@media (max-width: 120rem) {
+  /*tablet*/
+  .chart-rank-content {
+    grid-template-columns: repeat(1, 1fr);
+  }
+}
 .view-more-btn {
   display: flex;
   justify-content: center;
@@ -923,6 +1008,18 @@ button:disabled {
   color: rgba(255, 255, 255, 0.8);
 }
 
+@media (max-width: 120rem) {
+  /*tablet*/
+  .view-more-btn {
+    margin-top: 2.7rem;
+  }
+}
+@media (max-width: 74.4rem) {
+  /*mobile*/
+  .view-more-btn {
+    margin-top: 3.3rem;
+  }
+}
 .pagination-container {
   position: relative;
   display: flex;
@@ -1432,4 +1529,109 @@ button:disabled {
   font-size: 1.4rem;
   line-height: 1.6rem;
   font-weight: var(--normal);
+}
+
+.main-container {
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  position: relative; /* 배경 이미지 absolute 사용을 위하여 설정 */
+  width: 108rem; /* PC기준 width */
+  height: 108rem; /* PC기준 height */
+}
+.main-container .main-texts {
+  margin-top: 14rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2.9rem;
+}
+.main-container .main-texts .main-title {
+  line-height: 1.2;
+  text-align: center;
+  font-size: 2.6rem;
+  font-weight: 700;
+  color: var(--white);
+}
+.main-container .main-texts .main-title .main-title-highlight {
+  color: var(--brand-orange);
+}
+.main-container .main-texts .main-logo-container {
+  width: 51rem;
+  height: auto; /* 로고 원본 비율 유지하면서 높이 조절 */
+}
+.main-container .go-to-list-button {
+  margin-bottom: 12rem;
+  width: 47.7rem;
+  height: 4.8rem;
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: var(--white);
+}
+.main-container .main-back-img {
+  position: absolute; /* 그레디언트와 겹치게 세팅 */
+  top: 9.54rem;
+  left: 50%;
+  transform: translateX(-50%); /* 부모 요소의 가로축 중앙 배치 */
+  z-index: -2;
+  opacity: 0.7;
+}
+.main-container .main-gradient {
+  position: absolute; /* 배경과 겹치게 세팅 */
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  background: radial-gradient(circle at center, rgba(2, 0, 14, 0) 0%, rgba(2, 0, 14, 0.7) 50%, rgba(2, 0, 14, 0.5) 100%);
+}
+
+.intro-container {
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative; /* 자식 요소 배치의 유연함을 위해 추가 */
+  width: 120rem;
+  height: 120rem;
+}
+.intro-container .intro-titles {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: absolute;
+  top: 17rem;
+  margin-bottom: 6rem;
+  z-index: 1;
+  color: var(--white);
+}
+.intro-container .intro-titles .intro-title {
+  font-size: 1.6rem;
+  font-weight: 500;
+  color: #d2c030;
+  margin: 0.8rem;
+}
+.intro-container .intro-titles .intro-subtitle {
+  font-size: 2.4rem;
+  font-weight: 700;
+  color: var(--white);
+  text-align: center;
+}
+.intro-container .intro-front-img {
+  position: absolute; /* 배경 위에 해당 이미지를 올리기 위해 추가 */
+  top: 31.3rem;
+  width: 32rem;
+  height: auto;
+  z-index: 1;
+}
+.intro-container .intro-back-img {
+  width: 120rem;
+  height: 120rem;
+}
+.intro-container .intro-gradient {
+  position: absolute; /* 배경 위에 해당 그레디언트를 올리기 위해 추가 */
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(circle at center, rgba(2, 0, 14, 0) 0%, rgba(2, 0, 14, 0.8) 18%, rgb(2, 0, 14) 50%, rgb(2, 0, 14) 100%);
 }
