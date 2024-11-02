@@ -10,7 +10,6 @@ function Chart() {
 
   const dispatch = useDispatch();
   const chartData = useSelector(state => state.data.charts);
-  const visibleShowBtn = chartData.idols.length % 10 < 1;
 
   // 클릭 핸들러: 성별을 변경하고 초기 데이터 설정
   const handleClick = newGender => () => {
