@@ -1020,57 +1020,33 @@ button:disabled {
     margin-top: 3.3rem;
   }
 }
-.pagination-container {
-  position: relative;
-  display: flex;
-  justify-content: center;
-  max-width: 136rem;
-  width: 100%;
-  height: 40.2rem;
-  margin: 0 auto;
+.donation {
   overflow: hidden;
 }
-.pagination-container .end-point {
-  width: 0.1rem;
-  height: 100%;
-}
-.pagination-container .pagination-icon {
-  position: absolute;
-  display: block;
-  z-index: 1;
-  top: 50%;
-  padding: 0;
-  background-color: transparent;
-  transform: translateY(-50%);
-}
-.pagination-container .pagination-icon.prev {
-  left: 0;
-}
-.pagination-container .pagination-icon.next {
-  right: 0;
-}
-.pagination-container .cards-container {
+.donation .cards-container {
   display: flex;
-  width: 120rem;
+  max-width: 120rem;
+  width: 100%;
   gap: 24px;
   flex-wrap: nowrap;
   justify-content: start;
+  margin: 0 auto;
 }
-.pagination-container .cards-container::-webkit-scrollbar {
+.donation .cards-container::-webkit-scrollbar {
   display: none;
 }
-.pagination-container .cards-container .card-container {
+.donation .cards-container .card-container {
   position: relative;
   flex-shrink: 0;
   width: 282px;
   height: 100%;
 }
-.pagination-container .cards-container .card-container .card-top-wrapper {
+.donation .cards-container .card-container .card-top-wrapper {
   position: relative;
   width: 100%;
   height: 29.3rem;
 }
-.pagination-container .cards-container .card-container .card-top-wrapper::before {
+.donation .cards-container .card-container .card-top-wrapper::before {
   content: "";
   position: absolute;
   top: 0;
@@ -1079,12 +1055,12 @@ button:disabled {
   height: 100%;
   background: linear-gradient(180deg, rgba(0, 0, 0, 0) 58.9%, #000000 100%);
 }
-.pagination-container .cards-container .card-container .card-top-wrapper .card-img {
+.donation .cards-container .card-container .card-top-wrapper .card-img {
   width: 100%;
   height: 100%;
   border-radius: 0.8rem 0.8rem 0 0;
 }
-.pagination-container .cards-container .card-container .card-top-wrapper .donation-button {
+.donation .cards-container .card-container .card-top-wrapper .donation-button {
   position: absolute;
   top: 23.3rem;
   left: 50%;
@@ -1094,10 +1070,10 @@ button:disabled {
   font-weight: var(--bold);
   transform: translateX(-50%);
 }
-.pagination-container .cards-container .card-container .card-texts {
+.donation .cards-container .card-container .card-texts {
   margin: 1.2rem 0 2.4rem;
 }
-.pagination-container .cards-container .card-container .card-texts .ad-location {
+.donation .cards-container .card-container .card-texts .ad-location {
   color: var(--white);
   font-size: 16px;
   line-height: 1.8rem;
@@ -1105,59 +1081,59 @@ button:disabled {
   opacity: 0.4;
   margin-bottom: 8px;
 }
-.pagination-container .cards-container .card-container .card-texts .donation-title {
+.donation .cards-container .card-container .card-texts .donation-title {
   font-size: 18px;
   line-height: 2.1rem;
   font-weight: var(--medium);
   color: var(--white-smoke);
 }
-.pagination-container .cards-container .card-container .artist-donation-container {
+.donation .cards-container .card-container .artist-donation-container {
   display: flex;
   flex-direction: column;
   width: 100%;
 }
-.pagination-container .cards-container .card-container .artist-donation-container .artist-donation-top {
+.donation .cards-container .card-container .artist-donation-container .artist-donation-top {
   display: flex;
   align-items: center;
   justify-content: space-between;
   width: 100%;
   margin-bottom: 0.7rem;
 }
-.pagination-container .cards-container .card-container .artist-donation-container .artist-donation-top .artist-donation-left {
+.donation .cards-container .card-container .artist-donation-container .artist-donation-top .artist-donation-left {
   display: flex;
   align-items: center;
 }
-.pagination-container .cards-container .card-container .artist-donation-container .artist-donation-top .artist-donation-left .artist-credit-icon {
+.donation .cards-container .card-container .artist-donation-container .artist-donation-top .artist-donation-left .artist-credit-icon {
   height: 1.8rem;
   aspect-ratio: 6/7;
 }
-.pagination-container .cards-container .card-container .artist-donation-container .artist-donation-top .artist-donation-left .received-credit {
+.donation .cards-container .card-container .artist-donation-container .artist-donation-top .artist-donation-left .received-credit {
   font-size: 1.2rem;
   line-height: 1.8rem;
   color: var(--brand-orange);
 }
-.pagination-container .cards-container .card-container .artist-donation-container .artist-donation-top .artist-donation-right {
+.donation .cards-container .card-container .artist-donation-container .artist-donation-top .artist-donation-right {
   font-size: 1.2rem;
   line-height: 1.8rem;
   color: var(--white-smoke);
 }
-.pagination-container .cards-container .card-container .artist-donation-container .credit-gauge-bar-container {
+.donation .cards-container .card-container .artist-donation-container .credit-gauge-bar-container {
   width: 100%;
   height: 1px;
   background-color: var(--white);
 }
-.pagination-container .cards-container .card-container .artist-donation-container .credit-gauge-bar-container .gauge-bar {
+.donation .cards-container .card-container .artist-donation-container .credit-gauge-bar-container .gauge-bar {
   height: 100%;
   background-color: var(--brand-orange);
 }
 
 @media (max-width: 1200px) {
-  .pagination-container .cards-container {
+  .donation .cards-container {
     width: auto;
     gap: 1.6rem;
     overflow-x: auto;
   }
-  .pagination-container .cards-container::-webkit-scrollbar {
+  .donation .cards-container::-webkit-scrollbar {
     display: none;
   }
 }
@@ -1472,12 +1448,29 @@ button:disabled {
   color: var(--brand-orange);
 }
 
-.entire-add-artists {
-  width: 125.6rem;
-  height: 67.3rem;
-  margin-top: 4rem;
+.favorite-list {
+  color: var(--white);
+}
+.favorite-list .add-artists-wrap .add-artists-list {
+  display: flex;
+  flex-wrap: nowrap;
+  gap: 2.4rem;
+  max-width: 120rem;
+  width: 100%;
+  margin: 3.2rem auto 0;
 }
 
+@media (max-width: 1200px) {
+  .favorite-list .add-artists-wrap {
+    overflow-x: scroll;
+  }
+  .favorite-list .add-artists-wrap::-webkit-scrollbar {
+    display: none;
+  }
+  .favorite-list .add-artists-wrap .add-artists-list {
+    gap: 2.4rem;
+  }
+}
 .entire-favorite-artist {
   display: flex;
   flex-direction: column;
@@ -1634,4 +1627,31 @@ button:disabled {
   width: 100%;
   height: 100%;
   background: radial-gradient(circle at center, rgba(2, 0, 14, 0) 0%, rgba(2, 0, 14, 0.8) 18%, rgb(2, 0, 14) 50%, rgb(2, 0, 14) 100%);
+}
+
+.pagination-container {
+  position: relative;
+  max-width: 136rem;
+  width: 100%;
+  margin: 0 auto;
+  overflow: hidden;
+}
+.pagination-container .end-point {
+  width: 0.1rem;
+  height: 100%;
+}
+.pagination-container .pagination-icon {
+  position: absolute;
+  display: block;
+  z-index: 1;
+  top: 50%;
+  padding: 0;
+  background-color: transparent;
+  transform: translateY(-50%);
+}
+.pagination-container .pagination-icon.prev {
+  left: 0;
+}
+.pagination-container .pagination-icon.next {
+  right: 0;
 }

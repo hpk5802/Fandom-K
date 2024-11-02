@@ -1,14 +1,15 @@
+import classes from 'utils/classes';
 import parseImg from 'utils/images';
 
 const arrowLeft = parseImg('ic_pagination_arrow_left.svg');
 const arrowRight = parseImg('ic_pagination_arrow_right.svg');
 
-function Pagination({isDesktop, cursor, currentPage, totalPages, onPageChange, fetchMoreDonations, children}) {
+function Pagination({name, title, device, cursor, currentPage, totalPages, onPageChange, fetchMoreData, children}) {
   const canGoNext = cursor || currentPage + 1 < totalPages;
   const canGoPrev = currentPage > 0;
 
   const handleNextPage = () => {
-    if (currentPage + 1 >= totalPages) fetchMoreDonations();
+    if (currentPage + 1 >= totalPages) fetchMoreData();
     onPageChange(currentPage + 1);
   };
 
@@ -18,16 +19,17 @@ function Pagination({isDesktop, cursor, currentPage, totalPages, onPageChange, f
     }
   };
   return (
-    <div className="pagination-container">
-      {isDesktop && canGoPrev && (
+    <div className={classes('pagination-container', name)}>
+      {device === 'desktop' && canGoPrev && (
         <button type="button" className="pagination-icon prev" onClick={handlePreviousPage}>
-          <img src={arrowLeft} alt="" />
+          <img src={arrowLeft} alt="arrow-prev" />
         </button>
       )}
+      <h2 className="content-title">{title}</h2>
       {children}
-      {isDesktop && canGoNext && (
+      {device === 'desktop' && canGoNext && (
         <button type="button" className="pagination-icon next" onClick={handleNextPage}>
-          <img src={arrowRight} alt="" />
+          <img src={arrowRight} alt="arrow-next" />
         </button>
       )}
     </div>
