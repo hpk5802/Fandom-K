@@ -35,6 +35,7 @@ function SpreadCards({lists, isDesktop, fetchMoreDonations}) {
         return (
           <CardSection
             key={id}
+            id={id}
             idol={idol}
             adLocation={subtitle}
             donationTitle={title}

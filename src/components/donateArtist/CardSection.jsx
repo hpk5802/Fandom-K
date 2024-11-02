@@ -4,7 +4,7 @@ import Modal from 'components/common/Modal';
 import {DonationModal} from 'components/modals';
 import useModal from 'hooks/useModal';
 
-function CardSection({idol, adLocation, donationTitle, receivedDonations, deadline, targetDonation}) {
+function CardSection({id, idol, adLocation, donationTitle, receivedDonations, deadline, targetDonation}) {
   const {profilePicture, group, name} = idol;
   const {isModalOpen, openModal, closeModal} = useModal();
   return (
@@ -24,7 +24,7 @@ function CardSection({idol, adLocation, donationTitle, receivedDonations, deadli
       </div>
       {isModalOpen && (
         <Modal title="응원하기" onClose={closeModal}>
-          <DonationModal idol={idol} title={donationTitle} ad={adLocation} onClose={closeModal} />
+          <DonationModal id={id} idol={idol} title={donationTitle} ad={adLocation} onClose={closeModal} />
         </Modal>
       )}
     </>
