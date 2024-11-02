@@ -1,5 +1,28 @@
-.entire-add-artists{
-  width: 125.6rem;
-  height: 67.3rem;
-  margin-top: 4rem;
+.favorite-list {
+  color: var(--white);
+  .add-artists-wrap {
+    display: flex;
+    .add-artists-list {
+      display: flex;
+      flex-wrap: nowrap;
+      gap: 2.4rem;
+      max-width: 120rem;
+      width: 100%;
+      margin: 3.2rem auto 0;
+    }
+  }
+}
+
+@media (max-width: 1200px) {
+  .favorite-list {
+    .add-artists-wrap {
+      overflow-x: scroll;
+      &::-webkit-scrollbar {
+        display: none;
+      }
+      .add-artists-list {
+        gap: 2.4rem;
+      }
+    }
+  }
 }

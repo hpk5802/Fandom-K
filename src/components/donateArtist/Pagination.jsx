@@ -1,31 +1,37 @@
-import React from 'react';
+import classes from 'utils/classes';
 import parseImg from 'utils/images';
 
 const arrowLeft = parseImg('ic_pagination_arrow_left.svg');
 const arrowRight = parseImg('ic_pagination_arrow_right.svg');
 
-function Pagination({dataLength, setStartIndex, children}) {
-  const handlePrev = () => {
-    setStartIndex(prevIndex => {
-      const newIndex = (prevIndex - 1 + dataLength) % dataLength;
-      console.log('Prev Index:', newIndex);
-      return newIndex;
-    });
+function Pagination({name, title, device, cursor, currentPage, totalPages, onPageChange, fetchMoreData, children}) {
+  const canGoNext = cursor || currentPage + 1 < totalPages;
+  const canGoPrev = currentPage > 0;
+
+  const handleNextPage = () => {
+    if (currentPage + 1 >= totalPages) fetchMoreData();
+    onPageChange(currentPage + 1);
   };
 
-  const handleNext = () => {
-    setStartIndex(prevIndex => {
-      const newIndex = (prevIndex + 1) % dataLength;
-      console.log('Next Index:', newIndex);
-      return newIndex;
-    });
+  const handlePreviousPage = () => {
+    if (currentPage > 0) {
+      onPageChange(currentPage - 1);
+    }
   };
-
   return (
-    <div className="pagination-container">
-      <img src={arrowLeft} alt="" onClick={handlePrev} className="pagination-icon" />
+    <div className={classes('pagination-container', name)}>
+      {device === 'desktop' && canGoPrev && (
+        <button type="button" className="pagination-icon prev" onClick={handlePreviousPage}>
+          <img src={arrowLeft} alt="arrow-prev" />
+        </button>
+      )}
+      <h2 className="content-title">{title}</h2>
       {children}
-      <img src={arrowRight} alt="" onClick={handleNext} className="pagination-icon" />
+      {device === 'desktop' && canGoNext && (
+        <button type="button" className="pagination-icon next" onClick={handleNextPage}>
+          <img src={arrowRight} alt="arrow-next" />
+        </button>
+      )}
     </div>
   );
 }
