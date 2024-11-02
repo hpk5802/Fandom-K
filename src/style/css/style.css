@@ -1545,8 +1545,8 @@ button:disabled {
   align-items: center;
   justify-content: space-between;
   position: relative; /* 배경 이미지 absolute 사용을 위하여 설정 */
-  width: 108rem; /* PC기준 width */
-  height: 108rem; /* PC기준 height */
+  width: 108rem; /* PC기준 고정 width */
+  height: 108rem; /* PC기준 고정 height */
 }
 .main-container .main-texts {
   margin-top: 14rem;
@@ -1565,7 +1565,7 @@ button:disabled {
 .main-container .main-texts .main-title .main-title-highlight {
   color: var(--brand-orange);
 }
-.main-container .main-texts .main-logo-container {
+.main-container .main-texts .main-logo {
   width: 51rem;
   height: auto; /* 로고 원본 비율 유지하면서 높이 조절 */
 }
