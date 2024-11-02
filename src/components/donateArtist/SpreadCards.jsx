@@ -1,7 +1,7 @@
 import {useCallback, useEffect, useRef} from 'react';
 import CardSection from './CardSection';
 
-function SpreadCards({lists, isDesktop, fetchMoreDonations}) {
+function SpreadCards({lists, device, fetchMoreDonations}) {
   const endRef = useRef(null); // Infinite Scroll 구현을 위한 Ref 객체
 
   /**
@@ -18,7 +18,7 @@ function SpreadCards({lists, isDesktop, fetchMoreDonations}) {
    * IntersectionObserver API를 이용해 endRef 객체가 화면에 노출됨을 감지
    */
   useEffect(() => {
-    if (isDesktop || !endRef.current) return;
+    if (device === 'desktop' || !endRef.current) return;
 
     const observer = new IntersectionObserver(handleObserver, {
       root: endRef.current.parentNode,
@@ -28,7 +28,7 @@ function SpreadCards({lists, isDesktop, fetchMoreDonations}) {
     observer.observe(endRef.current);
 
     return () => observer.disconnect();
-  }, [handleObserver, isDesktop]);
+  }, [handleObserver, device]);
   return (
     <div className="cards-container">
       {lists.map(({id, idol, subtitle, title, receivedDonations, deadline, targetDonation}) => {
@@ -45,7 +45,7 @@ function SpreadCards({lists, isDesktop, fetchMoreDonations}) {
           />
         );
       })}
-      {!isDesktop && <div ref={endRef} className="end-point" />}
+      {device !== 'desktop' && <div ref={endRef} className="end-point" />}
     </div>
   );
 }
