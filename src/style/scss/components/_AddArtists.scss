@@ -1,6 +1,7 @@
 .favorite-list {
   color: var(--white);
   .add-artists-wrap {
+    display: flex;
     .add-artists-list {
       display: flex;
       flex-wrap: nowrap;

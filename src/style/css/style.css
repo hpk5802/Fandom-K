@@ -1451,6 +1451,9 @@ button:disabled {
 .favorite-list {
   color: var(--white);
 }
+.favorite-list .add-artists-wrap {
+  display: flex;
+}
 .favorite-list .add-artists-wrap .add-artists-list {
   display: flex;
   flex-wrap: nowrap;
