@@ -1,12 +1,8 @@
-const stringToNumber = value => {
-  return value ? parseInt(value) : 0;
-};
+/**
+ * string 타입의 입력을 받아 number 타입으로 리턴 (null이나 undefined인 경우 0 리턴)
+ */
+const stringToNumber = value => parseInt(value) || 0;
 
-const formatimgCredit = value => {
-  const foramtedValue = value.replace(/\D/g, ''); // 숫자를 제외한 입력 삭제
-  const formated = foramtedValue.replace(/^0+/, ''); // 0으로 시작하는 경우 제거
+const formattingCredit = value => value.replace(/\D/g, '').replace(/^0+/, '');
 
-  return formated;
-};
-
-export {stringToNumber, formatimgCredit};
+export {stringToNumber, formattingCredit};

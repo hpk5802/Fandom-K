@@ -3,7 +3,7 @@ import parseImg from 'utils/images';
 import GradientButton from 'components/common/GradientButton';
 import {useDispatch, useSelector} from 'react-redux';
 import {decreseCredit} from 'services/apiSlice';
-import {stringToNumber, formatimgCredit} from 'utils/credit';
+import {stringToNumber, formattingCredit} from 'utils/credit';
 import {setDonation} from 'services/apiSlice';
 
 const DonationModal = ({id, idol, title, ad, onClose}) => {
@@ -12,24 +12,23 @@ const DonationModal = ({id, idol, title, ad, onClose}) => {
   const dispatch = useDispatch();
   const myCredits = useSelector(state => state.data.myCredits);
 
+  /**
+   * input을 숫자만 입력 가능하도록 validation
+   */
+  const handleCreditChange = ({target}) => setCredit(formattingCredit(target.value));
+
   const isValid = stringToNumber(credit) <= myCredits;
 
-  const handleCreditChange = ({target}) => {
-    const value = formatimgCredit(target.value);
-    setCredit(value);
-  };
-
   const handleDonate = () => {
-    if (credit) {
-      dispatch(decreseCredit(credit));
-      dispatch(setDonation({id, amount: parseInt(credit)}));
-      localStorage.setItem('myCredits', myCredits - credit);
+    const parsedCredit = parseInt(credit);
+    if (!parsedCredit) return alert('크레딧을 입력하세요.');
 
-      alert(`${credit} 크레딧이 후원되었습니다.`);
-      onClose();
-    } else {
-      alert('크레딧을 입력하세요.');
-    }
+    dispatch(decreseCredit(credit));
+    dispatch(setDonation({id, amount: parsedCredit}));
+    localStorage.setItem('myCredits', myCredits - parsedCredit);
+
+    alert(`${parsedCredit} 크레딧이 후원되었습니다.`);
+    onClose();
   };
   return (
     <div className="modal-content donation-modal">
