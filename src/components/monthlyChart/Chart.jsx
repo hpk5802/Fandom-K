@@ -1,52 +1,32 @@
 import {useState, useEffect} from 'react';
 import ChartRankContent from './ChartRankContent';
-import {getIdolRank} from './chartapi';
 import ViewMoreBtn from './ViewMoreBtn';
+import {useDispatch, useSelector} from 'react-redux';
+import {getCharts} from 'services/apiSlice';
 
 function Chart() {
   const [gender, setGender] = useState('female'); // 초기 성별 'female'
-  const [artistData, setArtistData] = useState([]);
-  const [error, setError] = useState(null);
   const [visibleCount, setVisibleCount] = useState(10); // 처음에는 10개만 표시
-  const [loading, setLoading] = useState(false); // 로딩 상태
 
-  // 성별에 따라 데이터를 불러오는 함수
-  useEffect(() => {
-    const fetchData = async () => {
-      setLoading(true); // 로딩 시작
-      try {
-        console.log(visibleCount);
-        const data = await getIdolRank({gender, pagesize: visibleCount});
-        if (Array.isArray(data)) {
-          const sortedData = data.sort((a, b) => b.totalVotes - a.totalVotes); // 득표순 정렬
-          console.log(sortedData);
-          setArtistData(sortedData);
-        } else {
-          throw new Error('데이터 형식이 올바르지 않습니다.');
-        }
-      } catch (error) {
-        console.error('데이터 로딩 오류:', error);
-        setError('아티스트 정보를 불러오지 못했습니다.');
-      } finally {
-        setLoading(false); // 로딩 완료
-      }
-    };
-
-    fetchData();
-  }, [gender, visibleCount]);
+  const dispatch = useDispatch();
+  const chartData = useSelector(state => state.data.charts);
 
   // 클릭 핸들러: 성별을 변경하고 초기 데이터 설정
-  const handleClick = newGender => {
+  const handleClick = newGender => () => {
+    dispatch(getCharts({gender: newGender, pageSize: 10}));
     setGender(newGender);
   };
 
   // 더보기 버튼 클릭 시 보이는 개수를 증가
   const handleViewMore = () => {
-    setVisibleCount(prevCount => prevCount + 10); // 10개씩 추가
+    const totalShowCount = visibleCount + 10;
+    setVisibleCount(totalShowCount);
+    dispatch(getCharts({gender: gender, pageSize: totalShowCount}));
   };
 
-  if (error) return {error};
-  if (loading) return '아티스트 정보를 불러오고 있습니다. 조금만 기다려 주세요!';
+  useEffect(() => {
+    dispatch(getCharts());
+  }, [dispatch]);
 
   return (
     <div className="entire-chart">
@@ -67,7 +47,7 @@ function Chart() {
             이달의 남자 아이돌
           </button>
         </div>
-        <ChartRankContent artistData={artistData.slice(0, visibleCount)} />
+        <ChartRankContent artistData={chartData.idols} />
       </div>
       <ViewMoreBtn onClick={handleViewMore}>더보기</ViewMoreBtn>
     </div>
