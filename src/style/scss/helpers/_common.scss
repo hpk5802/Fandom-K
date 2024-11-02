@@ -1,4 +1,4 @@
-@import url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css");
+@import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css');
 
 :root {
   /* Color-Variables*/
@@ -29,7 +29,7 @@
 
 html,
 body {
-  font-family: "Pretendard";
+  font-family: 'Pretendard';
 }
 
 html {
@@ -40,9 +40,12 @@ html {
 body {
   /* 1rem = html의 폰트 사이즈 */
   font-size: 1rem;
+  /* 기본 배경색 rich-black으로 통일 */
+  background-color: var(--rich-black);
 }
 
 button {
+  border: 0;
   cursor: pointer;
 }
 

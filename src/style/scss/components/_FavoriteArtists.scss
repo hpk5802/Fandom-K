@@ -1,0 +1,52 @@
+.entire-favorite-artist {
+  display: flex;
+  flex-direction: column;
+  width: auto;
+  margin: 0 auto;
+  background-color: var(--rich-black);
+  padding-top: 7.6rem;
+  padding-bottom: 4rem;
+  border-bottom: solid 0.1rem rgba(255, 255, 255, 0.1);
+  .favorite-artist-title {
+    color: var(--white-smoke);
+    font-size: 2.4rem;
+    line-height: 2.6rem;
+    font-weight: var(--bold);
+    padding-bottom: 3.2rem;
+  }
+  .favorite-artists-container {
+    display: grid;
+    grid-template-columns: repeat(10, 1fr);
+    align-items: center;
+    width: 9.8rem;
+    height: 15rem;
+    gap: 2.4rem;
+    .favorite-artist {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      width: auto;
+      height: auto;
+      gap: 0.8rem;
+      .artist-info {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: auto;
+        gap: 0.2rem;
+        .artist-name {
+          color: #f4efef;
+          font-size: 1.6rem;
+          line-height: 2.6rem;
+          font-weight: var(--bold);
+        }
+        .artist-group {
+          color: rgba(255, 255, 255, 0.6);
+          font-size: 1.4rem;
+          line-height: 1.6rem;
+          font-weight: var(--normal);
+        }
+      }
+    }
+  }
+}
