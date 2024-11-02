@@ -77,19 +77,21 @@ function AddArtists() {
         fetchMoreData={fetchMoreIdols}
       >
         <div className="add-artists-wrap">
-          {[evenIdols, oddIdols].map((idols, idx) => (
-            <div key={idx} className="add-artists-list">
-              {idols.map(({id, profilePicture, group, name}) => (
-                <div key={id} className="add-artists-container">
-                  <ProfileBadge src={profilePicture} size="large" />
-                  <div className="add-artists-text">
-                    <div className="add-artists-name">{name}</div>
-                    <div className="add-artists-group">{group}</div>
+          <div>
+            {[evenIdols, oddIdols].map((idols, idx) => (
+              <div key={idx} className="add-artists-list">
+                {idols.map(({id, profilePicture, group, name}) => (
+                  <div key={id} className="add-artists-container">
+                    <ProfileBadge src={profilePicture} size="large" />
+                    <div className="add-artists-text">
+                      <div className="add-artists-name">{name}</div>
+                      <div className="add-artists-group">{group}</div>
+                    </div>
                   </div>
-                </div>
-              ))}
-            </div>
-          ))}
+                ))}
+              </div>
+            ))}
+          </div>
           {device !== 'desktop' && <div ref={endRef} className="end-point" />}
         </div>
       </Pagination>
