@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import Intro from '../components/LandingPage/Intro';
 import parseImg from 'utils/images';
 import GradientButton from 'components/common/GradientButton';
@@ -17,6 +17,16 @@ const frontMyArtist = parseImg('img_intro_front_my_artist.svg');
 const backMyArtist = parseImg('img_intro_back_my_artist.svg');
 
 function LandingPage() {
+  // 첫 렌더링 시 myCredits라는 key가 없거나, key에 대응되는 value가 없다면 초기값 설정
+  useEffect(() => {
+    const currentCredits = localStorage.getItem('myCredits');
+
+    if (currentCredits === null) {
+      localStorage.setItem('myCredits', '0');
+      localStorage.setItem('myFavoriteArtists', JSON.stringify([]));
+    }
+  }, []);
+
   return (
     <>
       <div className="main-container">
