@@ -42,7 +42,7 @@ function ListPage() {
       <div className="container" style={{backgroundColor: '#02000E', width: '100%', overflowX: 'hidden'}}>
         <MyCredit onClick={handleChargeClick} />
         <hr />
-        <DonateArtist title="응원을 기다리는 아티스트" />
+        <DonateArtist />
         <hr />
         <MonthlyChart />
         <hr />

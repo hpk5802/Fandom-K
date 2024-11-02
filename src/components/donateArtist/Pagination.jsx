@@ -3,7 +3,7 @@ import parseImg from 'utils/images';
 const arrowLeft = parseImg('ic_pagination_arrow_left.svg');
 const arrowRight = parseImg('ic_pagination_arrow_right.svg');
 
-function Pagination({isDesktop, cursor, currentPage, totalPages, onPageChange, fetchMoreDonations, children, title}) {
+function Pagination({isDesktop, cursor, currentPage, totalPages, onPageChange, fetchMoreDonations, children}) {
   const canGoNext = cursor || currentPage + 1 < totalPages;
   const canGoPrev = currentPage > 0;
 
@@ -24,7 +24,6 @@ function Pagination({isDesktop, cursor, currentPage, totalPages, onPageChange, f
           <img src={arrowLeft} alt="" />
         </button>
       )}
-      <h2 className="pagination-title">{title}</h2>
       {children}
       {isDesktop && canGoNext && (
         <button type="button" className="pagination-icon next" onClick={handleNextPage}>
