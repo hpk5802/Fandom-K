@@ -12,9 +12,9 @@ function Chart() {
   const chartData = useSelector(state => state.data.charts);
 
   // 클릭 핸들러: 성별을 변경하고 초기 데이터 설정
-  const handleClick = newGender => () => {
-    dispatch(getCharts({gender: newGender, pageSize: 10}));
+  const handleClick = newGender => {
     setGender(newGender);
+    dispatch(getCharts({gender: newGender, pageSize: 10}));
   };
 
   // 더보기 버튼 클릭 시 보이는 개수를 증가
