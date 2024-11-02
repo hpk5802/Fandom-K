@@ -58,7 +58,6 @@ function AddArtists() {
   /**
    * 페이징 액션(Desktop) -> 터치 액션(Tablet, Mobile) 분기를 자연스럽게 하기 위해 첫 번째 데이터로 강제 이동
    */
-  // useEffect(() => setCurrentPage(0), [isDesktop]);
   useEffect(() => setCurrentPage(0), [device]);
 
   const totalPages = Math.ceil(list.length / 16);
@@ -78,28 +77,19 @@ function AddArtists() {
         fetchMoreData={fetchMoreIdols}
       >
         <div className="add-artists-wrap">
-          <div className="add-artists-list">
-            {evenIdols.map(({id, profilePicture, group, name}) => (
-              <div key={id} className="add-artists-container">
-                <ProfileBadge src={profilePicture} size="large" />
-                <div className="add-artists-text">
-                  <div className="add-artists-name">{name}</div>
-                  <div className="add-artists-group">{group}</div>
+          {[evenIdols, oddIdols].map((idols, idx) => (
+            <div key={idx} className="add-artists-list">
+              {idols.map(({id, profilePicture, group, name}) => (
+                <div key={id} className="add-artists-container">
+                  <ProfileBadge src={profilePicture} size="large" />
+                  <div className="add-artists-text">
+                    <div className="add-artists-name">{name}</div>
+                    <div className="add-artists-group">{group}</div>
+                  </div>
                 </div>
-              </div>
-            ))}
-          </div>
-          <div className="add-artists-list">
-            {oddIdols.map(({id, profilePicture, group, name}) => (
-              <div key={id} className="add-artists-container">
-                <ProfileBadge src={profilePicture} size="large" />
-                <div className="add-artists-text">
-                  <div className="add-artists-name">{name}</div>
-                  <div className="add-artists-group">{group}</div>
-                </div>
-              </div>
-            ))}
-          </div>
+              ))}
+            </div>
+          ))}
           {device !== 'desktop' && <div ref={endRef} className="end-point" />}
         </div>
       </Pagination>
