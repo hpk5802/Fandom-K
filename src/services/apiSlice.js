@@ -51,6 +51,11 @@ const apiSlice = createSlice({
       .addCase(getfavoriteCharts.fulfilled, (state, action) => {
         // 관심있는 아이돌
         state.charts = action.payload;
+      })
+      .addCase(setDonation.fulfilled, (state, action) => {
+        const updatedDonation = action.payload;
+        const target = state.donations.list.findIndex(donation => donation.id === updatedDonation.id);
+        state.donations.list[target] = {...state.donations.list[target], receivedDonations: updatedDonation.receivedDonations};
       });
   },
 });
