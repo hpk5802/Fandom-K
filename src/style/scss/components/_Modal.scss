@@ -65,6 +65,10 @@ $h-padding-dbl: $h-padding * 2;
   color: var(--white);
 }
 
+.modal-bottom {
+  width: 100%;
+}
+
 // 라디오버튼 커스텀
 .custom-radio {
   display: flex;
@@ -313,7 +317,9 @@ $h-padding-dbl: $h-padding * 2;
   }
   .desc {
     margin: 1.2rem 0 0;
+    line-height: 2.6rem;
     font-weight: var(--medium);
+    text-align: center;
 
     span {
       color: var(--brand-orange);
@@ -349,6 +355,61 @@ $h-padding-dbl: $h-padding * 2;
 
     span {
       color: var(--brand-orange);
+    }
+  }
+}
+
+@media (max-width: 557px) {
+  .modal.mobile-full {
+    max-width: 100%;
+    width: 100%;
+    height: 100%;
+    padding: 6.4rem 2.4rem 10rem;
+    top: 0;
+    left: unset;
+    transform: none;
+    background-color: var(--rich-black);
+
+    .modal-top {
+      position: relative;
+      justify-content: center;
+      font-size: 1.4rem;
+      font-weight: var(--medium);
+
+      .btn-close {
+        position: absolute;
+        top: 50%;
+        left: 0;
+        transform: translateY(-50%);
+        background: url(../../assets/icons/ic_arrow_left.svg) no-repeat center;
+        background-size: contain;
+
+        img {
+          display: none;
+        }
+      }
+    }
+
+    .modal-bottom {
+      position: absolute;
+      bottom: 0;
+      padding: 1.6rem 2.4rem;
+      background-color: rgba(2, 0, 14, 0.8);
+    }
+
+    .button-gradient {
+      margin: 0;
+      width: 100%;
+    }
+
+    .vote-modal {
+      margin-top: 3rem;
+      width: 100%;
+
+      .vote-list {
+        padding-bottom: 106px;
+        max-height: 60rem;
+      }
     }
   }
 }

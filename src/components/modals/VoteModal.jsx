@@ -38,9 +38,11 @@ const VoteModal = ({onClose}) => {
           </label>
         ))}
       </div>
-      <GradientButton handleClick={handleCharge}>투표하기</GradientButton>
-      <div className="desc">
-        투표하는 데 <span>1000 크레딧</span>이 소모됩니다.
+      <div className="modal-bottom">
+        <GradientButton handleClick={handleCharge}>투표하기</GradientButton>
+        <div className="desc">
+          투표하는 데 <span>1000 크레딧</span>이 소모됩니다.
+        </div>
       </div>
     </div>
   );
