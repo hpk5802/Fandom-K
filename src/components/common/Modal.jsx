@@ -1,11 +1,11 @@
 import React from 'react';
 import parseImg from 'utils/images';
 
-const Modal = ({title, onClose, children}) => {
+const Modal = ({title, onClose, children, name = ''}) => {
   return (
     <>
       <div className="modal-overlay" onClick={onClose}></div>
-      <div className="modal">
+      <div className={`modal ${name}`}>
         <div className="modal-top">
           <div>{title || ''}</div>
           <button className="btn-close" onClick={onClose}>
