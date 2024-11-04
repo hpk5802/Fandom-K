@@ -59,6 +59,7 @@ function LandingPage() {
         }
         frontImage={frontDonation}
         backImage={backDonation}
+        featureName="donation"
       />
 
       <Intro
@@ -71,6 +72,7 @@ function LandingPage() {
         }
         frontImage={frontMonthly}
         backImage={backMonthly}
+        featureName="monthly"
       />
 
       <Intro
@@ -83,6 +85,7 @@ function LandingPage() {
         }
         frontImage={frontMyArtist}
         backImage={backMyArtist}
+        featureName="myArtist"
       />
     </>
   );

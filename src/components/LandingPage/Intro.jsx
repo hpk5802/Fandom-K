@@ -1,9 +1,9 @@
 import React from 'react';
 
-function Intro({title, subtitle, frontImage, backImage}) {
+function Intro({title, subtitle, frontImage, backImage, featureName}) {
   return (
     <div className="intro-container">
-      <div className="intro-titles">
+      <div className={`intro-titles intro-titles-${featureName}`}>
         <div className="intro-title">{title}</div>
         <div className="intro-subtitle">{subtitle}</div>
       </div>
