@@ -46,7 +46,7 @@ const DonationModal = ({id, idol, title, ad, onClose}) => {
         </div>
         {!isValid && <p className="input-error">갖고 있는 크레딧보다 더 많이 후원할 수 없어요</p>}
       </div>
-      <GradientButton name="h42" handleClick={handleDonate} disabled={!isValid || !credit}>
+      <GradientButton handleClick={handleDonate} disabled={!isValid || !credit}>
         응원하기
       </GradientButton>
     </div>
