@@ -9,3 +9,8 @@ export const fetchIdols = async ({cursor, pageSize = 10, keyword = ''} = {}) => 
   const response = await axios.get(endPoints.getIdols, {params: queryParams});
   return response.data;
 };
+
+export const voteForIdol = async ({idolId}) => {
+  const response = await axios.post(`${endPoints.getIdols}/votes`, {idolId: idolId});
+  return response.data;
+};

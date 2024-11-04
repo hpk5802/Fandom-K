@@ -23,8 +23,11 @@ function LandingPage() {
     const currentCredits = localStorage.getItem('myCredits');
 
     if (currentCredits === null) {
-      localStorage.setItem('myCredits', '0');
-      localStorage.setItem('myFavoriteArtists', JSON.stringify([]));
+      const defaultCredits = process.env.REACT_APP_DEFAULT_CREDIT;
+      const defaultFavoriteArtists = process.env.REACT_APP_DEFAULT_FAVORITE_ARTISTS;
+
+      localStorage.setItem('myCredits', defaultCredits);
+      localStorage.setItem('myFavoriteArtists', JSON.stringify(defaultFavoriteArtists));
     }
   }, []);
 

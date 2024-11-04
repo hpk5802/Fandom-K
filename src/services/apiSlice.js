@@ -1,5 +1,5 @@
 import {createSlice, createAsyncThunk} from '@reduxjs/toolkit';
-import {fetchIdols} from './idolApi';
+import {fetchIdols, voteForIdol} from './idolApi';
 import {fetchDonations, updateDonation} from './donationApi';
 import {fetchCharts} from './chartApi';
 
@@ -8,6 +8,8 @@ export const getDonations = createAsyncThunk('data/getDonations', fetchDonations
 export const getCharts = createAsyncThunk('data/getCharts', fetchCharts);
 export const getfavoriteCharts = createAsyncThunk('data/getfavoriteCharts', fetchCharts);
 export const setDonation = createAsyncThunk('data/updateDonationAmount', updateDonation);
+export const getVoteIdols = createAsyncThunk('data/getVoteIdols', fetchIdols);
+export const setVoteForIdol = createAsyncThunk('data/voteForIdol', voteForIdol);
 
 const apiSlice = createSlice({
   name: 'data',
@@ -15,6 +17,7 @@ const apiSlice = createSlice({
     myCredits: +localStorage.getItem('myCredits'),
     myFavoriteArtists: JSON.parse(localStorage.getItem('myFavoriteArtists')),
     idols: {list: [], nextCursor: null},
+    voteIdols: {list: [], nextCursor: null},
     donations: {list: [], nextCursor: null},
     charts: {idols: []},
     status: 'idle',
@@ -33,6 +36,9 @@ const apiSlice = createSlice({
     removeFavorite: (state, action) => {
       const getArtistes = state.myCredits.filter(dt => dt.id !== action.payload);
       state.myCredits = getArtistes;
+    },
+    resetVoteIdols: state => {
+      state.voteIdols = {list: [], nextCursor: null};
     },
   },
   extraReducers: builder => {
@@ -57,10 +63,19 @@ const apiSlice = createSlice({
         const updatedDonation = action.payload;
         const target = state.donations.list.findIndex(donation => donation.id === updatedDonation.id);
         state.donations.list[target] = {...state.donations.list[target], receivedDonations: updatedDonation.receivedDonations};
+      })
+      .addCase(getVoteIdols.fulfilled, (state, action) => {
+        state.voteIdols.list = [...state.voteIdols.list, ...action.payload.list];
+        state.voteIdols.nextCursor = action.payload.nextCursor;
+      })
+      .addCase(setVoteForIdol.fulfilled, state => {
+        const decreseCredit = state.myCredits - process.env.REACT_APP_VOTES_VALUE;
+        localStorage.setItem('myCredits', decreseCredit);
+        state.myCredits = decreseCredit;
       });
   },
 });
 
-export const {increseCredit, decreseCredit, addFavorite, removeFavorite} = apiSlice.actions;
+export const {increseCredit, decreseCredit, addFavorite, removeFavorite, resetVoteIdols} = apiSlice.actions;
 
 export default apiSlice.reducer;

@@ -8,8 +8,11 @@ function ResetStorageButton({children}) {
   const handleStartClick = () => {
     // localStorage 초기화
     localStorage.clear();
-    localStorage.setItem('myCredits', '0');
-    localStorage.setItem('myFavoriteArtists', JSON.stringify([]));
+    const defaultCredits = process.env.REACT_APP_DEFAULT_CREDIT;
+    const defaultFavoriteArtists = process.env.REACT_APP_DEFAULT_FAVORITE_ARTISTS;
+
+    localStorage.setItem('myCredits', defaultCredits);
+    localStorage.setItem('myFavoriteArtists', JSON.stringify(defaultFavoriteArtists));
 
     // 페이지 이동
     navigate('/list');

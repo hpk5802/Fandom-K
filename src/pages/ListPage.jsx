@@ -5,7 +5,7 @@ import MyCredit from 'components/myCredit/MyCredit';
 import DonateArtist from 'components/donateArtist/DonateArtist';
 import GradientButton from 'components/common/GradientButton';
 import Modal from 'components/common/Modal';
-import {ChargeModal, DonationModal, AlertModal} from 'components/modals';
+import {ChargeModal, AlertModal, VoteModal} from 'components/modals';
 import FavoriteArtists from 'components/favoriteArtists_v1/FavoriteArtists';
 import FavoriteArtist from 'components/favoriteArtist/FavoriteArtist';
 
@@ -30,18 +30,12 @@ function ListPage() {
     openModal('크레딧 충전하기', <ChargeModal onClose={closeModal} />);
   };
 
-  const handleDonationClick = () => {
-    const idol = {
-      name: '사쿠라',
-      gender: 'female',
-      group: '르세라핌',
-      profilePicture: 'https://sprint-fe-project.s3.ap-northeast-2.amazonaws.com/Fandom-K/idol/1728104746762/le_sakura.jpg',
-    };
-    openModal('응원하기', <DonationModal id="4082" idol={idol} title="" ad="" onClose={closeModal} />);
-  };
-
   const handleAlertClick = () => {
     openModal('', <AlertModal onClose={closeModal} />);
+  };
+
+  const handleAlertClick2 = () => {
+    openModal('', <VoteModal onClose={closeModal} />);
   };
   return (
     <>
@@ -59,8 +53,8 @@ function ListPage() {
         <div className="hr" />
         <FavoriteArtist containerName="favorite-list add" title="관심 있는 아이돌을 추가해보세요." />
         <hr />
-        <GradientButton name="" handleClick={handleDonationClick}>
-          응원하기
+        <GradientButton name="" handleClick={handleAlertClick2}>
+          투표
         </GradientButton>
         <GradientButton name="" handleClick={handleAlertClick}>
           알림
