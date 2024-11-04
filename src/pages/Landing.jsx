@@ -3,6 +3,8 @@ import {Link} from 'react-router-dom';
 import Intro from '../components/LandingPage/Intro';
 import ResetStorageButton from '../components/LandingPage/ResetStorageButton';
 import parseImg from 'utils/images';
+import {useDispatch} from 'react-redux';
+import {resetCredit, resetFavorite} from 'services/apiSlice';
 
 //front는 앞쪽 이미지, back은 백그라운드 이미지를 의미
 const mainLogo = parseImg('ic_fandom_k.svg');
@@ -18,19 +20,18 @@ const frontMyArtist = parseImg('img_intro_front_my_artist.svg');
 const backMyArtist = parseImg('img_intro_back_my_artist.svg');
 
 function LandingPage() {
+  const dispatch = useDispatch();
+
   // 첫 렌더링 시 myCredits라는 key가 없거나, key에 대응되는 value가 없다면 초기값 설정
   useEffect(() => {
-    const currentCredits = localStorage.getItem('myCredits');
+    const currentCredits = JSON.parse(localStorage.getItem('myCredits'));
+    const favoriteArtists = JSON.parse(localStorage.getItem('myFavoriteArtists'));
 
-    if (currentCredits === null) {
-      const defaultCredits = process.env.REACT_APP_DEFAULT_CREDIT;
-      const defaultFavoriteArtists = process.env.REACT_APP_DEFAULT_FAVORITE_ARTISTS;
-
-      localStorage.setItem('myCredits', defaultCredits);
-      localStorage.setItem('myFavoriteArtists', JSON.stringify(defaultFavoriteArtists));
+    if (!currentCredits || !favoriteArtists) {
+      dispatch(resetCredit());
+      dispatch(resetFavorite());
     }
   }, []);
-
   return (
     <>
       <div className="main-container">

@@ -30,12 +30,21 @@ const apiSlice = createSlice({
     decreseCredit: (state, action) => {
       state.myCredits -= action.payload;
     },
+    resetCredit: state => {
+      state.myCredits = process.env.REACT_APP_DEFAULT_CREDIT;
+      localStorage.setItem('myCredits', JSON.stringify(state.myCredits));
+    },
     addFavorite: (state, action) => {
-      state.myCredits = [...state.myCredits, action.payload];
+      state.myFavoriteArtists = [...state.myFavoriteArtists, ...action.payload];
+      localStorage.setItem('myFavoriteArtists', JSON.stringify(state.myFavoriteArtists));
     },
     removeFavorite: (state, action) => {
-      const getArtistes = state.myCredits.filter(dt => dt.id !== action.payload);
-      state.myCredits = getArtistes;
+      state.myFavoriteArtists = state.myFavoriteArtists.filter(artist => artist.id !== action.payload);
+      localStorage.setItem('myFavoriteArtists', JSON.stringify(state.myFavoriteArtists));
+    },
+    resetFavorite: state => {
+      state.myFavoriteArtists = process.env.REACT_APP_DEFAULT_FAVORITE_ARTISTS;
+      localStorage.setItem('myFavoriteArtists', JSON.stringify(state.myFavoriteArtists));
     },
     resetVoteIdols: state => {
       state.voteIdols = {list: [], nextCursor: null};
@@ -76,6 +85,6 @@ const apiSlice = createSlice({
   },
 });
 
-export const {increseCredit, decreseCredit, addFavorite, removeFavorite, resetVoteIdols} = apiSlice.actions;
+export const {increseCredit, decreseCredit, resetCredit, addFavorite, removeFavorite, resetFavorite, resetVoteIdols} = apiSlice.actions;
 
 export default apiSlice.reducer;

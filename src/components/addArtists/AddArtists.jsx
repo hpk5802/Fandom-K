@@ -3,19 +3,49 @@ import GradientButton from 'components/common/GradientButton';
 import Pagination from 'components/donateArtist/Pagination';
 import {useDispatch, useSelector} from 'react-redux';
 import {useCallback, useEffect, useRef, useState} from 'react';
-import {getIdols} from 'services/apiSlice';
+import {addFavorite, getIdols} from 'services/apiSlice';
 import useWindowSize from 'hooks/useWindowSize';
-import ProfileDelete from 'components/common/ProfileDelete';
 import parseImg from 'utils/images';
 
-function FavoriteArtist({containerName, title}) {
+function AddArtists() {
   const dispatch = useDispatch();
   const {
     idols: {list, nextCursor},
+    myFavoriteArtists,
   } = useSelector(state => state.data);
+  const [selectedIdols, setSelectedIdols] = useState([]); // 관심 등록된 아이돌 & 추가 할 아이돌을 위한 state
   const [currentPage, setCurrentPage] = useState(0); // 슬라이싱 된 배열의 페이징을 위한 state : 초기값 0
   const device = useWindowSize();
   const endRef = useRef(null); // Infinite Scroll 구현을 위한 Ref 객체
+
+  /**
+   * 아이돌 뱃지 클릭 이벤트 핸들러 : localStorage & store에 이미 저장된 경우 해제 불가 alert / 저장 안된 경우 선택 및 해제 가능
+   * @param {*} idol store & localStorage에 업데이트 할 아이돌 데이터
+   */
+  const handleSelect = idol => {
+    const isFavorite = myFavoriteArtists?.some(fav => fav.id === idol.id);
+    const isSelected = selectedIdols.includes(idol);
+
+    if (isFavorite) {
+      alert('이미 선택된 아이돌입니다.');
+      return;
+    }
+
+    setSelectedIdols(prev => (isSelected ? prev.filter(p => p.id !== idol.id) : [...prev, idol]));
+  };
+
+  /**
+   * localStorage & store 에 추가할 아이돌이 있는 경우 추가
+   */
+  const handleAdd = () => {
+    // store 데이터 중복 저장 방지 위해
+    const favorites = selectedIdols.filter(idol => !myFavoriteArtists.some(fav => fav.id === idol.id));
+    if (favorites.length < 1) {
+      alert('아이돌을 선택해 주세요.');
+      return;
+    }
+    dispatch(addFavorite(favorites));
+  };
 
   /**
    * 서버에 데이터가 더 있는 경우 데이터를 요청하고 redux store에 추가
@@ -42,6 +72,13 @@ function FavoriteArtist({containerName, title}) {
   }, [dispatch]);
 
   /**
+   * store 데이터 변경 감지
+   */
+  useEffect(() => {
+    setSelectedIdols([...myFavoriteArtists]);
+  }, [myFavoriteArtists]);
+
+  /**
    * IntersectionObserver API를 이용해 endRef 객체가 화면에 노출됨을 감지
    */
   useEffect(() => {
@@ -66,28 +103,11 @@ function FavoriteArtist({containerName, title}) {
   const displayedIdols = device === 'desktop' ? list.slice(currentPage * 16, (currentPage + 1) * 16) : list;
   const evenIdols = displayedIdols.filter((_, index) => index % 2 === 0);
   const oddIdols = displayedIdols.filter((_, index) => index % 2 !== 0);
-
-  // 아티스트 선택
-  const [selectedOptions, setSelectedOptions] = useState([]);
-
-  const handleChange = id => {
-    setSelectedOptions(prevSelected => {
-      if (prevSelected.includes(id)) {
-        return prevSelected.filter(selectedId => selectedId !== id);
-      } else {
-        return [...prevSelected, id];
-      }
-    });
-  };
-
-  const handleProfileDelete = value => {
-    console.log(value);
-  };
   return (
     <>
       <Pagination
-        name={containerName}
-        title={title}
+        name="favorite-list"
+        title="관심있는 아이돌을 추가해보세요."
         device={device}
         cursor={nextCursor}
         currentPage={currentPage}
@@ -95,22 +115,21 @@ function FavoriteArtist({containerName, title}) {
         onPageChange={setCurrentPage}
         fetchMoreData={fetchMoreIdols}
       >
-        <div>
-          <div className="favorite-wrap">
+        <div className="add-artists-wrap">
+          <div className="add-artists-content">
             {[evenIdols, oddIdols].map((idols, idx) => (
-              <div key={idx} className="artist-list">
-                {idols.map(({id, profilePicture, group, name}, index) => (
-                  <div key={`${id}-${index}`} className="artist-item">
-                    <button className="badge" onClick={() => handleChange(id)}>
-                      {containerName.includes('add') ? (
-                        <ProfileBadge src={profilePicture} size="large" selected={selectedOptions.includes(id)} />
-                      ) : (
-                        <ProfileDelete src={profilePicture} size="medium" onClick={handleProfileDelete} />
-                      )}
-                    </button>
-                    <div className="artist-info">
-                      <div className="name">{name}</div>
-                      <div className="group">{group}</div>
+              <div key={idx} className="add-artists-list">
+                {idols.map(idol => (
+                  <div key={idol.id} className="add-artists-container">
+                    <ProfileBadge
+                      src={idol.profilePicture}
+                      size="large"
+                      onClick={() => handleSelect(idol)}
+                      selected={myFavoriteArtists.some(fav => fav.id === idol.id) || selectedIdols.some(sel => sel.id === idol.id)}
+                    />
+                    <div className="add-artists-text">
+                      <div className="add-artists-name">{idol.name}</div>
+                      <div className="add-artists-group">{idol.group}</div>
                     </div>
                   </div>
                 ))}
@@ -120,13 +139,12 @@ function FavoriteArtist({containerName, title}) {
           {device !== 'desktop' && <div ref={endRef} className="end-point" />}
         </div>
       </Pagination>
-      {containerName.includes('add') && (
-        <GradientButton name="add-button">
-          <img src={parseImg('ic_add_button.svg')} alt="추가하기"></img>추가하기
-        </GradientButton>
-      )}
+      <GradientButton name="add-button" handleClick={handleAdd}>
+        <img src={parseImg('ic_add_button.svg')} alt="추가하기" />
+        추가하기
+      </GradientButton>
     </>
   );
 }
 
-export default FavoriteArtist;
+export default AddArtists;
