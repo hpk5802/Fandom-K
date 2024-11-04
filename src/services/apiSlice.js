@@ -28,11 +28,16 @@ const apiSlice = createSlice({
       state.myCredits -= action.payload;
     },
     addFavorite: (state, action) => {
-      state.myCredits = [...state.myCredits, action.payload];
+      state.myFavoriteArtists = [...state.myFavoriteArtists, ...action.payload];
+      localStorage.setItem('myFavoriteArtists', JSON.stringify(state.myFavoriteArtists));
     },
     removeFavorite: (state, action) => {
-      const getArtistes = state.myCredits.filter(dt => dt.id !== action.payload);
-      state.myCredits = getArtistes;
+      state.myFavoriteArtists = state.myFavoriteArtists.filter(artist => artist.id !== action.payload);
+      localStorage.setItem('myFavoriteArtists', JSON.stringify(state.myFavoriteArtists));
+    },
+    resetFavorite: state => {
+      state.myFavoriteArtists = [];
+      localStorage.setItem('myFavoriteArtists', JSON.stringify(state.myFavoriteArtists));
     },
   },
   extraReducers: builder => {
@@ -61,6 +66,6 @@ const apiSlice = createSlice({
   },
 });
 
-export const {increseCredit, decreseCredit, addFavorite, removeFavorite} = apiSlice.actions;
+export const {increseCredit, decreseCredit, addFavorite, removeFavorite, resetFavorite} = apiSlice.actions;
 
 export default apiSlice.reducer;
