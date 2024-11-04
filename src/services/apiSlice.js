@@ -1,14 +1,14 @@
 import {createSlice, createAsyncThunk} from '@reduxjs/toolkit';
-import {fetchIdols, voteForIdol} from './idolApi';
+import {fetchIdols} from './idolApi';
 import {fetchDonations, updateDonation} from './donationApi';
-import {fetchCharts} from './chartApi';
+import {fetchCharts, voteForIdol} from './chartApi';
 
 export const getIdols = createAsyncThunk('data/getIdols', fetchIdols);
 export const getDonations = createAsyncThunk('data/getDonations', fetchDonations);
 export const getCharts = createAsyncThunk('data/getCharts', fetchCharts);
 export const getfavoriteCharts = createAsyncThunk('data/getfavoriteCharts', fetchCharts);
 export const setDonation = createAsyncThunk('data/updateDonationAmount', updateDonation);
-export const getVoteIdols = createAsyncThunk('data/getVoteIdols', fetchIdols);
+export const getVoteIdols = createAsyncThunk('data/getVoteIdols', fetchCharts);
 export const setVoteForIdol = createAsyncThunk('data/voteForIdol', voteForIdol);
 
 const apiSlice = createSlice({
@@ -17,10 +17,11 @@ const apiSlice = createSlice({
     myCredits: +localStorage.getItem('myCredits'),
     myFavoriteArtists: JSON.parse(localStorage.getItem('myFavoriteArtists')),
     idols: {list: [], nextCursor: null},
-    voteIdols: {list: [], nextCursor: null},
+    voteIdols: {idols: [], nextCursor: null},
     donations: {list: [], nextCursor: null},
     charts: {idols: []},
     status: 'idle',
+    chartGender: 'female',
     error: null,
   },
   reducers: {
@@ -31,7 +32,7 @@ const apiSlice = createSlice({
       state.myCredits -= action.payload;
     },
     resetCredit: state => {
-      state.myCredits = process.env.REACT_APP_DEFAULT_CREDIT;
+      state.myCredits = JSON.parse(process.env.REACT_APP_DEFAULT_CREDIT);
       localStorage.setItem('myCredits', JSON.stringify(state.myCredits));
     },
     addFavorite: (state, action) => {
@@ -43,11 +44,14 @@ const apiSlice = createSlice({
       localStorage.setItem('myFavoriteArtists', JSON.stringify(state.myFavoriteArtists));
     },
     resetFavorite: state => {
-      state.myFavoriteArtists = process.env.REACT_APP_DEFAULT_FAVORITE_ARTISTS;
+      state.myFavoriteArtists = JSON.parse(process.env.REACT_APP_DEFAULT_FAVORITE_ARTISTS);
       localStorage.setItem('myFavoriteArtists', JSON.stringify(state.myFavoriteArtists));
     },
     resetVoteIdols: state => {
-      state.voteIdols = {list: [], nextCursor: null};
+      state.voteIdols = {idols: [], nextCursor: null};
+    },
+    transChartGender: (state, action) => {
+      state.chartGender = action.payload;
     },
   },
   extraReducers: builder => {
@@ -74,17 +78,18 @@ const apiSlice = createSlice({
         state.donations.list[target] = {...state.donations.list[target], receivedDonations: updatedDonation.receivedDonations};
       })
       .addCase(getVoteIdols.fulfilled, (state, action) => {
-        state.voteIdols.list = [...state.voteIdols.list, ...action.payload.list];
+        state.voteIdols.idols = [...state.voteIdols.idols, ...action.payload.idols];
         state.voteIdols.nextCursor = action.payload.nextCursor;
       })
       .addCase(setVoteForIdol.fulfilled, state => {
-        const decreseCredit = state.myCredits - process.env.REACT_APP_VOTES_VALUE;
-        localStorage.setItem('myCredits', decreseCredit);
-        state.myCredits = decreseCredit;
+        const resultCredit = state.myCredits - JSON.parse(process.env.REACT_APP_VOTES_VALUE);
+        localStorage.setItem('myCredits', resultCredit);
+        state.myCredits = resultCredit;
       });
   },
 });
 
-export const {increseCredit, decreseCredit, resetCredit, addFavorite, removeFavorite, resetFavorite, resetVoteIdols} = apiSlice.actions;
+export const {increseCredit, decreseCredit, resetCredit, addFavorite, removeFavorite, resetFavorite, resetVoteIdols, transChartGender} =
+  apiSlice.actions;
 
 export default apiSlice.reducer;

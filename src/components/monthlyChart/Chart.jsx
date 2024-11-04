@@ -2,7 +2,7 @@ import {useState, useEffect} from 'react';
 import ChartRankContent from './ChartRankContent';
 import ViewMoreBtn from './ViewMoreBtn';
 import {useDispatch, useSelector} from 'react-redux';
-import {getCharts} from 'services/apiSlice';
+import {getCharts, transChartGender} from 'services/apiSlice';
 
 function Chart() {
   const [gender, setGender] = useState('female'); // 초기 성별 'female'
@@ -15,6 +15,7 @@ function Chart() {
   const handleClick = newGender => {
     setGender(newGender);
     dispatch(getCharts({gender: newGender, pageSize: 10}));
+    dispatch(transChartGender(newGender));
   };
 
   // 더보기 버튼 클릭 시 보이는 개수를 증가
