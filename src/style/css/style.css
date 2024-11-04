@@ -618,6 +618,7 @@ img {
 }
 .profile-delete:hover {
   background-color: rgba(255, 255, 255, 0.8);
+  transition: 0.3s;
 }
 .profile-delete .profile-delete-img {
   position: absolute;
@@ -1013,8 +1014,7 @@ img {
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 100%;
-  min-width: 32.6rem;
+  width: 32.6rem;
   height: 4.2rem;
   border-radius: 0.5rem;
   padding: 0.8rem 14.3rem;
@@ -1033,13 +1033,13 @@ img {
   color: rgba(255, 255, 255, 0.8);
 }
 
-@media (max-width: 120rem) {
+@media (max-width: 1200px) {
   /*tablet*/
   .view-more-btn {
     margin-top: 2.7rem;
   }
 }
-@media (max-width: 74.4rem) {
+@media (max-width: 744px) {
   /*mobile*/
   .view-more-btn {
     margin-top: 3.3rem;
