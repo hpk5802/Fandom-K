@@ -1,7 +1,8 @@
-import React from 'react';
+import React, {useEffect} from 'react';
+import {Link} from 'react-router-dom';
 import Intro from '../components/LandingPage/Intro';
+import ResetStorageButton from '../components/LandingPage/ResetStorageButton';
 import parseImg from 'utils/images';
-import GradientButton from 'components/common/GradientButton';
 
 //front는 앞쪽 이미지, back은 백그라운드 이미지를 의미
 const mainLogo = parseImg('ic_fandom_k.svg');
@@ -17,6 +18,16 @@ const frontMyArtist = parseImg('img_intro_front_my_artist.svg');
 const backMyArtist = parseImg('img_intro_back_my_artist.svg');
 
 function LandingPage() {
+  // 첫 렌더링 시 myCredits라는 key가 없거나, key에 대응되는 value가 없다면 초기값 설정
+  useEffect(() => {
+    const currentCredits = localStorage.getItem('myCredits');
+
+    if (currentCredits === null) {
+      localStorage.setItem('myCredits', '0');
+      localStorage.setItem('myFavoriteArtists', JSON.stringify([]));
+    }
+  }, []);
+
   return (
     <>
       <div className="main-container">
@@ -27,16 +38,13 @@ function LandingPage() {
             가장 <span className="main-title-highlight">쉽게 덕질</span> 하는 방법
           </div>
 
-          <div className="main-logo-container">
+          <Link to="/list">
             <img src={mainLogo} alt="목록으로 가기" className="main-logo" />
-          </div>
+          </Link>
         </div>
-        <GradientButton
-          name="go-to-list-button"
-          /* handleClick={} */
-        >
-          지금 시작하기
-        </GradientButton>
+        {/* local storage 리셋 및 /list page 이동 */}
+        <ResetStorageButton>지금 시작하기</ResetStorageButton>
+
         <img src={backMain} alt="메인 백그라운드 이미지" className="main-back-img" />
         <div className="main-gradient" />
       </div>
