@@ -39,7 +39,7 @@ const ChargeModal = ({onClose}) => {
           <span className="radio-check"></span>
         </label>
       ))}
-      <GradientButton name="h42" handleClick={handleCharge}>
+      <GradientButton handleClick={handleCharge}>
         <img src={parseImg('img_credit_white.svg')} alt="크레딧" />
         충전하기
       </GradientButton>
