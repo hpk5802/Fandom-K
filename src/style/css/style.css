@@ -1555,16 +1555,6 @@ img {
     max-height: 60rem;
   }
 }
-.entire-favorite-artist {
-  display: flex;
-  flex-direction: column;
-  width: auto;
-  margin: 0 auto;
-  background-color: var(--rich-black);
-  padding-top: 7.6rem;
-  padding-bottom: 4rem;
-  border-bottom: solid 0.1rem rgba(255, 255, 255, 0.1);
-}
 .entire-favorite-artist .favorite-artist-title {
   color: var(--white-smoke);
   font-size: 2.4rem;
@@ -1573,18 +1563,19 @@ img {
   padding-bottom: 3.2rem;
 }
 .entire-favorite-artist .favorite-artists-container {
-  display: grid;
-  grid-template-columns: repeat(10, 1fr);
+  display: flex;
   align-items: center;
-  width: 9.8rem;
-  height: 15rem;
+  max-width: 120rem;
+  width: 100%;
+  height: 15.2rem;
   gap: 2.4rem;
+  margin: 0 auto;
 }
 .entire-favorite-artist .favorite-artists-container .favorite-artist {
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: auto;
+  width: 10rem;
   height: auto;
   gap: 0.8rem;
 }
@@ -1592,22 +1583,40 @@ img {
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: auto;
+  width: 100%;
   gap: 0.2rem;
 }
 .entire-favorite-artist .favorite-artists-container .favorite-artist .artist-info .artist-name {
+  width: 100%;
   color: #f4efef;
   font-size: 1.6rem;
   line-height: 2.6rem;
   font-weight: var(--bold);
+  text-align: center;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 .entire-favorite-artist .favorite-artists-container .favorite-artist .artist-info .artist-group {
+  width: 100%;
   color: rgba(255, 255, 255, 0.6);
   font-size: 1.4rem;
   line-height: 1.6rem;
   font-weight: var(--normal);
+  text-align: center;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
+@media (max-width: 1200px) {
+  .favorite-artists-container {
+    overflow-x: scroll;
+  }
+  .favorite-artists-container::-webkit-scrollbar {
+    display: none;
+  }
+}
 .main-container {
   margin: 0 auto;
   display: flex;
@@ -1729,6 +1738,11 @@ img {
 .pagination-container.favorite-list .pagination-icon {
   top: calc(50% + 2.9rem);
 }
+@media (max-width: 744px) {
+  .pagination-container.favorite-list {
+    min-height: 41rem;
+  }
+}
 .pagination-container .content-title {
   max-width: 120rem;
   margin: 0 auto 3.2rem;
@@ -1736,6 +1750,16 @@ img {
   font-size: 2.4rem;
   font-weight: var(--bold);
   line-height: 2.6rem;
+}
+@media (max-width: 1200px) {
+  .pagination-container .content-title {
+    font-size: 2rem;
+  }
+}
+@media (max-width: 744px) {
+  .pagination-container .content-title {
+    font-size: 1.6rem;
+  }
 }
 .pagination-container .end-point {
   width: 0.1rem;
@@ -1801,6 +1825,22 @@ img {
   line-height: 1.67rem;
   color: rgba(255, 255, 255, 0.6);
 }
+.favorite-list .add-artists-wrap .add-artists-list .profile-badge {
+  cursor: pointer;
+}
+
+.add-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.8rem;
+  width: 25.5rem;
+  margin: 4.8rem auto 0;
+  padding: 1.1rem 0;
+  border-radius: 2.4rem;
+  font-size: 1.6rem;
+  line-height: 2.6rem;
+}
 
 @media (max-width: 1200px) {
   .favorite-list .add-artists-wrap {
@@ -1812,5 +1852,29 @@ img {
   }
   .favorite-list .add-artists-wrap .add-artists-list {
     gap: 2.4rem;
+  }
+  .add-button {
+    margin-top: 4rem;
+  }
+}
+@media (max-width: 744px) {
+  .favorite-list .profile-badge {
+    width: 9.8rem;
+    height: 9.8rem;
+  }
+  .favorite-list .profile-badge .profile-badge-img {
+    width: 8.8rem;
+    height: 8.8rem;
+  }
+  .favorite-list .profile-badge .selected {
+    width: 8.8rem;
+    height: 8.8rem;
+  }
+  .favorite-list .profile-badge .selected img {
+    width: 4rem;
+    height: 4rem;
+  }
+  .add-button {
+    margin-top: 2.4rem;
   }
 }

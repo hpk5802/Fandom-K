@@ -14,6 +14,9 @@
     .pagination-icon {
       top: calc(50% + 2.9rem);
     }
+    @media (max-width: 744px) {
+      min-height: 41rem;
+    }
   }
 
   .content-title {
@@ -23,6 +26,12 @@
     font-size: 2.4rem;
     font-weight: var(--bold);
     line-height: 2.6rem;
+    @media (max-width: 1200px) {
+      font-size: 2rem;
+    }
+    @media (max-width: 744px) {
+      font-size: 1.6rem;
+    }
   }
 
   .end-point {

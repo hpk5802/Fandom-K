@@ -1,9 +1,8 @@
 import React, {useEffect} from 'react';
 import {Link} from 'react-router-dom';
 import Intro from '../components/LandingPage/Intro';
-// import ResetStorageButton from '../components/LandingPage/ResetStorageButton';
+import ResetStorageButton from '../components/LandingPage/ResetStorageButton';
 import parseImg from 'utils/images';
-
 //front는 앞쪽 이미지, back은 백그라운드 이미지를 의미
 const mainLogo = parseImg('ic_fandom_k.svg');
 const backMain = parseImg('img_intro_main.svg');
@@ -17,69 +16,6 @@ const backMonthly = parseImg('img_intro_back_monthly_artist.svg');
 const frontMyArtist = parseImg('img_intro_front_my_artist.svg');
 const backMyArtist = parseImg('img_intro_back_my_artist.svg');
 
-const getArtists = [
-  {
-    id: 1,
-    profilePicture: 'img_idol_minJi_example.svg',
-    name: '민지',
-    group: '뉴진스',
-  },
-  {
-    id: 2,
-    profilePicture: 'img_idol_minJi_example.svg',
-    name: '민지',
-    group: '뉴진스',
-  },
-  {
-    id: 3,
-    profilePicture: 'img_idol_minJi_example.svg',
-    name: '민지',
-    group: '뉴진스',
-  },
-  {
-    id: 4,
-    profilePicture: 'img_idol_minJi_example.svg',
-    name: '민지',
-    group: '뉴진스',
-  },
-  {
-    id: 5,
-    profilePicture: 'img_idol_minJi_example.svg',
-    name: '민지',
-    group: '뉴진스',
-  },
-  {
-    id: 6,
-    profilePicture: 'img_idol_minJi_example.svg',
-    name: '민지',
-    group: '뉴진스',
-  },
-  {
-    id: 7,
-    profilePicture: 'img_idol_minJi_example.svg',
-    name: '민지',
-    group: '뉴진스',
-  },
-  {
-    id: 8,
-    profilePicture: 'img_idol_minJi_example.svg',
-    name: '민지',
-    group: '뉴진스',
-  },
-  {
-    id: 9,
-    profilePicture: 'img_idol_minJi_example.svg',
-    name: '민지',
-    group: '뉴진스',
-  },
-  {
-    id: 10,
-    profilePicture: 'img_idol_minJi_example.svg',
-    name: '민지',
-    group: '뉴진스',
-  },
-];
-
 function LandingPage() {
   // 첫 렌더링 시 myCredits라는 key가 없거나, key에 대응되는 value가 없다면 초기값 설정
   useEffect(() => {
@@ -89,10 +25,8 @@ function LandingPage() {
     if (currentCredits === null) {
       localStorage.setItem('myCredits', '0');
     }
-
-    if (!favoriteArtists) localStorage.setItem('myFavoriteArtists', JSON.stringify(getArtists));
+    if (!favoriteArtists) localStorage.setItem('myFavoriteArtists', JSON.stringify([]));
   }, []);
-
   return (
     <>
       <div className="main-container">
@@ -108,7 +42,7 @@ function LandingPage() {
           </Link>
         </div>
         {/* local storage 리셋 및 /list page 이동 */}
-        {/* <ResetStorageButton>지금 시작하기</ResetStorageButton> */}
+        <ResetStorageButton>지금 시작하기</ResetStorageButton>
 
         <img src={backMain} alt="메인 백그라운드 이미지" className="main-back-img" />
         <div className="main-gradient" />

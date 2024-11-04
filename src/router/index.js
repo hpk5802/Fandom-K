@@ -16,7 +16,7 @@ const routes = [
     element: <ModalComponent />,
   },
   {
-    path: '/list-component',
+    path: '/list',
     element: <ListPage />,
   },
 ];
