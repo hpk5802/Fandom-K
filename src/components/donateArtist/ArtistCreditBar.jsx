@@ -1,4 +1,5 @@
 import parseImg from 'utils/images';
+import formatWithCommas from 'utils/formatWithCommas';
 import {calculateExpire, calculatePercentage} from 'utils/calculate';
 
 function ArtistCreditBar({receivedDonations, deadline, targetDonation}) {
@@ -7,7 +8,7 @@ function ArtistCreditBar({receivedDonations, deadline, targetDonation}) {
       <div className="artist-donation-top">
         <div className="artist-donation-left">
           <img src={parseImg('ic_creditIcon.svg')} alt="Credit Icon" className="artist-credit-icon" />
-          <div className="received-credit">{receivedDonations}</div>
+          <div className="received-credit">{formatWithCommas(receivedDonations)}</div>
         </div>
         <div className="deadline artist-donation-right">{`${calculateExpire(deadline)}일 남음`}</div>
       </div>

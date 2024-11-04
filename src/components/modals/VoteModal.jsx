@@ -1,6 +1,7 @@
 import React, {useState} from 'react';
 import GradientButton from 'components/common/GradientButton';
 import ProfileBadge from 'components/common/ProfileBadge';
+import formatWithCommas from 'utils/formatWithCommas';
 
 const VoteModal = ({onClose}) => {
   const voteList = [
@@ -30,7 +31,7 @@ const VoteModal = ({onClose}) => {
               <div className="vote-num">{voteList.id}</div>
               <div className="vote-info">
                 <p className="name">{voteList.artistName}</p>
-                <p className="count">{voteList.voteCount}표</p>
+                <p className="count">{formatWithCommas(voteList.voteCount)}표</p>
               </div>
             </div>
             <input type="radio" value={voteList.id} checked={selectedOption === voteList.id} onChange={handleChange} />

@@ -1,8 +1,9 @@
 import React, {useState} from 'react';
-import parseImg from 'utils/images';
-import GradientButton from 'components/common/GradientButton';
 import {useDispatch, useSelector} from 'react-redux';
 import {increseCredit} from 'services/apiSlice';
+import parseImg from 'utils/images';
+import GradientButton from 'components/common/GradientButton';
+import formatWithCommas from 'utils/formatWithCommas';
 
 const ChargeModal = ({onClose}) => {
   const options = [
@@ -33,7 +34,7 @@ const ChargeModal = ({onClose}) => {
           <div className="img-credit-sm">
             <img src={parseImg('img_credit_sm.svg')} alt="크레딧" />
           </div>
-          <div className="charge-info">{option.label}</div>
+          <div className="charge-info">{formatWithCommas(option.label)}</div>
           <input type="radio" value={option.value} checked={selectedOption === option.value} onChange={handleChange} />
           <span className="radio-check"></span>
         </label>
