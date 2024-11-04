@@ -1,4 +1,5 @@
 import ProfileBadge from 'components/common/ProfileBadge';
+import formatWithCommas from 'utils/formatWithCommas';
 
 function ChartRankContent({artistData}) {
   return (
@@ -11,7 +12,7 @@ function ChartRankContent({artistData}) {
               <div className="artist-rank" /*/{teamName}/charts/{gender}rank*/>{idol.rank}</div>
               <div className="ranked-artist" /*/{teamName}/charts/{gender}name*/>{idol.name}</div>
             </div>
-            <div className="total-votes" /*/{teamName}/charts/{gender}totalVotes*/>{idol.totalVotes}표</div>
+            <div className="total-votes" /*/{teamName}/charts/{gender}totalVotes*/>{formatWithCommas(idol.totalVotes)}표</div>
           </div>
         ))}
     </div>

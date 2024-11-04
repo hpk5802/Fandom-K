@@ -1,13 +1,20 @@
-const formatWithCommas = value => {
-  const getValueType = typeof value;
-  if (getValueType === 'number' || getValueType === 'string') {
-    let formatValue = value;
-    if (getValueType === 'string') {
-      formatValue = Number(value.replaceAll(',', ''));
-    }
-    return formatValue.toLocaleString('ko-KR');
+function formatWithCommas(value) {
+  let result = 0;
+
+  switch (typeof value) {
+    case 'string':
+      result = Number(value.replaceAll(',', ''));
+      break;
+    case 'number':
+      result = value;
+      break;
+    default:
+      return value;
   }
-  return value;
-};
+
+  if (isNaN(result)) return value;
+
+  return result.toLocaleString('ko-KR');
+}
 
 export default formatWithCommas;

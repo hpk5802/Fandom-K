@@ -1,6 +1,7 @@
 import {useDispatch, useSelector} from 'react-redux';
 import {removeFavorite} from 'services/apiSlice';
 import ProfileDelete from 'components/common/ProfileDelete';
+import parseImg from 'utils/images';
 
 function FavoriteArtists() {
   const dispatch = useDispatch();
@@ -21,12 +22,7 @@ function FavoriteArtists() {
             return (
               <div key={`${artist.id}-artist`} className="favorite-artist">
                 <>
-                  <ProfileDelete
-                    key={`${artist.id}-delete`}
-                    src={artist.profilePicture}
-                    size="medium"
-                    onClick={handleDelete(artist.id)} /*x버튼 누르면 삭제 */
-                  />
+                  <ProfileDelete key={`${artist.id}-delete`} src={parseImg(artist.profilePicture)} size="medium" onClick={handleDelete(artist.id)} />
                   <div key={`${artist.id}-info`} className="artist-info">
                     <div key={`${artist.id}-name`} className="artist-name">
                       {artist.name}
