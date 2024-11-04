@@ -13,8 +13,8 @@ function FavoriteArtists() {
 
   const handleDelete = id => () => {
     dispatch(removeFavorite(id));
-    const filterArtist = getArtists.filter(artist => artist.id !== id);
-    localStorage.setItem('myFavoriteArtists', filterArtist);
+    // const filterArtist = getArtists.filter(artist => artist.id !== id);
+    // localStorage.setItem('myFavoriteArtists', JSON.stringify(filterArtist));
   };
 
   /**
