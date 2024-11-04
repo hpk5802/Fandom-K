@@ -8,6 +8,7 @@
     padding: 3rem 7.8rem;
     height: 13rem;
     max-width: 120rem;
+    width: 100%;
     margin: 0 auto;
     background-color: var(--rich-black);
     border-radius: 0.8rem;
@@ -59,23 +60,22 @@
   }
 }
 
-@media (max-width: 120rem) {
+@media (max-width: 1200px) {
   .my-credit {
     margin-top: 0;
     margin-bottom: 6.4rem;
+    padding: 0 2.4rem;
     .credit-box {
-      width: 70rem;
       padding: 3rem 6.4rem;
     }
   }
 }
 
-@media (max-width: 74.4rem) {
+@media (max-width: 744px) {
   .my-credit {
     margin-top: 1.6rem;
     margin-bottom: 4rem;
     .credit-box {
-      width: 32.7rem;
       height: 8.7rem;
       padding: 2rem 2.5rem;
       .credit-content {
