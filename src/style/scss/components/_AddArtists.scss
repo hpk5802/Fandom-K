@@ -26,6 +26,9 @@
           color: #ffffff99;
         }
       }
+      .profile-badge {
+        cursor: pointer;
+      }
     }
   }
 }
@@ -69,6 +72,14 @@
       .profile-badge-img {
         width: 8.8rem;
         height: 8.8rem;
+      }
+      .selected {
+        width: 8.8rem;
+        height: 8.8rem;
+        img {
+          width: 4rem;
+          height: 4rem;
+        }
       }
     }
   }

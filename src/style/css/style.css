@@ -1537,7 +1537,7 @@ img {
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: auto;
+  width: 10rem;
   height: auto;
   gap: 0.8rem;
 }
@@ -1545,20 +1545,30 @@ img {
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: auto;
+  width: 100%;
   gap: 0.2rem;
 }
 .entire-favorite-artist .favorite-artists-container .favorite-artist .artist-info .artist-name {
+  width: 100%;
   color: #f4efef;
   font-size: 1.6rem;
   line-height: 2.6rem;
   font-weight: var(--bold);
+  text-align: center;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 .entire-favorite-artist .favorite-artists-container .favorite-artist .artist-info .artist-group {
+  width: 100%;
   color: rgba(255, 255, 255, 0.6);
   font-size: 1.4rem;
   line-height: 1.6rem;
   font-weight: var(--normal);
+  text-align: center;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 @media (max-width: 1200px) {
@@ -1703,6 +1713,16 @@ img {
   font-weight: var(--bold);
   line-height: 2.6rem;
 }
+@media (max-width: 1200px) {
+  .pagination-container .content-title {
+    font-size: 2rem;
+  }
+}
+@media (max-width: 744px) {
+  .pagination-container .content-title {
+    font-size: 1.6rem;
+  }
+}
 .pagination-container .end-point {
   width: 0.1rem;
   height: 100%;
@@ -1752,6 +1772,9 @@ img {
   line-height: 1.67rem;
   color: rgba(255, 255, 255, 0.6);
 }
+.favorite-list .add-artists-wrap .add-artists-list .profile-badge {
+  cursor: pointer;
+}
 
 .add-button {
   display: flex;
@@ -1789,6 +1812,14 @@ img {
   .favorite-list .profile-badge .profile-badge-img {
     width: 8.8rem;
     height: 8.8rem;
+  }
+  .favorite-list .profile-badge .selected {
+    width: 8.8rem;
+    height: 8.8rem;
+  }
+  .favorite-list .profile-badge .selected img {
+    width: 4rem;
+    height: 4rem;
   }
   .add-button {
     margin-top: 2.4rem;
