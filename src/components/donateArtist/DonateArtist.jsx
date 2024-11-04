@@ -39,7 +39,7 @@ function DonateArtist() {
   return (
     <Pagination
       name="donation"
-      title="후원을 기다리는 조공"
+      title="응원을 기다리는 아티스트"
       device={device}
       cursor={nextCursor}
       currentPage={currentPage}

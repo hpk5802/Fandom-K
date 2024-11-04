@@ -618,6 +618,7 @@ img {
 }
 .profile-delete:hover {
   background-color: rgba(255, 255, 255, 0.8);
+  transition: 0.3s;
 }
 .profile-delete .profile-delete-img {
   position: absolute;
@@ -703,7 +704,7 @@ img {
 @media (max-width: 744px) {
   /*tablet*/
   .nav {
-    padding-right: 1.4rem;
+    padding-right: 2.4rem;
   }
 }
 .my-credit {
@@ -1013,8 +1014,7 @@ img {
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 100%;
-  min-width: 32.6rem;
+  width: 32.6rem;
   height: 4.2rem;
   border-radius: 0.5rem;
   padding: 0.8rem 14.3rem;
@@ -1033,13 +1033,13 @@ img {
   color: rgba(255, 255, 255, 0.8);
 }
 
-@media (max-width: 120rem) {
+@media (max-width: 1200px) {
   /*tablet*/
   .view-more-btn {
     margin-top: 2.7rem;
   }
 }
-@media (max-width: 74.4rem) {
+@media (max-width: 744px) {
   /*mobile*/
   .view-more-btn {
     margin-top: 3.3rem;
@@ -1093,6 +1093,7 @@ img {
   height: 4rem;
   font-size: 13px;
   font-weight: var(--bold);
+  line-height: 2.6rem;
   transform: translateX(-50%);
 }
 .donation .cards-container .card-container .card-texts {
@@ -1162,8 +1163,33 @@ img {
     display: none;
   }
 }
-@media (max-width: 74.4rem) {
+@media (max-width: 744px) {
   /*mobile*/
+  .donation .cards-container {
+    gap: 0.8rem;
+  }
+  .donation .cards-container .card-container {
+    width: 15.8rem;
+  }
+  .donation .cards-container .card-container .card-top-wrapper {
+    height: 20.6rem;
+  }
+  .donation .cards-container .card-container .card-top-wrapper .donation-button {
+    top: 16.7rem;
+    width: calc(100% - 0.8rem);
+    height: 3.1rem;
+  }
+  .donation .cards-container .card-container .card-texts {
+    margin: 1rem 0 2rem;
+  }
+  .donation .cards-container .card-container .card-texts .ad-location {
+    font-size: 1.2rem;
+    margin-bottom: 0.6rem;
+  }
+  .donation .cards-container .card-container .card-texts .donation-title {
+    font-size: 1.4rem;
+    line-height: 1.6rem;
+  }
 }
 .modal-overlay {
   z-index: 999;
@@ -1755,6 +1781,21 @@ img {
   right: 0;
 }
 
+@media (max-width: 1200px) {
+  .pagination-container {
+    padding-left: 2.4rem;
+  }
+  .pagination-container .content-title {
+    font-size: 2rem;
+    margin-bottom: 2.4rem;
+  }
+}
+@media (max-width: 744px) {
+  .pagination-container .content-title {
+    font-size: 1.6rem;
+    margin-bottom: 1.6rem;
+  }
+}
 .favorite-list .add-artists-wrap {
   display: flex;
   width: 120rem;
