@@ -47,6 +47,7 @@
           height: 4rem;
           font-size: 13px;
           font-weight: var(--bold);
+          line-height: 2.6rem;
           transform: translateX(-50%);
         }
       }
@@ -134,6 +135,33 @@
   }
 }
 
-@media (max-width: 74.4rem) {
+@media (max-width: 744px) {
   /*mobile*/
+  .donation {
+    .cards-container {
+      gap: 0.8rem;
+      .card-container {
+        width: 15.8rem;
+        .card-top-wrapper {
+          height: 20.6rem;
+          .donation-button {
+            top: 16.7rem;
+            width: calc(100% - 0.8rem);
+            height: 3.1rem;
+          }
+        }
+        .card-texts {
+          margin: 1rem 0 2rem;
+          .ad-location {
+            font-size: 1.2rem;
+            margin-bottom: 0.6rem;
+          }
+          .donation-title {
+            font-size: 1.4rem;
+            line-height: 1.6rem;
+          }
+        }
+      }
+    }
+  }
 }

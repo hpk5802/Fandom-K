@@ -1093,6 +1093,7 @@ img {
   height: 4rem;
   font-size: 13px;
   font-weight: var(--bold);
+  line-height: 2.6rem;
   transform: translateX(-50%);
 }
 .donation .cards-container .card-container .card-texts {
@@ -1162,8 +1163,33 @@ img {
     display: none;
   }
 }
-@media (max-width: 74.4rem) {
+@media (max-width: 744px) {
   /*mobile*/
+  .donation .cards-container {
+    gap: 0.8rem;
+  }
+  .donation .cards-container .card-container {
+    width: 15.8rem;
+  }
+  .donation .cards-container .card-container .card-top-wrapper {
+    height: 20.6rem;
+  }
+  .donation .cards-container .card-container .card-top-wrapper .donation-button {
+    top: 16.7rem;
+    width: calc(100% - 0.8rem);
+    height: 3.1rem;
+  }
+  .donation .cards-container .card-container .card-texts {
+    margin: 1rem 0 2rem;
+  }
+  .donation .cards-container .card-container .card-texts .ad-location {
+    font-size: 1.2rem;
+    margin-bottom: 0.6rem;
+  }
+  .donation .cards-container .card-container .card-texts .donation-title {
+    font-size: 1.4rem;
+    line-height: 1.6rem;
+  }
 }
 .modal-overlay {
   z-index: 999;
