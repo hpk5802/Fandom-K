@@ -5,10 +5,8 @@ import {useDispatch, useSelector} from 'react-redux';
 import {useCallback, useEffect, useRef, useState} from 'react';
 import {getIdols} from 'services/apiSlice';
 import useWindowSize from 'hooks/useWindowSize';
-import ProfileDelete from 'components/common/ProfileDelete';
-import parseImg from 'utils/images';
 
-function FavoriteArtist({containerName, title}) {
+function AddArtists() {
   const dispatch = useDispatch();
   const {
     idols: {list, nextCursor},
@@ -66,28 +64,11 @@ function FavoriteArtist({containerName, title}) {
   const displayedIdols = device === 'desktop' ? list.slice(currentPage * 16, (currentPage + 1) * 16) : list;
   const evenIdols = displayedIdols.filter((_, index) => index % 2 === 0);
   const oddIdols = displayedIdols.filter((_, index) => index % 2 !== 0);
-
-  // 아티스트 선택
-  const [selectedOptions, setSelectedOptions] = useState([]);
-
-  const handleChange = id => {
-    setSelectedOptions(prevSelected => {
-      if (prevSelected.includes(id)) {
-        return prevSelected.filter(selectedId => selectedId !== id);
-      } else {
-        return [...prevSelected, id];
-      }
-    });
-  };
-
-  const handleProfileDelete = value => {
-    console.log(value);
-  };
   return (
     <>
       <Pagination
-        name={containerName}
-        title={title}
+        name="favorite-list"
+        title="관심있는 아이돌을 추가해보세요."
         device={device}
         cursor={nextCursor}
         currentPage={currentPage}
@@ -95,22 +76,16 @@ function FavoriteArtist({containerName, title}) {
         onPageChange={setCurrentPage}
         fetchMoreData={fetchMoreIdols}
       >
-        <div>
-          <div className="favorite-wrap">
+        <div className="add-artists-wrap">
+          <div className="add-artists-content">
             {[evenIdols, oddIdols].map((idols, idx) => (
-              <div key={idx} className="artist-list">
-                {idols.map(({id, profilePicture, group, name}, index) => (
-                  <div key={`${id}-${index}`} className="artist-item">
-                    <button className="badge" onClick={() => handleChange(id)}>
-                      {containerName.includes('add') ? (
-                        <ProfileBadge src={profilePicture} size="large" selected={selectedOptions.includes(id)} />
-                      ) : (
-                        <ProfileDelete src={profilePicture} size="medium" onClick={handleProfileDelete} />
-                      )}
-                    </button>
-                    <div className="artist-info">
-                      <div className="name">{name}</div>
-                      <div className="group">{group}</div>
+              <div key={idx} className="add-artists-list">
+                {idols.map(({id, profilePicture, group, name}) => (
+                  <div key={id} className="add-artists-container">
+                    <ProfileBadge src={profilePicture} size="large" />
+                    <div className="add-artists-text">
+                      <div className="add-artists-name">{name}</div>
+                      <div className="add-artists-group">{group}</div>
                     </div>
                   </div>
                 ))}
@@ -120,13 +95,9 @@ function FavoriteArtist({containerName, title}) {
           {device !== 'desktop' && <div ref={endRef} className="end-point" />}
         </div>
       </Pagination>
-      {containerName.includes('add') && (
-        <GradientButton name="add-button">
-          <img src={parseImg('ic_add_button.svg')} alt="추가하기"></img>추가하기
-        </GradientButton>
-      )}
+      <GradientButton name="add-button">추가하기</GradientButton>
     </>
   );
 }
 
-export default FavoriteArtist;
+export default AddArtists;
