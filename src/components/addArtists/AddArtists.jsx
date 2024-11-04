@@ -6,6 +6,7 @@ import {useCallback, useEffect, useRef, useState} from 'react';
 import {getIdols} from 'services/apiSlice';
 import useWindowSize from 'hooks/useWindowSize';
 
+// 누락 해결
 function AddArtists() {
   const dispatch = useDispatch();
   const {
