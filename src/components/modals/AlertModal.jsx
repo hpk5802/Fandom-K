@@ -15,9 +15,7 @@ const AlertModal = ({onClose}) => {
       <div className="desc">
         앗! 투표하기 위한 <span>크레딧</span>이 부족해요
       </div>
-      <GradientButton name="h42" handleClick={handleCharge}>
-        확인
-      </GradientButton>
+      <GradientButton handleClick={handleCharge}>확인</GradientButton>
     </div>
   );
 };

@@ -521,6 +521,11 @@ button:disabled {
   clip: rect(0 0 0 0);
 }
 
+img {
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+
 .button-gradient {
   border-radius: 0.3rem;
   background: linear-gradient(90deg, #f86f65 0%, var(--brand-pink) 100%);
@@ -700,6 +705,7 @@ button:disabled {
   padding: 3rem 7.8rem;
   height: 13rem;
   max-width: 120rem;
+  width: 100%;
   margin: 0 auto;
   background-color: var(--rich-black);
   border-radius: 0.8rem;
@@ -748,23 +754,22 @@ button:disabled {
   opacity: 0.9;
 }
 
-@media (max-width: 120rem) {
+@media (max-width: 1200px) {
   .my-credit {
     margin-top: 0;
     margin-bottom: 6.4rem;
+    padding: 0 2.4rem;
   }
   .my-credit .credit-box {
-    width: 70rem;
     padding: 3rem 6.4rem;
   }
 }
-@media (max-width: 74.4rem) {
+@media (max-width: 744px) {
   .my-credit {
     margin-top: 1.6rem;
     margin-bottom: 4rem;
   }
   .my-credit .credit-box {
-    width: 32.7rem;
     height: 8.7rem;
     padding: 2rem 2.5rem;
   }
@@ -791,11 +796,14 @@ button:disabled {
   align-items: center;
   margin-top: 8rem;
   width: 100%;
+  margin-bottom: 24.3rem;
 }
 .monthly-chart-container .monthly-chart {
   display: flex;
   flex-direction: column;
+  width: 100%;
   max-width: 120rem;
+  min-width: 32.7rem;
   margin: 0 auto;
   gap: 2.4rem;
   background-color: var(--rich-black);
@@ -838,26 +846,28 @@ button:disabled {
   background-position: 99%;
 }
 
-@media (max-width: 120rem) {
+@media (max-width: 1200px) {
   /*tablet*/
   .monthly-chart-container {
     margin-top: 6rem;
+    margin-bottom: 33rem;
   }
   .monthly-chart-container .monthly-chart {
-    max-width: 70rem;
+    padding: 0 2.2rem;
   }
   .monthly-chart-container .monthly-chart .chart-header .chart-header-title {
     font-size: 2rem;
   }
 }
-@media (max-width: 74.4rem) {
+@media (max-width: 744px) {
   /*mobile*/
   .monthly-chart-container {
     margin-top: 4rem;
+    margin-bottom: 5.9rem;
   }
   .monthly-chart-container .monthly-chart {
-    max-width: 32.7rem;
     gap: 1.6rem;
+    padding: 0 2.4rem;
   }
   .monthly-chart-container .monthly-chart .chart-header .chart-header-title {
     font-size: 1.6rem;
@@ -913,13 +923,14 @@ button:disabled {
   color: var(--sonic-silver);
 }
 
-@media (max-width: 74.4rem) {
+@media (max-width: 744px) {
   .entire-chart .chart-content {
     gap: 1.6rem;
   }
 }
 .chart-rank-content {
   display: grid;
+  width: 100%;
   grid-template-columns: repeat(2, 1fr);
   align-items: center;
   border-radius: 0.8rem;
@@ -937,6 +948,7 @@ button:disabled {
 .chart-rank-content .artist-profile .artist-profile-ahead {
   display: flex;
   align-items: center;
+  min-width: 16.5rem;
   width: 100%;
   gap: 1.2rem;
 }
@@ -989,7 +1001,8 @@ button:disabled {
   display: flex;
   justify-content: center;
   align-items: center;
-  width: auto;
+  width: 100%;
+  min-width: 32.6rem;
   height: 4.2rem;
   border-radius: 0.5rem;
   padding: 0.8rem 14.3rem;
@@ -1137,6 +1150,9 @@ button:disabled {
     display: none;
   }
 }
+@media (max-width: 74.4rem) {
+  /*mobile*/
+}
 .modal-overlay {
   z-index: 999;
   position: fixed;
@@ -1197,6 +1213,10 @@ button:disabled {
   align-items: center;
   max-width: 100%;
   color: var(--white);
+}
+
+.modal-bottom {
+  width: 100%;
 }
 
 .custom-radio {
@@ -1415,7 +1435,9 @@ button:disabled {
 }
 .vote-modal .desc {
   margin: 1.2rem 0 0;
+  line-height: 2.6rem;
   font-weight: var(--medium);
+  text-align: center;
 }
 .vote-modal .desc span {
   color: var(--brand-orange);
@@ -1448,30 +1470,51 @@ button:disabled {
   color: var(--brand-orange);
 }
 
-.favorite-list {
-  color: var(--white);
-}
-.favorite-list .add-artists-wrap {
-  display: flex;
-}
-.favorite-list .add-artists-wrap .add-artists-list {
-  display: flex;
-  flex-wrap: nowrap;
-  gap: 2.4rem;
-  max-width: 120rem;
-  width: 100%;
-  margin: 3.2rem auto 0;
-}
-
-@media (max-width: 1200px) {
-  .favorite-list .add-artists-wrap {
-    overflow-x: scroll;
+@media (max-width: 557px) {
+  .modal.mobile-full {
+    max-width: 100%;
+    width: 100%;
+    height: 100%;
+    padding: 6.4rem 2.4rem 10rem;
+    top: 0;
+    left: unset;
+    transform: none;
+    background-color: var(--rich-black);
   }
-  .favorite-list .add-artists-wrap::-webkit-scrollbar {
+  .modal.mobile-full .modal-top {
+    position: relative;
+    justify-content: center;
+    font-size: 1.4rem;
+    font-weight: var(--medium);
+  }
+  .modal.mobile-full .modal-top .btn-close {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    transform: translateY(-50%);
+    background: url(../../assets/icons/ic_arrow_left.svg) no-repeat center;
+    background-size: contain;
+  }
+  .modal.mobile-full .modal-top .btn-close img {
     display: none;
   }
-  .favorite-list .add-artists-wrap .add-artists-list {
-    gap: 2.4rem;
+  .modal.mobile-full .modal-bottom {
+    position: absolute;
+    bottom: 0;
+    padding: 1.6rem 2.4rem;
+    background-color: rgba(2, 0, 14, 0.8);
+  }
+  .modal.mobile-full .button-gradient {
+    margin: 0;
+    width: 100%;
+  }
+  .modal.mobile-full .vote-modal {
+    margin-top: 3rem;
+    width: 100%;
+  }
+  .modal.mobile-full .vote-modal .vote-list {
+    padding-bottom: 106px;
+    max-height: 60rem;
   }
 }
 .entire-favorite-artist {
@@ -1534,8 +1577,8 @@ button:disabled {
   align-items: center;
   justify-content: space-between;
   position: relative; /* 배경 이미지 absolute 사용을 위하여 설정 */
-  width: 108rem; /* PC기준 width */
-  height: 108rem; /* PC기준 height */
+  width: 108rem; /* PC기준 고정 width */
+  height: 108rem; /* PC기준 고정 height */
 }
 .main-container .main-texts {
   margin-top: 14rem;
@@ -1554,7 +1597,7 @@ button:disabled {
 .main-container .main-texts .main-title .main-title-highlight {
   color: var(--brand-orange);
 }
-.main-container .main-texts .main-logo-container {
+.main-container .main-texts .main-logo {
   width: 51rem;
   height: auto; /* 로고 원본 비율 유지하면서 높이 조절 */
 }
@@ -1639,6 +1682,23 @@ button:disabled {
   margin: 0 auto;
   overflow: hidden;
 }
+.pagination-container.donation {
+  min-height: 46rem;
+}
+.pagination-container.favorite-list {
+  min-height: 45.1rem;
+}
+.pagination-container.favorite-list .pagination-icon {
+  top: calc(50% + 2.9rem);
+}
+.pagination-container .content-title {
+  max-width: 120rem;
+  margin: 0 auto 3.2rem;
+  color: var(--white);
+  font-size: 2.4rem;
+  font-weight: var(--bold);
+  line-height: 2.6rem;
+}
 .pagination-container .end-point {
   width: 0.1rem;
   height: 100%;
@@ -1657,4 +1717,47 @@ button:disabled {
 }
 .pagination-container .pagination-icon.next {
   right: 0;
+}
+
+.favorite-list .add-artists-wrap {
+  display: flex;
+  width: 120rem;
+  margin: 0 auto;
+}
+.favorite-list .add-artists-wrap .add-artists-list {
+  display: flex;
+  flex-wrap: nowrap;
+  gap: 2.4rem;
+  width: 100%;
+  margin: 0 auto;
+}
+.favorite-list .add-artists-wrap .add-artists-list + .add-artists-list {
+  margin-top: 3.2rem;
+}
+.favorite-list .add-artists-wrap .add-artists-list .add-artists-text {
+  margin-top: 0.8rem;
+  text-align: center;
+}
+.favorite-list .add-artists-wrap .add-artists-list .add-artists-text .add-artists-name {
+  font-size: 1.6rem;
+  line-height: 2.8rem;
+  color: #f4efef;
+}
+.favorite-list .add-artists-wrap .add-artists-list .add-artists-text .add-artists-group {
+  font-size: 1.4rem;
+  line-height: 1.67rem;
+  color: rgba(255, 255, 255, 0.6);
+}
+
+@media (max-width: 1200px) {
+  .favorite-list .add-artists-wrap {
+    width: auto;
+    overflow-x: scroll;
+  }
+  .favorite-list .add-artists-wrap::-webkit-scrollbar {
+    display: none;
+  }
+  .favorite-list .add-artists-wrap .add-artists-list {
+    gap: 2.4rem;
+  }
 }

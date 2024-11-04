@@ -6,7 +6,6 @@ import {useCallback, useEffect, useRef, useState} from 'react';
 import {getIdols} from 'services/apiSlice';
 import useWindowSize from 'hooks/useWindowSize';
 
-// 누락 해결
 function AddArtists() {
   const dispatch = useDispatch();
   const {
@@ -69,7 +68,7 @@ function AddArtists() {
     <>
       <Pagination
         name="favorite-list"
-        title="내가 관심있는 아이돌"
+        title="관심있는 아이돌을 추가해보세요."
         device={device}
         cursor={nextCursor}
         currentPage={currentPage}
@@ -78,7 +77,7 @@ function AddArtists() {
         fetchMoreData={fetchMoreIdols}
       >
         <div className="add-artists-wrap">
-          <div>
+          <div className="add-artists-content">
             {[evenIdols, oddIdols].map((idols, idx) => (
               <div key={idx} className="add-artists-list">
                 {idols.map(({id, profilePicture, group, name}) => (

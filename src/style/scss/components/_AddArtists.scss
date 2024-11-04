@@ -1,14 +1,31 @@
 .favorite-list {
-  color: var(--white);
   .add-artists-wrap {
     display: flex;
+    width: 120rem;
+    margin: 0 auto;
     .add-artists-list {
       display: flex;
       flex-wrap: nowrap;
       gap: 2.4rem;
-      max-width: 120rem;
       width: 100%;
-      margin: 3.2rem auto 0;
+      margin: 0 auto;
+      & + .add-artists-list {
+        margin-top: 3.2rem;
+      }
+      .add-artists-text {
+        margin-top: 0.8rem;
+        text-align: center;
+        .add-artists-name {
+          font-size: 1.6rem;
+          line-height: 2.8rem;
+          color: #f4efef;
+        }
+        .add-artists-group {
+          font-size: 1.4rem;
+          line-height: 1.67rem;
+          color: #ffffff99;
+        }
+      }
     }
   }
 }
@@ -16,6 +33,7 @@
 @media (max-width: 1200px) {
   .favorite-list {
     .add-artists-wrap {
+      width: auto;
       overflow-x: scroll;
       &::-webkit-scrollbar {
         display: none;

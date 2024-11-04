@@ -6,7 +6,7 @@ import DonateArtist from 'components/donateArtist/DonateArtist';
 import GradientButton from 'components/common/GradientButton';
 import Modal from 'components/common/Modal';
 import {ChargeModal, DonationModal, AlertModal} from 'components/modals';
-import FavoriteArtists from 'components/favoriteArtists/FavoriteArtists';
+import FavoriteArtist from 'components/favoriteArtists/FavoriteArtists';
 import AddArtists from 'components/addArtists/AddArtists';
 
 function ListPage() {
@@ -47,9 +47,9 @@ function ListPage() {
         <hr />
         <MonthlyChart />
         <hr />
-        <FavoriteArtists />
-        <hr />
-        <AddArtists />
+        <FavoriteArtist title="내가 관심있는 아이돌" />
+        <div className="hr" />
+        <AddArtists title="관심 있는 아이돌을 추가해보세요." />
         <hr />
         <GradientButton name="" handleClick={handleDonationClick}>
           응원하기
