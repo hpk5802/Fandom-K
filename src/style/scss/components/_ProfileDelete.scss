@@ -10,6 +10,7 @@
   border: 0.27rem solid #02000e;
   &:hover {
     background-color: rgba(255, 255, 255, 0.8);
+    transition: 0.3s;
   }
   .profile-delete-img {
     position: absolute;
