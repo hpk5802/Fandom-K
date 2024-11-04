@@ -48,3 +48,22 @@
     }
   }
 }
+
+@media (max-width: 1200px) {
+  .pagination-container {
+    padding-left: 2.4rem;
+    .content-title {
+      font-size: 2rem;
+      margin-bottom: 2.4rem;
+    }
+  }
+}
+
+@media (max-width: 744px) {
+  .pagination-container {
+    .content-title {
+      font-size: 1.6rem;
+      margin-bottom: 1.6rem;
+    }
+  }
+}
