@@ -5,6 +5,7 @@ import {useDispatch, useSelector} from 'react-redux';
 import {useCallback, useEffect, useRef, useState} from 'react';
 import {getIdols} from 'services/apiSlice';
 import useWindowSize from 'hooks/useWindowSize';
+import parseImg from 'utils/images';
 
 function AddArtists() {
   const dispatch = useDispatch();
@@ -95,7 +96,10 @@ function AddArtists() {
           {device !== 'desktop' && <div ref={endRef} className="end-point" />}
         </div>
       </Pagination>
-      <GradientButton name="add-button">추가하기</GradientButton>
+      <GradientButton name="add-button">
+        <img src={parseImg('ic_add_button.svg')} alt="추가하기" />
+        추가하기
+      </GradientButton>
     </>
   );
 }
