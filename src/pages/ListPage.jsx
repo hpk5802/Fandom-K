@@ -7,8 +7,6 @@ import Nav from 'components/nav/Nav';
 import MyCredit from 'components/myCredit/MyCredit';
 import DonateArtist from 'components/donateArtist/DonateArtist';
 import Modal from 'components/common/Modal';
-import FavoriteArtist from 'components/favoriteArtists/FavoriteArtists';
-import AddArtists from 'components/addArtists/AddArtists';
 
 function ListPage() {
   const dispatch = useDispatch();
@@ -54,15 +52,8 @@ function ListPage() {
       <Nav />
       <div className="container" style={{backgroundColor: '#02000E', width: '100%', overflowX: 'hidden'}}>
         <MyCredit onClick={handleChargeClick} />
-        <hr />
         <DonateArtist />
-        <hr />
         <MonthlyChart onClick={handleVotesOpen} />
-        <hr />
-        <FavoriteArtist title="내가 관심있는 아이돌" />
-        <div className="hr" />
-        <AddArtists title="관심 있는 아이돌을 추가해보세요." />
-        <hr />
         {isModalOpen && (
           <Modal title={modalTitle} onClose={handleAlertModalClose}>
             {modalContent}

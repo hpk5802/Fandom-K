@@ -1017,7 +1017,7 @@ img {
   width: 32.6rem;
   height: 4.2rem;
   border-radius: 0.5rem;
-  padding: 0.8rem 14.3rem;
+  padding: 0.8rem 0;
   background: rgba(255, 255, 255, 0.08);
 }
 .view-more-btn .medium-btn:hover {
@@ -1219,8 +1219,6 @@ img {
 .modal img {
   width: 100%;
   height: 100%;
-  -o-object-fit: contain;
-     object-fit: contain;
 }
 .modal .button-gradient {
   height: 4.2rem;
@@ -1440,6 +1438,9 @@ img {
   max-height: 43.5rem;
   overflow: auto;
 }
+.vote-modal .vote-list::-webkit-scrollbar {
+  display: none;
+}
 .vote-modal .vote-list label {
   padding-bottom: 0.8rem;
   margin-bottom: 0.8rem;
@@ -1555,6 +1556,10 @@ img {
     max-height: 60rem;
   }
 }
+.entire-favorite-artist {
+  padding-bottom: 4rem;
+  border-bottom: 0.1rem solid rgba(255, 255, 255, 0.1019607843);
+}
 .entire-favorite-artist .favorite-artist-title {
   color: var(--white-smoke);
   font-size: 2.4rem;
@@ -1608,13 +1613,63 @@ img {
   overflow: hidden;
   text-overflow: ellipsis;
 }
+.entire-favorite-artist .favorite-artists-container .favorite-empty-text {
+  font-size: 2rem;
+  color: var(--white);
+}
 
 @media (max-width: 1200px) {
-  .favorite-artists-container {
+  .entire-favorite-artist {
+    padding-bottom: 3.2rem;
+  }
+  .entire-favorite-artist .favorite-artists-container {
     overflow-x: scroll;
   }
-  .favorite-artists-container::-webkit-scrollbar {
+  .entire-favorite-artist .favorite-artists-container::-webkit-scrollbar {
     display: none;
+  }
+}
+@media (max-width: 744px) {
+  .entire-favorite-artist .favorite-artists-container .favorite-artist .profile-badge {
+    width: 7rem;
+    height: 7rem;
+  }
+  .entire-favorite-artist .favorite-artists-container .favorite-artist .profile-badge-img {
+    width: 6rem;
+    height: 6rem;
+  }
+  .entire-favorite-artist .favorite-artists-container .favorite-artist .artist-info {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    gap: 0.2rem;
+  }
+  .entire-favorite-artist .favorite-artists-container .favorite-artist .artist-info .artist-name {
+    width: 100%;
+    color: #f4efef;
+    font-size: 1.6rem;
+    line-height: 2.6rem;
+    font-weight: var(--bold);
+    text-align: center;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  .entire-favorite-artist .favorite-artists-container .favorite-artist .artist-info .artist-group {
+    width: 100%;
+    color: rgba(255, 255, 255, 0.6);
+    font-size: 1.4rem;
+    line-height: 1.6rem;
+    font-weight: var(--normal);
+    text-align: center;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  .entire-favorite-artist .favorite-artists-container .favorite-empty-text {
+    font-size: 2rem;
+    color: var(--white);
   }
 }
 .main-container {
@@ -1718,12 +1773,13 @@ img {
 .intro-container .intro-back-img {
   width: 120rem;
   height: 120rem;
+  opacity: 0.15;
 }
 .intro-container .intro-gradient {
   position: absolute;
   width: 120rem;
   height: 120rem;
-  background: radial-gradient(circle at center, rgba(2, 0, 14, 0) 0%, rgba(2, 0, 14, 0.8) 15%, rgba(2, 0, 14, 0.9) 50%, rgb(2, 0, 14) 100%);
+  background: radial-gradient(50% 50% at 50% 50%, rgba(2, 0, 14, 0) 0%, rgba(2, 0, 14, 0.180099) 37.5%, rgba(2, 0, 14, 0.5) 79.5%, #02000e 100%);
 }
 
 @media (max-width: 1200px) {
@@ -1775,7 +1831,7 @@ img {
 }
 @media (max-width: 744px) {
   .main-container {
-    width: 37.5rem;
+    width: 100%;
     height: 81.2rem;
   }
   .main-container .main-texts {
@@ -1804,11 +1860,12 @@ img {
     height: 45.6rem;
   }
   .intro-container {
-    width: 37.5rem;
+    width: 100%;
     height: 81.2rem;
   }
   .intro-container .intro-titles {
     top: 7.6rem;
+    width: calc(100% - 6.4rem);
   }
   .intro-container .intro-titles .intro-title {
     font-size: 1.4rem;
@@ -1818,11 +1875,11 @@ img {
     width: 24rem;
   }
   .intro-container .intro-back-img {
-    width: 100vw;
+    width: 100%;
     height: 64rem;
   }
   .intro-container .intro-gradient {
-    width: 100vw;
+    width: 100%;
   }
   .intro-container .intro-titles-donation,
   .intro-container .intro-titles-myArtist {
@@ -1847,6 +1904,9 @@ img {
   width: 100%;
   margin: 0 auto;
   overflow: hidden;
+}
+.pagination-container.entire-favorite-artist {
+  margin-top: 7rem;
 }
 .pagination-container.donation {
   min-height: 46rem;
@@ -1904,6 +1964,9 @@ img {
   .pagination-container {
     padding-left: 2.4rem;
   }
+  .pagination-container.entire-favorite-artist {
+    margin-top: 1.4rem;
+  }
   .pagination-container .content-title {
     font-size: 2rem;
     margin-bottom: 2.4rem;
@@ -1914,6 +1977,9 @@ img {
     font-size: 1.6rem;
     margin-bottom: 1.6rem;
   }
+}
+.favorite-list {
+  margin-top: 4rem;
 }
 .favorite-list .add-artists-wrap {
   display: flex;
@@ -1954,7 +2020,7 @@ img {
   justify-content: center;
   gap: 0.8rem;
   width: 25.5rem;
-  margin: 4.8rem auto 0;
+  margin: 4.8rem auto 8rem;
   padding: 1.1rem 0;
   border-radius: 2.4rem;
   font-size: 1.6rem;

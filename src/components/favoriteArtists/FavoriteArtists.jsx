@@ -13,8 +13,6 @@ function FavoriteArtists() {
 
   const handleDelete = id => () => {
     dispatch(removeFavorite(id));
-    // const filterArtist = getArtists.filter(artist => artist.id !== id);
-    // localStorage.setItem('myFavoriteArtists', JSON.stringify(filterArtist));
   };
 
   /**
@@ -25,7 +23,6 @@ function FavoriteArtists() {
   const totalPages = Math.ceil(getArtists?.length / 10);
   const displayedIdols = device === 'desktop' ? getArtists?.slice(currentPage * 10, (currentPage + 1) * 10) : getArtists;
   return (
-    // <div className="entire-favorite-artist" /*로컬 스토리지 관리부분*/>
     <Pagination
       name="entire-favorite-artist"
       title="내가 관심있는 아이돌"
@@ -35,7 +32,7 @@ function FavoriteArtists() {
       onPageChange={setCurrentPage}
     >
       <div className="favorite-artists-container">
-        {displayedIdols &&
+        {displayedIdols.length > 0 ? (
           displayedIdols.map(artist => {
             return (
               <div key={`${artist.id}-artist`} className="favorite-artist">
@@ -52,31 +49,12 @@ function FavoriteArtists() {
                 </>
               </div>
             );
-          })}
+          })
+        ) : (
+          <div className="favorite-empty-text">관심있는 아이돌을 등록해주세요.</div>
+        )}
       </div>
     </Pagination>
-    // <div className="favorite-artist-title">내가 관심있는 아이돌</div>
-    // <div className="favorite-artists-container">
-    //   {getArtists &&
-    //     getArtists.map(artist => {
-    //       return (
-    //         <div key={`${artist.id}-artist`} className="favorite-artist">
-    //           <>
-    //             <ProfileDelete key={`${artist.id}-delete`} src={parseImg(artist.profilePicture)} size="medium" onClick={handleDelete(artist.id)} />
-    //             <div key={`${artist.id}-info`} className="artist-info">
-    //               <div key={`${artist.id}-name`} className="artist-name">
-    //                 {artist.name}
-    //               </div>
-    //               <div key={`${artist.id}-group`} className="artist-group">
-    //                 {artist.group}
-    //               </div>
-    //             </div>
-    //           </>
-    //         </div>
-    //       );
-    //     })}
-    // </div>
-    // </div>
   );
 }
 

@@ -1,4 +1,6 @@
 .entire-favorite-artist {
+  padding-bottom: 4rem;
+  border-bottom: 0.1rem solid #ffffff1a;
   .favorite-artist-title {
     color: var(--white-smoke);
     font-size: 2.4rem;
@@ -51,14 +53,71 @@
         }
       }
     }
+    .favorite-empty-text {
+      font-size: 2rem;
+      color: var(--white);
+    }
   }
 }
 
 @media (max-width: 1200px) {
-  .favorite-artists-container {
-    overflow-x: scroll;
-    &::-webkit-scrollbar {
-      display: none;
+  .entire-favorite-artist {
+    padding-bottom: 3.2rem;
+    .favorite-artists-container {
+      overflow-x: scroll;
+      &::-webkit-scrollbar {
+        display: none;
+      }
+    }
+  }
+}
+
+@media (max-width: 744px) {
+  .entire-favorite-artist {
+    .favorite-artists-container {
+      .favorite-artist {
+        .profile-badge {
+          width: 7rem;
+          height: 7rem;
+          &-img {
+            width: 6rem;
+            height: 6rem;
+          }
+        }
+        .artist-info {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          width: 100%;
+          gap: 0.2rem;
+          .artist-name {
+            width: 100%;
+            color: #f4efef;
+            font-size: 1.6rem;
+            line-height: 2.6rem;
+            font-weight: var(--bold);
+            text-align: center;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+          }
+          .artist-group {
+            width: 100%;
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 1.4rem;
+            line-height: 1.6rem;
+            font-weight: var(--normal);
+            text-align: center;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+          }
+        }
+      }
+      .favorite-empty-text {
+        font-size: 2rem;
+        color: var(--white);
+      }
     }
   }
 }

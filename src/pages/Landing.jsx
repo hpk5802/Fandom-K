@@ -4,7 +4,7 @@ import Intro from '../components/LandingPage/Intro';
 import ResetStorageButton from '../components/LandingPage/ResetStorageButton';
 import parseImg from 'utils/images';
 import {useDispatch} from 'react-redux';
-import {resetCredit, resetFavorite} from 'services/apiSlice';
+import {resetLocalStorage} from 'services/apiSlice';
 
 //front는 앞쪽 이미지, back은 백그라운드 이미지를 의미
 const mainLogo = parseImg('ic_fandom_k.svg');
@@ -28,8 +28,7 @@ function LandingPage() {
     const favoriteArtists = JSON.parse(localStorage.getItem('myFavoriteArtists'));
 
     if (!currentCredits || !favoriteArtists) {
-      dispatch(resetCredit());
-      dispatch(resetFavorite());
+      dispatch(resetLocalStorage());
     }
   }, []);
   return (
