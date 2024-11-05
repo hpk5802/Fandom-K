@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/Fandom-K/static/css/main.39d226af.css",
-    "main.js": "/Fandom-K/static/js/main.dff2af1d.js",
+    "main.js": "/Fandom-K/static/js/main.2aab84a4.js",
     "static/media/img_intro_front_monthly_artist.svg": "/Fandom-K/static/media/img_intro_front_monthly_artist.87905b633e69938403db.svg",
     "static/media/img_intro_front_donate_artist.svg": "/Fandom-K/static/media/img_intro_front_donate_artist.91d8cc991f75e9c7242c.svg",
     "static/media/img_intro_front_my_artist.svg": "/Fandom-K/static/media/img_intro_front_my_artist.edf5610a077fae45345e.svg",
@@ -32,10 +32,10 @@
     "static/media/ic_prev_button.svg": "/Fandom-K/static/media/ic_prev_button.d0a4190c1c3a689d0a73.svg",
     "static/media/ic_arrow_left.svg": "/Fandom-K/static/media/ic_arrow_left.ca4d00efbd8539fc7180.svg",
     "main.39d226af.css.map": "/Fandom-K/static/css/main.39d226af.css.map",
-    "main.dff2af1d.js.map": "/Fandom-K/static/js/main.dff2af1d.js.map"
+    "main.2aab84a4.js.map": "/Fandom-K/static/js/main.2aab84a4.js.map"
   },
   "entrypoints": [
     "static/css/main.39d226af.css",
-    "static/js/main.dff2af1d.js"
+    "static/js/main.2aab84a4.js"
   ]
 }
