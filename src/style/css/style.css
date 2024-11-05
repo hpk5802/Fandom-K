@@ -1411,9 +1411,6 @@ img {
 .donation-modal .donation-input .input-box input::placeholder {
   color: var(--dim-gray);
 }
-.donation-modal .donation-input .input-box input[type=number] {
-  -moz-appearance: textfield;
-}
 .donation-modal .donation-input .input-box input[type=number]::-webkit-inner-spin-button, .donation-modal .donation-input .input-box input[type=number]::-webkit-outer-spin-button {
   -webkit-appearance: none;
   margin: 0;
