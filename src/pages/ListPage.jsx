@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 import {useDispatch} from 'react-redux';
-import {resetVoteIdols} from 'services/apiSlice';
+import {getCharts, resetVoteIdols} from 'services/apiSlice';
 import {ChargeModal, AlertModal, VoteModal} from 'components/modals';
 import MonthlyChart from 'components/monthlyChart/MontlyChart';
 import Nav from 'components/nav/Nav';
@@ -34,7 +34,11 @@ function ListPage() {
     setIsModalOpen(false);
     setModalTitle('');
     setModalContent(null);
-    if (!status) openModal('', <AlertModal onClose={handleAlertModalClose} />);
+    if (!status) {
+      openModal('', <AlertModal onClose={handleAlertModalClose} />);
+    } else {
+      dispatch(getCharts());
+    }
   };
 
   const handleChargeClick = () => {
