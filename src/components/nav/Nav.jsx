@@ -6,7 +6,7 @@ function Nav() {
   const navigate = useNavigate();
   const clickLogo = () => {
     // 현재 페이지로 새로고침
-    if (location.pathname === 'list') window.location.reload();
+    if (location.pathname === '/list') window.location.reload();
     else navigate('/list');
   };
 
