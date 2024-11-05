@@ -1,4 +1,4 @@
-const API_BASE_URL = '/api';
+const API_BASE_URL = 'https://fandom-k-api.vercel.app/11-3';
 
 export const endPoints = {
   getIdols: `${API_BASE_URL}/idols`,
