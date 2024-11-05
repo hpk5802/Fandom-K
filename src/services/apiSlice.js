@@ -51,6 +51,9 @@ const apiSlice = createSlice({
     transChartGender: (state, action) => {
       state.chartGender = action.payload;
     },
+    resetDonations: state => {
+      state.donations = {list: [], nextCursor: null};
+    },
   },
   extraReducers: builder => {
     builder
@@ -87,6 +90,7 @@ const apiSlice = createSlice({
   },
 });
 
-export const {increseCredit, decreseCredit, addFavorite, removeFavorite, resetVoteIdols, transChartGender, resetLocalStorage} = apiSlice.actions;
+export const {increseCredit, decreseCredit, addFavorite, removeFavorite, resetVoteIdols, transChartGender, resetLocalStorage, resetDonations} =
+  apiSlice.actions;
 
 export default apiSlice.reducer;
