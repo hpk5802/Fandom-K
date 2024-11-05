@@ -1,10 +1,13 @@
-import {Link} from 'react-router-dom';
+import {Link, useLocation, useNavigate} from 'react-router-dom';
 import parseImg from 'utils/images';
 
 function Nav() {
+  const location = useLocation();
+  const navigate = useNavigate();
   const clickLogo = () => {
     // 현재 페이지로 새로고침
-    window.location.reload();
+    if (location.pathname === 'list') window.location.reload();
+    else navigate('/list');
   };
 
   return (
