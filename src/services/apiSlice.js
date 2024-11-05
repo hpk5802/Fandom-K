@@ -19,7 +19,7 @@ const apiSlice = createSlice({
     idols: {list: [], nextCursor: null},
     voteIdols: {idols: [], nextCursor: null},
     donations: {list: [], nextCursor: null},
-    charts: {idols: []},
+    charts: {idols: [], nextCursor: null},
     status: 'idle',
     chartGender: 'female',
     error: null,
