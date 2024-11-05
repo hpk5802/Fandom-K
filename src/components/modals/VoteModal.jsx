@@ -1,46 +1,80 @@
-import React, {useState} from 'react';
+import React, {useEffect, useRef, useState} from 'react';
 import GradientButton from 'components/common/GradientButton';
 import ProfileBadge from 'components/common/ProfileBadge';
 import formatWithCommas from 'utils/formatWithCommas';
+import {useDispatch, useSelector} from 'react-redux';
+import {getVoteIdols, setVoteForIdol} from 'services/apiSlice';
+
+const initialState = {
+  id: 0,
+  name: '',
+  gender: '',
+  group: '',
+  profilePicture: '',
+  totalVotes: 0,
+  teamId: 0,
+  rank: 0,
+};
 
 const VoteModal = ({onClose}) => {
-  const voteList = [
-    {id: 1, artistName: '뉴진스 민지', voteCount: 204000},
-    {id: 2, artistName: '르세라핌 카즈하', voteCount: 150214},
-    {id: 3, artistName: '르세라핌 채원', voteCount: 110214},
-  ];
+  const dispatch = useDispatch();
+  const scrollContainerRef = useRef(null);
+  const {voteIdols, chartGender} = useSelector(state => state.data);
+  const {idols, nextCursor} = voteIdols;
 
-  const [selectedOption, setSelectedOption] = useState(voteList[0].id);
+  const [selectedIdol, setSelectedIdol] = useState(initialState);
 
   const handleChange = e => {
-    setSelectedOption(Number(e.target.value));
+    setSelectedIdol(JSON.parse(e.target.value));
   };
 
-  const handleCharge = () => {
-    alert(`${selectedOption}번에 투표하셨습니다.`);
-    onClose();
+  const handleVotes = () => {
+    const myCredits = +localStorage.getItem('myCredits');
+    const payCredit = +process.env.REACT_APP_VOTES_VALUE;
+
+    // onClose 메서드에 투표 여부 알여주기
+    const checkVotingStatus = payCredit <= myCredits;
+    if (checkVotingStatus) {
+      dispatch(setVoteForIdol({idolId: selectedIdol.id}));
+      localStorage.setItem('myCredits', myCredits - payCredit);
+      alert(`${selectedIdol.group} ${selectedIdol.name}에게 투표하셨습니다.`);
+    }
+
+    onClose(checkVotingStatus);
   };
+
+  const handleScroll = () => {
+    const {scrollTop, scrollHeight, clientHeight} = scrollContainerRef.current;
+    if (scrollTop + clientHeight >= scrollHeight - 4 && nextCursor) {
+      dispatch(getVoteIdols({gender: chartGender, pageSize: 6, cursor: nextCursor}));
+    }
+  };
+
+  useEffect(() => {
+    dispatch(getVoteIdols({gender: chartGender, pageSize: 6}));
+  }, [dispatch]);
 
   return (
     <div className="modal-content vote-modal">
-      <div className="vote-list">
-        {voteList.map(voteList => (
-          <label key={voteList.id} className="custom-radio">
-            <div className="vote-item">
-              <ProfileBadge img="img_idol_example.svg" selected={selectedOption === voteList.id} />
-              <div className="vote-num">{voteList.id}</div>
-              <div className="vote-info">
-                <p className="name">{voteList.artistName}</p>
-                <p className="count">{formatWithCommas(voteList.voteCount)}표</p>
+      <div className="vote-list" ref={scrollContainerRef} onScroll={handleScroll}>
+        {selectedIdol &&
+          idols.map((idol, idx) => (
+            <label key={`custom-radio-${idx}`} className="custom-radio">
+              <div className="vote-item">
+                <ProfileBadge src={idol.profilePicture} selected={selectedIdol.id === idol.id} />
+                <div className="vote-num">{idx + 1}</div>
+                <div className="vote-info">
+                  <p className="name">{`${idol.group} ${idol.name}`}</p>
+                  <p className="count">{formatWithCommas(idol.totalVotes)}표</p>
+                </div>
               </div>
-            </div>
-            <input type="radio" value={voteList.id} checked={selectedOption === voteList.id} onChange={handleChange} />
-            <span className="radio-check"></span>
-          </label>
-        ))}
+              <input type="radio" key={`radio-${idx}`} value={JSON.stringify(idol)} checked={selectedIdol.id === idol.id} onChange={handleChange} />
+              <span className="radio-check"></span>
+            </label>
+          ))}
       </div>
       <div className="modal-bottom">
-        <GradientButton handleClick={handleCharge}>투표하기</GradientButton>
+        <GradientButton handleClick={handleVotes}>투표하기</GradientButton>
         <div className="desc">
           투표하는 데 <span>1000 크레딧</span>이 소모됩니다.
         </div>

@@ -1,7 +1,7 @@
 import {useNavigate} from 'react-router-dom';
 import GradientButton from 'components/common/GradientButton';
 import {useDispatch} from 'react-redux';
-import {resetFavorite} from 'services/apiSlice';
+import {resetCredit, resetFavorite} from 'services/apiSlice';
 
 // React 컴포넌트로 변경
 function ResetStorageButton({children}) {
@@ -11,8 +11,9 @@ function ResetStorageButton({children}) {
   const handleStartClick = () => {
     // localStorage 초기화
     localStorage.clear();
-    localStorage.setItem('myCredits', '0');
+    dispatch(resetCredit());
     dispatch(resetFavorite());
+
     // 페이지 이동
     navigate('/list');
   };

@@ -1,15 +1,17 @@
 import React, {useState} from 'react';
+import {useDispatch} from 'react-redux';
+import {getCharts, resetVoteIdols} from 'services/apiSlice';
+import {ChargeModal, AlertModal, VoteModal} from 'components/modals';
 import MonthlyChart from 'components/monthlyChart/MontlyChart';
 import Nav from 'components/nav/Nav';
 import MyCredit from 'components/myCredit/MyCredit';
 import DonateArtist from 'components/donateArtist/DonateArtist';
-import GradientButton from 'components/common/GradientButton';
 import Modal from 'components/common/Modal';
-import {ChargeModal, DonationModal, AlertModal} from 'components/modals';
 import FavoriteArtist from 'components/favoriteArtists/FavoriteArtists';
 import AddArtists from 'components/addArtists/AddArtists';
 
 function ListPage() {
+  const dispatch = useDispatch();
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [modalTitle, setModalTitle] = useState('');
   const [modalContent, setModalContent] = useState(null);
@@ -18,31 +20,35 @@ function ListPage() {
     setModalTitle(title || '');
     setModalContent(content);
     setIsModalOpen(true);
+    // 투표 아이돌 리스트 초기화
+    dispatch(resetVoteIdols());
   };
 
-  const closeModal = () => {
+  const handleAlertModalClose = () => {
     setIsModalOpen(false);
     setModalTitle('');
     setModalContent(null);
   };
 
+  const handleVoteModalClose = status => {
+    setIsModalOpen(false);
+    setModalTitle('');
+    setModalContent(null);
+    if (!status) {
+      openModal('', <AlertModal onClose={handleAlertModalClose} />);
+    } else {
+      dispatch(getCharts());
+    }
+  };
+
   const handleChargeClick = () => {
-    openModal('크레딧 충전하기', <ChargeModal onClose={closeModal} />);
+    openModal('크레딧 충전하기', <ChargeModal onClose={handleAlertModalClose} />);
   };
 
-  const handleDonationClick = () => {
-    const idol = {
-      name: '사쿠라',
-      gender: 'female',
-      group: '르세라핌',
-      profilePicture: 'https://sprint-fe-project.s3.ap-northeast-2.amazonaws.com/Fandom-K/idol/1728104746762/le_sakura.jpg',
-    };
-    openModal('응원하기', <DonationModal id="4082" idol={idol} title="" ad="" onClose={closeModal} />);
+  const handleVotesOpen = () => {
+    openModal('', <VoteModal onClose={handleVoteModalClose} />);
   };
 
-  const handleAlertClick = () => {
-    openModal('', <AlertModal onClose={closeModal} />);
-  };
   return (
     <>
       <Nav />
@@ -51,20 +57,14 @@ function ListPage() {
         <hr />
         <DonateArtist />
         <hr />
-        <MonthlyChart />
+        <MonthlyChart onClick={handleVotesOpen} />
         <hr />
         <FavoriteArtist title="내가 관심있는 아이돌" />
         <div className="hr" />
         <AddArtists title="관심 있는 아이돌을 추가해보세요." />
         <hr />
-        <GradientButton name="" handleClick={handleDonationClick}>
-          응원하기
-        </GradientButton>
-        <GradientButton name="" handleClick={handleAlertClick}>
-          알림
-        </GradientButton>
         {isModalOpen && (
-          <Modal title={modalTitle} onClose={closeModal}>
+          <Modal title={modalTitle} onClose={handleAlertModalClose}>
             {modalContent}
           </Modal>
         )}
