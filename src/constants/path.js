@@ -1,4 +1,4 @@
-const API_BASE_URL = '/api/11-3';
+const API_BASE_URL = '/api';
 
 export const endPoints = {
   getIdols: `${API_BASE_URL}/idols`,
