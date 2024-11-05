@@ -34,7 +34,7 @@ const VoteModal = ({onClose}) => {
 
   const handleScroll = () => {
     const {scrollTop, scrollHeight, clientHeight} = scrollContainerRef.current;
-    if (scrollTop + clientHeight >= scrollHeight - 4) {
+    if (scrollTop + clientHeight >= scrollHeight - 4 && nextCursor) {
       dispatch(getVoteIdols({gender: chartGender, pageSize: 6, cursor: nextCursor}));
     }
   };
