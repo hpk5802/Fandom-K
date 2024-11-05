@@ -54,6 +54,9 @@ const apiSlice = createSlice({
     resetDonations: state => {
       state.donations = {list: [], nextCursor: null};
     },
+    resetIdols: state => {
+      state.idols = {list: [], nextCursor: null};
+    },
   },
   extraReducers: builder => {
     builder
@@ -90,7 +93,16 @@ const apiSlice = createSlice({
   },
 });
 
-export const {increseCredit, decreseCredit, addFavorite, removeFavorite, resetVoteIdols, transChartGender, resetLocalStorage, resetDonations} =
-  apiSlice.actions;
+export const {
+  increseCredit,
+  decreseCredit,
+  addFavorite,
+  removeFavorite,
+  resetVoteIdols,
+  transChartGender,
+  resetLocalStorage,
+  resetDonations,
+  resetIdols,
+} = apiSlice.actions;
 
 export default apiSlice.reducer;

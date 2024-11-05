@@ -3,11 +3,13 @@ import GradientButton from 'components/common/GradientButton';
 import Pagination from 'components/donateArtist/Pagination';
 import {useDispatch, useSelector} from 'react-redux';
 import {useCallback, useEffect, useRef, useState} from 'react';
-import {addFavorite, getIdols} from 'services/apiSlice';
+import {addFavorite, getIdols, resetIdols} from 'services/apiSlice';
 import useWindowSize from 'hooks/useWindowSize';
 import parseImg from 'utils/images';
+import {useLocation} from 'react-router-dom';
 
 function AddArtists() {
+  const location = useLocation();
   const dispatch = useDispatch();
   const {
     idols: {list, nextCursor},
@@ -67,9 +69,14 @@ function AddArtists() {
   /**
    * initial load
    */
+  // useEffect(() => {
+  //   dispatch(getIdols({pageSize: 16}));
+  // }, [dispatch]);
+
   useEffect(() => {
+    dispatch(resetIdols());
     dispatch(getIdols({pageSize: 16}));
-  }, [dispatch]);
+  }, [location.pathname, dispatch]);
 
   /**
    * store 데이터 변경 감지
