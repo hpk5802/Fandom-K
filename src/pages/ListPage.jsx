@@ -57,7 +57,7 @@ function ListPage() {
         <hr />
         <DonateArtist />
         <hr />
-        <MonthlyChart onClick={() => handleVotesOpen()} />
+        <MonthlyChart onClick={handleVotesOpen} />
         <hr />
         <FavoriteArtist title="내가 관심있는 아이돌" />
         <div className="hr" />

@@ -5,13 +5,24 @@ import formatWithCommas from 'utils/formatWithCommas';
 import {useDispatch, useSelector} from 'react-redux';
 import {getVoteIdols, setVoteForIdol} from 'services/apiSlice';
 
+const initialState = {
+  id: 0,
+  name: '',
+  gender: '',
+  group: '',
+  profilePicture: '',
+  totalVotes: 0,
+  teamId: 0,
+  rank: 0,
+};
+
 const VoteModal = ({onClose}) => {
   const dispatch = useDispatch();
   const scrollContainerRef = useRef(null);
   const {voteIdols, chartGender} = useSelector(state => state.data);
   const {idols, nextCursor} = voteIdols;
 
-  const [selectedIdol, setSelectedIdol] = useState();
+  const [selectedIdol, setSelectedIdol] = useState(initialState);
 
   const handleChange = e => {
     setSelectedIdol(JSON.parse(e.target.value));
@@ -38,10 +49,6 @@ const VoteModal = ({onClose}) => {
       dispatch(getVoteIdols({gender: chartGender, pageSize: 6, cursor: nextCursor}));
     }
   };
-
-  useEffect(() => {
-    setSelectedIdol(idols[0]);
-  }, [selectedIdol === undefined && idols.length > 0]);
 
   useEffect(() => {
     dispatch(getVoteIdols({gender: chartGender, pageSize: 6}));
