@@ -42,6 +42,9 @@ body {
   font-size: 1rem;
   /* 기본 배경색 rich-black으로 통일 */
   background-color: var(--rich-black);
+  &:has(.modal) {
+    overflow: hidden;
+  }
 }
 
 button {
