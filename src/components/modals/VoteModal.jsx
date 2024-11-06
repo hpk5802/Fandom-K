@@ -1,9 +1,11 @@
-import React, {useEffect, useRef, useState} from 'react';
+import React, {useCallback, useEffect, useRef, useState} from 'react';
 import GradientButton from 'components/common/GradientButton';
 import ProfileBadge from 'components/common/ProfileBadge';
 import formatWithCommas from 'utils/formatWithCommas';
 import {useDispatch, useSelector} from 'react-redux';
 import {getVoteIdols, setVoteForIdol} from 'services/apiSlice';
+import classes from 'utils/classes';
+import useWindowSize from 'hooks/useWindowSize';
 
 const initialState = {
   id: 0,
@@ -18,9 +20,10 @@ const initialState = {
 
 const VoteModal = ({onClose}) => {
   const dispatch = useDispatch();
-  const scrollContainerRef = useRef(null);
   const {voteIdols, chartGender} = useSelector(state => state.data);
   const {idols, nextCursor} = voteIdols;
+  const device = useWindowSize();
+  const endRef = useRef(null); // Infinite Scroll 구현을 위한 Ref 객체
 
   const [selectedIdol, setSelectedIdol] = useState(initialState);
 
@@ -43,20 +46,43 @@ const VoteModal = ({onClose}) => {
     onClose(checkVotingStatus);
   };
 
-  const handleScroll = () => {
-    const {scrollTop, scrollHeight, clientHeight} = scrollContainerRef.current;
-    if (scrollTop + clientHeight >= scrollHeight - 4 && nextCursor) {
-      dispatch(getVoteIdols({gender: chartGender, pageSize: 6, cursor: nextCursor}));
-    }
-  };
+  const handleScroll = useCallback(() => {
+    if (nextCursor) dispatch(getVoteIdols({gender: chartGender, pageSize: 6, cursor: nextCursor}));
+  }, [nextCursor, dispatch]);
 
   useEffect(() => {
     dispatch(getVoteIdols({gender: chartGender, pageSize: 6}));
   }, [dispatch]);
 
+  /**
+   * 감시 대상이 화면에 노출되면 서버에 데이터 요청
+   */
+  const handleObserver = useCallback(
+    ([entry]) => {
+      if (entry.isIntersecting) handleScroll();
+    },
+    [handleScroll],
+  );
+
+  /**
+   * IntersectionObserver API를 이용해 endRef 객체가 화면에 노출됨을 감지
+   */
+  useEffect(() => {
+    if (!endRef.current) return;
+
+    const observer = new IntersectionObserver(handleObserver, {
+      root: endRef.current.parentNode,
+      threshold: 1.0,
+    });
+
+    observer.observe(endRef.current);
+
+    return () => observer.disconnect();
+  }, [handleObserver, device]);
+
   return (
-    <div className="modal-content vote-modal">
-      <div className="vote-list" ref={scrollContainerRef} onScroll={handleScroll}>
+    <div className={classes('modal-content vote-modal', device === 'mobile' ? 'mobile-full' : '')}>
+      <div className="vote-list">
         {selectedIdol &&
           idols.map((idol, idx) => (
             <label key={`custom-radio-${idx}`} className="custom-radio">
@@ -72,6 +98,7 @@ const VoteModal = ({onClose}) => {
               <span className="radio-check"></span>
             </label>
           ))}
+        <div ref={endRef} style={{width: '100%', height: '1px'}} className="end-point" />
       </div>
       <div className="modal-bottom">
         <GradientButton handleClick={handleVotes}>투표하기</GradientButton>
