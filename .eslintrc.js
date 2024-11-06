@@ -1,5 +1,5 @@
 module.exports = {
-  extends: ['eslint:recommended', 'plugin:react/recommended', 'plugin:prettier/recommended', 'prettier'],
+  extends: ['react-app', 'eslint:recommended', 'plugin:react/recommended', 'plugin:prettier/recommended', 'prettier'],
   env: {browser: true, node: true, es6: true},
   settings: {
     react: {
@@ -21,5 +21,6 @@ module.exports = {
     eqeqeq: 'error', // 일치 연산자 사용 필수
     'no-unused-vars': 'error', // 사용하지 않는 변수 금지
     // 'no-console': ['error', {allow: ['warn', 'error', 'info']}], // console.log() 금지
+    'prettier/prettier': ['error', {endOfLine: 'auto'}],
   },
 };

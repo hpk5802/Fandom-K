@@ -3,7 +3,7 @@ import GradientButton from 'components/common/GradientButton';
 import ProfileBadge from 'components/common/ProfileBadge';
 import formatWithCommas from 'utils/formatWithCommas';
 import {useDispatch, useSelector} from 'react-redux';
-import {getVoteIdols, setVoteForIdol} from 'services/apiSlice';
+import {getCharts, getVoteIdols, setVoteForIdol} from 'services/apiSlice';
 import classes from 'utils/classes';
 import useWindowSize from 'hooks/useWindowSize';
 
@@ -24,8 +24,8 @@ const VoteModal = ({onClose}) => {
   const {idols, nextCursor} = voteIdols;
   const device = useWindowSize();
   const endRef = useRef(null); // Infinite Scroll 구현을 위한 Ref 객체
-
   const [selectedIdol, setSelectedIdol] = useState(initialState);
+  const pageSize = device === 'desktop' ? 10 : 5;
 
   const handleChange = e => {
     setSelectedIdol(JSON.parse(e.target.value));
@@ -41,6 +41,8 @@ const VoteModal = ({onClose}) => {
       dispatch(setVoteForIdol({idolId: selectedIdol.id}));
       localStorage.setItem('myCredits', myCredits - payCredit);
       alert(`${selectedIdol.group} ${selectedIdol.name}에게 투표하셨습니다.`);
+
+      dispatch(getCharts({gender: chartGender, pageSize: pageSize}));
     }
 
     onClose(checkVotingStatus);
