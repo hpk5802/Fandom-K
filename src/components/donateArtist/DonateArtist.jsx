@@ -5,12 +5,16 @@ import {useDispatch, useSelector} from 'react-redux';
 import {getDonations, resetDonations} from 'services/apiSlice';
 import useWindowSize from 'hooks/useWindowSize';
 import {useLocation} from 'react-router-dom';
+import Loading from 'components/common/Loading';
+import Error from 'components/common/Error';
 
 function DonateArtist() {
   const location = useLocation();
   const dispatch = useDispatch();
   const {
     donations: {list, nextCursor},
+    donationsStatus,
+    donationsError,
   } = useSelector(state => state.data);
   const [currentPage, setCurrentPage] = useState(0); // 슬라이싱 된 배열의 페이징을 위한 state : 초기값 0
   const device = useWindowSize();
@@ -19,8 +23,8 @@ function DonateArtist() {
    * 서버에 데이터가 더 있는 경우 데이터를 요청하고 redux store에 추가
    */
   const fetchMoreDonations = useCallback(() => {
-    if (nextCursor) dispatch(getDonations({cursor: nextCursor, pageSize: 4}));
-  }, [nextCursor, dispatch]);
+    if (nextCursor || donationsStatus === 'failed') dispatch(getDonations({cursor: nextCursor, pageSize: 4}));
+  }, [nextCursor, dispatch, donationsStatus]);
 
   /**
    * 페이징 액션(Desktop) -> 터치 액션(Tablet, Mobile) 분기를 자연스럽게 하기 위해 첫 번째 데이터로 강제 이동
@@ -45,7 +49,9 @@ function DonateArtist() {
       onPageChange={setCurrentPage}
       fetchMoreData={fetchMoreDonations}
     >
-      <SpreadCards lists={displayedDonations} device={device} fetchMoreDonations={fetchMoreDonations} />
+      {donationsStatus === 'loading' && <Loading />}
+      {donationsStatus === 'succeeded' && <SpreadCards lists={displayedDonations} device={device} fetchMoreDonations={fetchMoreDonations} />}
+      {donationsStatus === 'failed' && <Error err={donationsError} handleClick={fetchMoreDonations} />}
     </Pagination>
   );
 }

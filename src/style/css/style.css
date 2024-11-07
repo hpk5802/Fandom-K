@@ -529,6 +529,23 @@ img {
      object-fit: cover;
 }
 
+@keyframes loading {
+  0% {
+    opacity: 1;
+  }
+  20% {
+    opacity: 0.75;
+  }
+  50% {
+    opacity: 0.5;
+  }
+  80% {
+    opacity: 0.75;
+  }
+  100% {
+    opacity: 1;
+  }
+}
 .button-gradient {
   border-radius: 0.3rem;
   background: linear-gradient(90deg, #f86f65 0%, var(--brand-pink) 100%);
@@ -2062,4 +2079,48 @@ img {
   .add-button {
     margin-top: 2.4rem;
   }
+}
+.loading-wrap {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+.loading-wrap .loading {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  width: 9rem;
+  height: 9rem;
+  border-radius: 50%;
+  overflow: hidden;
+  animation: loading 1s linear alternate infinite;
+}
+.loading-wrap .loading-text {
+  font-size: 1.6rem;
+  font-weight: var(--bold);
+  color: var(--white);
+}
+
+.error-wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+}
+.error-wrap .error-text,
+.error-wrap .error-msg {
+  font-size: 1.6rem;
+  font-weight: var(--bold);
+  color: var(--white);
+}
+.error-wrap .button-reload {
+  padding: 1rem;
+  border: 0.1rem solid var(--white);
+  background-color: transparent;
+  font-size: 1.6rem;
+  font-weight: var(--bold);
+  color: var(--white);
 }

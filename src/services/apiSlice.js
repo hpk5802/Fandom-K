@@ -20,9 +20,13 @@ const apiSlice = createSlice({
     voteIdols: {idols: [], nextCursor: null},
     donations: {list: [], nextCursor: null},
     charts: {idols: [], nextCursor: null},
-    status: 'idle',
     chartGender: 'female',
-    error: null,
+    idolsStatus: 'idle',
+    donationsStatus: 'idle',
+    chartsStatus: 'idle',
+    idolsError: null,
+    donationsError: null,
+    chartsError: null,
   },
   reducers: {
     increseCredit: (state, action) => {
@@ -60,17 +64,44 @@ const apiSlice = createSlice({
   },
   extraReducers: builder => {
     builder
+      .addCase(getIdols.pending, state => {
+        state.idolsStatus = 'loading';
+        state.idolsError = null;
+      })
       .addCase(getIdols.fulfilled, (state, action) => {
+        state.idolsStatus = 'succeeded';
         state.idols.list = [...state.idols.list, ...action.payload.list];
         state.idols.nextCursor = action.payload.nextCursor;
       })
+      .addCase(getIdols.rejected, (state, action) => {
+        state.idolsStatus = 'failed';
+        state.idolsError = action.error.message;
+      })
+      .addCase(getDonations.pending, state => {
+        state.donationsStatus = 'loading';
+        state.donationsError = null;
+      })
       .addCase(getDonations.fulfilled, (state, action) => {
+        state.donationsStatus = 'succeeded';
         state.donations.list = [...state.donations.list, ...action.payload.list];
         state.donations.nextCursor = action.payload.nextCursor;
       })
+      .addCase(getDonations.rejected, (state, action) => {
+        state.donationsStatus = 'failed';
+        state.donationsError = action.error.message;
+      })
+      .addCase(getCharts.pending, state => {
+        state.chartsStatus = 'loading';
+        state.chartsError = null;
+      })
       .addCase(getCharts.fulfilled, (state, action) => {
         // 이달의 차트
+        state.chartsStatus = 'succeeded';
         state.charts = action.payload;
+      })
+      .addCase(getCharts.rejected, (state, action) => {
+        state.chartsStatus = 'failed';
+        state.chartsError = action.error.message;
       })
       .addCase(getfavoriteCharts.fulfilled, (state, action) => {
         // 관심있는 아이돌

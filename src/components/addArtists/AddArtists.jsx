@@ -7,6 +7,8 @@ import {addFavorite, getIdols, resetIdols} from 'services/apiSlice';
 import useWindowSize from 'hooks/useWindowSize';
 import parseImg from 'utils/images';
 import {useLocation} from 'react-router-dom';
+import Loading from 'components/common/Loading';
+import Error from 'components/common/Error';
 
 function AddArtists() {
   const location = useLocation();
@@ -14,11 +16,15 @@ function AddArtists() {
   const {
     idols: {list, nextCursor},
     myFavoriteArtists,
+    idolsStatus,
+    idolsError,
   } = useSelector(state => state.data);
   const [selectedIdols, setSelectedIdols] = useState([]); // 관심 등록된 아이돌 & 추가 할 아이돌을 위한 state
   const [currentPage, setCurrentPage] = useState(0); // 슬라이싱 된 배열의 페이징을 위한 state : 초기값 0
   const device = useWindowSize();
   const endRef = useRef(null); // Infinite Scroll 구현을 위한 Ref 객체
+  const scrollRef = useRef(null);
+  const scrollPosition = useRef(0); // 스크롤 위치를 저장하는 Ref 객체
 
   /**
    * 아이돌 뱃지 클릭 이벤트 핸들러 : localStorage & store에 이미 저장된 경우 해제 불가 alert / 저장 안된 경우 선택 및 해제 가능
@@ -53,17 +59,20 @@ function AddArtists() {
    * 서버에 데이터가 더 있는 경우 데이터를 요청하고 redux store에 추가
    */
   const fetchMoreIdols = useCallback(() => {
-    if (nextCursor) dispatch(getIdols({cursor: nextCursor, pageSize: 16}));
-  }, [nextCursor, dispatch]);
+    if (nextCursor || idolsStatus === 'failed') dispatch(getIdols({cursor: nextCursor, pageSize: 16}));
+  }, [nextCursor, dispatch, idolsStatus]);
 
   /**
    * 감시 대상이 화면에 노출되면 서버에 데이터 요청
    */
   const handleObserver = useCallback(
     ([entry]) => {
-      if (entry.isIntersecting) fetchMoreIdols();
+      if (entry.isIntersecting && idolsStatus !== 'loading') {
+        scrollPosition.current = scrollPosition.current = scrollRef.current.scrollLeft; // 데이터 요청 전 스크롤 위치 저장
+        fetchMoreIdols();
+      }
     },
-    [fetchMoreIdols],
+    [fetchMoreIdols, idolsStatus],
   );
 
   /**
@@ -101,6 +110,13 @@ function AddArtists() {
     return () => observer.disconnect();
   }, [handleObserver, device]);
 
+  useEffect(() => {
+    if (idolsStatus === 'succeeded') {
+      // 새로운 데이터가 로드되었을 때 저장된 스크롤 위치로 이동
+      scrollRef.current.scrollTo(scrollPosition.current, 0);
+    }
+  }, [idolsStatus]);
+
   /**
    * 페이징 액션(Desktop) -> 터치 액션(Tablet, Mobile) 분기를 자연스럽게 하기 위해 첫 번째 데이터로 강제 이동
    */
@@ -122,26 +138,29 @@ function AddArtists() {
         onPageChange={setCurrentPage}
         fetchMoreData={fetchMoreIdols}
       >
-        <div className="add-artists-wrap">
+        <div ref={scrollRef} className="add-artists-wrap">
           <div className="add-artists-content">
-            {[evenIdols, oddIdols].map((idols, idx) => (
-              <div key={idx} className="add-artists-list">
-                {idols.map(idol => (
-                  <div key={idol.id} className="add-artists-container">
-                    <ProfileBadge
-                      src={idol.profilePicture}
-                      size="large"
-                      onClick={() => handleSelect(idol)}
-                      selected={myFavoriteArtists.some(fav => fav.id === idol.id) || selectedIdols.some(sel => sel.id === idol.id)}
-                    />
-                    <div className="add-artists-text">
-                      <div className="add-artists-name">{idol.name}</div>
-                      <div className="add-artists-group">{idol.group}</div>
+            {idolsStatus === 'loading' && <Loading />}
+            {idolsStatus === 'succeeded' &&
+              [evenIdols, oddIdols].map((idols, idx) => (
+                <div key={idx} className="add-artists-list">
+                  {idols.map(idol => (
+                    <div key={idol.id} className="add-artists-container">
+                      <ProfileBadge
+                        src={idol.profilePicture}
+                        size="large"
+                        onClick={() => handleSelect(idol)}
+                        selected={myFavoriteArtists.some(fav => fav.id === idol.id) || selectedIdols.some(sel => sel.id === idol.id)}
+                      />
+                      <div className="add-artists-text">
+                        <div className="add-artists-name">{idol.name}</div>
+                        <div className="add-artists-group">{idol.group}</div>
+                      </div>
                     </div>
-                  </div>
-                ))}
-              </div>
-            ))}
+                  ))}
+                </div>
+              ))}
+            {idolsStatus === 'failed' && <Error err={idolsError} handleClick={fetchMoreIdols} />}
           </div>
           {device !== 'desktop' && <div ref={endRef} className="end-point" />}
         </div>

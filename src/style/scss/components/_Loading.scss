@@ -1,0 +1,22 @@
+.loading-wrap {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  .loading {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    width: 9rem;
+    height: 9rem;
+    border-radius: 50%;
+    overflow: hidden;
+    animation: loading 1s linear alternate infinite;
+    &-text {
+      font-size: 1.6rem;
+      font-weight: var(--bold);
+      color: var(--white);
+    }
+  }
+}

@@ -1,0 +1,21 @@
+.error-wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  .error-text,
+  .error-msg {
+    font-size: 1.6rem;
+    font-weight: var(--bold);
+    color: var(--white);
+  }
+  .button-reload {
+    padding: 1rem;
+    border: 0.1rem solid var(--white);
+    background-color: transparent;
+    font-size: 1.6rem;
+    font-weight: var(--bold);
+    color: var(--white);
+  }
+}
